@@ -1,0 +1,630 @@
+.com\documentclass[12pt, a4paper, titlepage]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float, bbm}
+\usepackage{tikz}
+
+\pagestyle{plain}
+\righthyphenmin = 2
+
+\usepackage{geometry}
+\geometry{left=3cm}
+\geometry{right=1cm}
+\geometry{top=3cm}
+\geometry{bottom=3cm}
+
+\usepackage{amsthm} \makeatletter
+\renewcommand*{\@seccntformat}[1]{ \csname the#1\endcsname.\enskip
+}
+\makeatother
+
+\newcommand{\startvec}{\begin{pmatrix}
+                        1\\0
+                       \end{pmatrix}}
+\newcommand{\nullvec}{\begin{pmatrix}
+                        0\\0
+                       \end{pmatrix}}
+
+\begin{document}
+
+\newtheorem{theorem}{Теорема}
+\newtheorem{statement}{Утверждение}
+\newtheorem{proposition}{Предложение}
+\newtheorem{definition}{Определение}
+\newtheorem{lem}{Лемма}
+\newtheorem{example}{Пример}
+\newtheorem{remark}{Замечание}
+
+\begin{titlepage}
+
+\begin{center}
+
+{\Large УДК №519.21}
+
+{\it\large В.А. Кузнецов, Институт математики НАН Украины}
+\footnote{Институт математики НАН Украины, ул. Терещенковская, 3, г. Киев\\
+V.A. Kuznetsov, Institute of Mathematics of the NAS of Ukraine \\
+e-mail: vasylkuz@mail.ru}
+\vspace{30pt}
+
+{\Large Взаимные углы обхода частиц
+в броуновских стохастических потоках 
+со старшим показателем Ляпунова, равным нулю}
+
+ \vspace{30pt}
+ \large{Abstract}
+
+\end{center}
+
+The investigation of geometrical properties of particles moving in 
+stochastic flows leads to the study of their mutual winding angles. 
+The same problem for independent Brownian motions 
+was solved in the article~\cite{Yor1991}. 
+We generalize these results 
+for the case of isotropic Brownian stochastic flows 
+with zero top Lyapunov exponent.
+
+\vspace{30pt}
+
+\begin{center}
+\large{Анотація}
+\end{center}
+
+ Дослідження геометричних властивостей траєкторій частинок 
+ у стохастичних потоках призводить до вивчення
+ їхніх взаємних кутів обходу. 
+ Для незалежних двовимірних броунівських рухів відповідна задача була розв'язана
+ в работі~\cite{Yor1991}. 
+ Ми узагальнюємо ці результати на випадок 
+ ізотропних броунівських стохастичних потоків зі старшим
+ показником Ляпунова, що дорівнює нулю.
+\vspace{30pt}
+
+\begin{center}
+\large{Аннотация}
+\end{center}
+
+Исследование геометрических свойств траекторий частиц в стохастических потоках
+ приводит к изучению их взаимных углов обхода. Для независимых двумерных броуновских движений
+ соответствующая задача была решена в 
+ работе~\cite{Yor1991}. Мы обобщаем эти результаты на случай
+ изотропных броуновских стохастических потоков со старшим показателем Ляпунова, 
+ равным нулю. 
+
+\end{titlepage}
+
+
+\section{Введение}
+\label{Introduction}
+
+В настоящей статье приводится решение задачи об асимптотическом распределении 
+взаимных углов обхода частиц, 
+движущихся в двумерном броуновском стохастическом потоке.
+Броуновские стохастические потоки возникли в 
+работах~\cite{Monin},~\cite{LeJan},~\cite{Kesten} как модели 
+турбулентного течения жидкости.
+
+\begin{definition}[\cite{Kunita}]
+ Стохастическим потоком гомеоморфизмов в пространстве $\mathbb{R}^d$ 
+называется семейство случайных отображений $F_{s,t}=F_{s,t}(\omega, \cdot):\mathbb{R}^d\to\mathbb{R}^d, 0\le s\le t$, 
+обладающих на некотором множестве $\Omega_0$ с $P(\Omega_0)=1$ следующими свойствами:
+\begin{enumerate}
+  \item поле $\phi(s,t,x)=F_{s,t}(\omega, x)$ является непрерывным по 
+  совокупности параметров $s,t,x$;
+  \item все отображения $F_{s,t}$ являются гомеоморфизмами $\mathbbm{R}^d$;
+  \item при каждом $s\ge 0$ имеет место $F_{ss}=Id$, т.е. отображение $F_{ss}$ является тождественным;
+  \item при любых $s<t<u$ выполняется соотношение $F_{tu}\circ F_{st}=F_{su}$.
+ \end{enumerate}
+\end{definition}
+
+\begin{definition}[\cite{Kunita}]
+ Броуновским стохастическим потоком в $\mathbb{R}^d$ 
+ называется стохастический поток гомеоморфизмов $F_{s,t}$ со следующим свойством:
+  при любых $0\le s_1\le s_2\le \ldots \le s_n$ 
+  отображения $F_{s_1, s_2}, F_{s_2, s_3}, \ldots, F_{s_{n-1}, s_n}$ 
+  независимы.
+\end{definition}
+
+Согласно~\cite{Kunita}, броуновский стохастический поток $F_{s,t}$, 
+удовлетворяющий 
+определённым условиям регулярности, можно задать как решение 
+стохастического дифференциального уравнения
+\begin{equation} \label{SDE}
+dF_{s,t}(x)=U(F_{s,t}(x), dt), \enskip F_{s,s}(x)=x,
+\end{equation}
+где $U$ --- некоторый непрерывный гауссовский семимартингал с пространственным параметром.
+Уравнение~(\ref{SDE}) следует понимать как сокращённую запись соотношения
+$$F_{s,t}(x)=x+\int\limits_s^t U(F_{s,r}(x), dr),$$
+а последний интеграл определяется
+как интеграл по семимартингалу с пространственным параметром~\cite{Kunita}.
+
+Важный класс потоков составляют
+однородные изотропные броуновские потоки, возникшие при изучении наиболее простой
+модели турбулентности --- изотропной турбулентности. 
+В этой модели распределение
+поля скоростей жидкости инвариантно относительно параллельных переносов, 
+поворотов и отражений. 
+
+ Сначала введём, следуя работе~\cite{ZirbelRotation}, 
+ определение однородности и изотропности для случайных полей
+ на $\mathbb{R}^d$. 
+Случайное поле $V=V(z)\in\mathbb{R}^d, z\in\mathbb{R}^d$ 
+называется однородным, если 
+его распределение не меняется при параллельных переносах, 
+т.е. для каждого вектора
+$h\in\mathbb{R}^d$ случайное поле $\tilde{V}(z)=V(z+h)$ 
+имеет то же распределение, что и поле $V$.
+В случае гауссовского  векторного поля $V$ это условие 
+можно переписать в виде условия на математическое ожидание
+и ковариационную матрицу компонент поля $V$.
+Так, если $a(x,y)=(a_{kl}(x,y))_{1\le k,l\le d}$ --- 
+ковариационная матрица компонент 
+однородного центрированного гауссовского поля $V$, т.е.
+$$\mathbb{E} V_k(x)V_l(y)=a_{kl}(x,y),$$
+то поле $V$ является однородным в том и только в том случае, когда $a_{ij}(x,y)$ 
+зависит лишь от разности $x-y$:
+$$\mathbb{E} V_k(x)V_l(y)=a_{kl}(x,y)=b_{kl}(x-y), \enskip k,l=1,\ldots, d.$$
+Центрированное однородное случайное поле $V$ называется изотропным, 
+если для каждой ортогональной
+матрицы $G$ размера $d\times d$ случайное поле $V'(z)=GV(G^{-1}z)$ 
+имееет то же распределение, что и $V$. 
+В случае гауссовского векторного поля $V$ это условие 
+можно переписать в виде условия на ковариационную матрицу компонент поля $V$.
+Так, если $b(z)=(b_{kl}(z))_{k,l=1,\ldots, d}$, 
+где $$\mathbb{E} V_k(x)V_l(y)=b_{kl}(x-y),$$
+то условие изотропности $V$ эквивалентно соотношению
+\begin{equation} \label{Isotropic}
+ Gb(G^{-1}z)G^{-1}=b(z)
+\end{equation}
+для всех ортогональных матриц $G.$
+
+Определения однородности и изотропности можно дать и для 
+броуновских стохастических потоков.
+\begin{definition}
+ Однородным броуновским стохастическим потоком
+ называется стохастический поток, который
+ задаётся уравнением~(\ref{SDE}),
+ где $U$ --- центрированное гауссовское случайное поле, 
+ удовлетворяющее соотношению
+ $$\mathbb{E} U_k(x,t)U_l(y,s)= b_{kl}(x-y)\min\{t,s\}, k,l = 1,\ldots, d.$$
+ Здесь $x, y\in\mathbb{R}^d$, $t\in [0, +\infty)$, $b(z)=(b_{kl}(z), 1\le k, l\le d)$ --- 
+некоторая матричнозначная функция. 
+\end{definition}
+
+\begin{definition}
+ Однородный броуновский поток называется изотропным, 
+если соответствующая матричнозначная функция $b=b(z)$ 
+удовлетворяет соотношению~(\ref{Isotropic})
+для каждого $z\in\mathbb{R}^d$ и каждой ортогональной матрицы $G$. 
+\end{definition}
+\begin{remark}
+ Заметим, что это условие эквивалентно существованию однородного 
+изотропного поля $V=V(z)$, для которого $b_{kl}(z)=cov(V_k(x),V_l(x+z))$ 
+при всех $x, z\in\mathbb{R}^d$.
+\end{remark}
+Условие изотропности накладывает ограничения на вид матричнозначной функции $b(z)$. 
+Полное описание ковариационных функций компонент 
+изотропных случайных полей было получено в работе~А.М.~Яглома~\cite{Yaglom}. 
+Мы приведём результат для случая двумерного броуновского потока ($d=2$), 
+следуя работе~\cite{ZirbelRotation}.
+В этом случае вид матрицы $b$ описывается следующим утверждением.
+
+\begin{statement} [{\cite{ZirbelRotation}}]\label{ZirbelCorrelationForm}
+Если матричнозначная функция $b=(b_{kl}(z), 1\le k, l\le 2)$ 
+является ковариационной матрицей компонент некоторого однородного изотропного
+случайного поля $f$,
+то она имеет вид
+\begin{equation}\nonumber
+b_{kl}(z)=\delta_{kl}b_{N}(\|z\|)+\frac{z^k z^l}{\|z\|^2}(b_{L}(\|z\|)-b_{N}(\|z\|)).
+\end{equation}
+ Здесь $b_L, b_N\colon [0,\infty)\to \mathbb{R}$ --- 
+ некоторые функции, которые можно представить в виде
+\begin{equation}\label{bL_equation}
+ b_L(r)=\int\limits_0^{\infty} J_{1}'(r\alpha)\Phi_P(d\alpha)+ 
+ \int\limits_0^{\infty}\frac{J_{1}(r\alpha)}{r\alpha}\Phi_S(d\alpha),
+\end{equation}
+\begin{equation}\label{bN_equation}
+ b_N(r)=\int\limits_0^{\infty} \frac{J_{1}(r\alpha)}{r\alpha} \Phi_P(d\alpha)+ 
+ \int\limits_0^{\infty}J_{1}'(r\alpha)\Phi_S(d\alpha),
+\end{equation}
+для некоторых конечных мер $\Phi_P, \Phi_S$ на $[0, +\infty)$;
+$J_1$ --- функция Бесселя первого рода. 
+\end{statement}
+
+ При определённых дополнительных предположениях функции $b_L$ и $b_N$ 
+являются достаточно гладкими.
+В этом случае, согласно результатам~\cite{Kunita}, 
+поток $F_{s,t}$ является потоком диффеоморфизмов. 
+Это даёт возможность говорить о
+показателях Ляпунова $\lambda_1, \lambda_2$ ($\lambda_1>\lambda_2$)
+потока $F$. Эти показатели, как было показано в работе~\cite{Baxendale},
+выражаются через функции $b_L, b_N$. 
+
+Так, имеет место следующий результат.
+\begin{statement} [{\cite{ZirbelRotation}}]\label{ZirbelCorrelationLyapunov}
+Пусть $U(x,t), x\in \mathbb{R}^2, t \ge 0$ --- гауссовское векторное поле со значениями
+в $\mathbb{R}^2,$ задающее 
+однородный изотропный броуновский поток~$F$. 
+Предположим, что меры $\Phi_P, \Phi_S$ 
+в представлениях~(\ref{bL_equation}),~(\ref{bN_equation})
+из утверждения~\ref{ZirbelCorrelationForm}
+имеют конечный четвёртый момент. 
+Тогда функции $b_L$, $b_N$ четырежды непрерывно дифференцируемы и
+удовлетворяют следующим асимптотическим соотношениям:
+\begin{equation}
+ b_L(r)=b_0-\frac12 \beta_L r^2+O(r^4), r\to 0,
+\end{equation}
+\begin{equation}
+ b_N(r)=b_0-\frac12 \beta_N r^2+O(r^4), r\to 0,
+\end{equation}
+ где  $b_L(0)=b_N(0)=b_0$, и
+\begin{equation}\nonumber
+ \beta_L=\frac38 \int\limits_0^\infty \alpha^2 \Phi_P(d\alpha)+
+ \frac18 \int\limits_0^\infty \alpha^2 \Phi_S(d\alpha),
+\end{equation}
+
+\begin{equation}\nonumber
+ \beta_N=\frac18 \int\limits_0^\infty \alpha^2 \Phi_P(d\alpha)+
+ \frac38 \int\limits_0^\infty \alpha^2 \Phi_S(d\alpha).
+\end{equation}
+ При этом показатели Ляпунова равны
+$$\lambda_1=\frac12(\beta_N-\beta_L), \lambda_2=-\beta_L.$$
+\end{statement}
+Показатели Ляпунова 
+определяют асимптотическое поведение расстояния между частицами в потоке. 
+Так, имеет место 
+следующие результаты, 
+полученные в работах~\cite{LeJan},~\cite{ZirbelOccupation}.
+\begin{theorem}
+ Для двумерного одногодного изотропного 
+ броуновского стохастического потока имеют место 
+ следующие варианты асимптотического поведения 
+$\\R_{ab}(t)=\|F_t(a)-F_t(b)\|$ расстояния между частицами, 
+вышедшими из двух произвольных различных точек плоскости $a$ и $b$, 
+в зависимости от максимального показателя Ляпунова $\lambda_1$:
+\begin{enumerate}
+ \item Если $\lambda_1 < 0$, 
+ то $R_{ab}(t)\xrightarrow[t\to \infty]{} 0$ почти наверное. 
+ \item Если $\lambda_1 \ge 0$, 
+ то $R_{ab}(t)\xrightarrow[t\to \infty]{} \infty$ по вероятности, и процесс $R_{ab}$
+  является нуль-возвратным диффузионным процессом.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+ Мы  обозначаем $F_t(x)=F_{0,t}(x)$.
+\end{remark}
+
+ Заметим, что изучение траекторий частиц, движущихся 
+ под действием потока жидкости, может быть использовано 
+ для анализа свойств самого потока. 
+ Этот подход применяется в работе ~\cite{Thiffeault}.
+Поэтому представляет интерес описание различных геометрических характеристик 
+системы частиц, движущихся под воздействием стохастического потока. 
+Одной из таких характеристик являются взаимные углы обхода частиц 
+друг вокруг друга. Мы приводим решение задачи об асимптотическом распределении 
+взаимных углов обхода частиц в броуновском стохастическом потоке.
+Точная формулировка полученного результата приводится в разделе~\ref{Main results}. 
+Для независимых броуновских движений аналогичная задача 
+была решена в статье~\cite{Yor1991}, где был получен следующий
+результат.
+
+\begin{theorem}[{\cite{Yor1991}}]\label{Yor_result}
+ Пусть $w_1, \ldots. w_n$ --- независимые двумерные 
+ стандартные броуновские движения, 
+ выходящие из попарно различных точек 
+плоскости. Тогда для углов обхода $\Phi_{kl}(t)$ 
+траектории броуновского движения $w_k$ вокруг броуновского движения
+$w_l$ справедливо асимптотическое соотношение 
+$(\frac{2}{\ln{t}}\Phi_{kl}(t), 1\le k<l\le n)
+\xrightarrow[t\to\infty]{d}
+(\xi_{kl}, 1\le k <l \le n).$
+ Здесь $\xi_{kl}, 1\le k <l \le n$ --- 
+ независимые в совокупности случайные величины, 
+ имеющие распределение Коши с параметром 1. 
+\end{theorem}
+\begin{remark}
+ Угол обхода непрерывной двумерной траектории \\ 
+$X(t)=(X_1(t), X_2(t)), t\ge 0$ 
+вокруг точки $0$ определяется как $\Phi(t)-\Phi(0)$,
+где $\Phi=\Phi(t)$ --- непрерывная функция,
+которая в каждый момент времени $t$ 
+является одной из версий аргумента комплексного числа
+$X_1(t)+iX_2(t)$, 
+т.е. при всех $t$ 
+$$\Phi(t) \in Arg(X_1(t)+iX_2(t)).$$ 
+Такая функция существует и однозначно определена, 
+если при $t\ge 0$ 
+$\enskip X_1(t)+iX_2(t)\ne 0$.
+
+ Угол обхода $\Phi(t)$ траектории $X(s), 0\le s\le t$ вокруг % траектории \\
+$Y(s), 0\le s\le t$ определяется как угол 
+обхода траектории $Z(s)=Y(s)-X(s)$ вокруг точки $0$. 
+Он определён, если траектории $X$ и $Y$ не пересекаются, т.е. при всех
+$s\in [0,t] \enskip X(s)\ne Y(s)$. 
+Траектории независимых двумерных винеровских процессов 
+не пересекаются с вероятностью $1$,
+поэтому углы обхода траекторий друг вокруг друга 
+определены почти наверное. 
+\end{remark}
+
+В настоящей работе показано, что то же самое предельное соотношение 
+выполнено для траекторий частиц в 
+броуновском стохастическом потоке, 
+в котором функции $b_L$ и $b_N$ совпадают: $b_L\equiv b_N$. 
+Как и в рассмотренном в работе 
+~\cite{Yor1991} случае независимых броуновских движений, 
+доказательство использует оценку на рост совместной характеристики
+углов обхода частиц $<\Phi_{ab}, \Phi_{ac}>_t$. 
+Но если в случае независимых броуновских движений 
+эта оценка может быть проведена 
+за счёт явного нахождения математического ожидания
+$\mathbb{E}<\Phi_{ab}, \Phi_{ac}>_t$, 
+то в нашем случае изучение асимптотического поведения 
+$<\Phi_{ab}, \Phi_{ac}>_t$ гораздо более сложно. 
+Основная сложность состоит в том, что движения различных частиц 
+в потоке теперь не являются независимыми. Вместо использования
+понятия независимости приходится проводить рассуждения, 
+основанные на понятии ортогональности мартингалов. 
+
+\begin{remark}
+ Естественно ожидать, что полученный нами результат выполнен 
+ в более общем случае броуновского потока 
+ со старшим показателем Ляпунова, 
+равным нулю. Однако, рассмотрение этого случая 
+технически гораздо более сложно 
+и требует дальнейшего исследования. 
+\end{remark}
+
+
+\section{Асимптотика инвариантов Васильева высших порядков}
+Исследовав предельное распределение углов обхода в броуновских стохастических потоках, естественно
+задаться вопросом о распределении инвариантов Васильева порядка $2$ и выше. 
+Инварианты Васильева представляются в виде сумм стохастических интегралов,
+Мы начнём с рассмотрения более простых примеров исследования предельного распределения
+стохастических интегралов.
+
+Пусть $Z_t, t \ge 1$ --- двумерное броуновское движение, выходящее из точки $\startvec$:
+$$Z(1)=\startvec.$$
+Введём, следуя~\cite{BertoinWerner}, процесс $X_t$ с помощью экспоненциальной замены времени
+для $Z_t$:
+$$X(t)=e^{-t/2}Z(e^t), t \ge 0.$$
+Тогда $X(t)$ --- двумерный процесс Орнштейна-Уленбека. \\
+Пусть $R(t)=|X(t)|, H(t)=\int\limits_0^t \frac{ds}{R_s^2}.$
+
+Можно показать, что конечномерные распределения процесса
+$\frac{H(tT)}{T^2}$ сходятся при $T\to\infty$ к конечномерным
+распределениям процесса $S,$
+где \\
+$$S(t)=\int\limits_0^{\sigma(t)}\mathbbm{1}_{w_s \le 0}ds, t \ge 0,$$
+$w$ --- одномерное броуновское движение с $w(0)=0,$ \\
+$l_t$ --- локальное время $w$ в нуле, \\
+$\sigma(t)=\inf\{s > 0: l_s >t\}.$
+\begin{statement}
+ Пусть $L(t)=\int\limits_0^t H_1(u)dH_2(u).$
+Тогда 
+$$\frac{L(t)}{t^2}\xrightarrow[t\to\infty]{d}\int\limits_0^1 S_1(u)dS_2(u).$$
+\end{statement}
+\begin{proof}
+ Процессы $H_1, H_2$ --- возрастающие с вероятностью $1.$
+Для любого $n\in \mathbb{N}$ имеем 
+\begin{multline*}
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right) \le
+ \frac{1}{t^4}\int\limits_0^t H_1(u)dH_2(u) 
+ \le 
+ \\
+ \le
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k+1}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right).
+\end{multline*}
+Заметим, что в силу сходимости конечномерных распределений процессов $H_1, H_2$, при фиксированном $n$
+имеем
+ \begin{multline*}
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right)
+ \xrightarrow[t\to\infty]{d}
+  \sum\limits_{k=0}^{n-1}S_1\left(\frac{k}{n}\right)
+ \left(S_2\left(\frac{k+1}{n}\right)-S_2\left(\frac{k}{n}\right)\right).
+\end{multline*}
+
+С другой стороны,
+\begin{multline*}
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k+1}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right)-\\-
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right)
+ \xrightarrow[t\to\infty]{d} 
+ \\
+ \xrightarrow[t\to\infty]{d}
+ \sum\limits_{k=0}^{n-1}\left(S_1\left(\frac{k+1}{n}\right)-S_1\left(\frac{k}{n}\right)\right)
+ \left(S_2\left(\frac{k+1}{n}\right)-S_2\left(\frac{k}{n}\right)\right).
+\end{multline*}
+Заметим, что
+$$
+\sum\limits_{k=0}^{n-1}\left(S_1\left(\frac{k+1}{n}\right)-S_1\left(\frac{k}{n}\right)\right)
+ \left(S_2\left(\frac{k+1}{n}\right)-S_2\left(\frac{k}{n}\right)\right)\xrightarrow[n\to\infty]{P}0.
+$$
+Действительно, 
+\end{proof}
+
+\begin{statement}
+ Имеет место асимптотическое соотношение
+ $$\frac{1}{T}\int\limits_0^T\alpha_{12}(s)ds\xrightarrow[T\to\infty]{d}$$
+\end{statement}
+\begin{proof}
+ Сначала покажем, что $\frac{1}{T}\int\limits_0^T\alpha_{12}(s)ds$ имеет предел по распределению.
+ Рассмотрим разность
+\begin{multline*}
+\frac{1}{T^2}\int\limits_0^T \alpha_{12}(s)ds-
+ \frac{1}{T^2}\sum\limits_{k=0}^{n-1}\int\limits_{\frac{k}{n}T}^{\frac{k+1}{n}T}
+  \frac{T}{n}\alpha_{12}(kT/n)=
+ \sum\limits_{k=0}^{n-1}
+ \int\limits_{\frac{k}{n}T}^{\frac{k+1}{n}T}\left(\alpha_{12}(s)-\alpha_{12}(kT/n)\right)ds
+ \le \\ \le
+ \frac{1}{Tn}\sum\limits_{k=0}^{n-1}\max\limits_{s\in [kT/n, (k+1)T/n]}|\alpha_{12}(s)-\alpha_{12}(kT/n)|.
+\end{multline*}
+ Вспомним, что $\alpha_{12}(s)=\theta_{12}(e^s).$
+ Имеем
+ $$<\theta_{12}>_t=2\int\limits_0^t\frac{ds}{|Z_{12}(s)|^2}.$$
+Отсюда получаем
+$$<\alpha_{12}>(t)=<\theta_{12}>(e^t)=2\int\limits_0^t\frac{ds}{R_{12}(s)^2}=H_{12}(t).$$
+Итак, имеем
+$$\alpha_{12}(t)=\beta_{12}(H_{12}(t))$$
+для некоторого броуновского движения $\beta_{12}$, не зависящего от процесса $R_{12}.$
+Поэтому
+\begin{multline*}
+ \frac{1}{Tn}\sum\limits_{k=0}^{n-1}\max\limits_{s\in [kT/n, (k+1)T/n]}|\alpha_{12}(s)-\alpha_{12}(kT/n)|
+ \xrightarrow[T\to\infty]{d}\\
+ \xrightarrow[T\to\infty]{d}
+ \frac{1}{n}\sum\limits_{k=0}^{n-1}\max\limits_{s\in [S(k/n), S((k+1)/n)]}|\beta(s)-\beta(S(k/n))|.
+\end{multline*}
+\end{proof}
+
+\begin{lem}
+ Пусть набор случайных величин $\xi(T), T>0$ и случайная величина $\eta$ таковы, что
+ имеются случайные величины $\eta_n(T), \gamma_n(T) (T>0), \gamma_n, \eta_n$
+ такие, что
+\begin{itemize}
+ \item $\forall T\, |\xi(T)-\eta_n(T)| \le \gamma_n(T)$;
+ \item $\forall n \,\gamma_n(T)\xrightarrow[T\to\infty]{d}\gamma_n;$
+ \item $\gamma_n \xrightarrow[n\to\infty]{d} 0;$
+ \item $\forall n \,\eta_n(T)\xrightarrow[T\to\infty]{d}\eta_n.$
+\end{itemize}
+Тогда $\xi(T)$ имеет предел по распределению при $T\to\infty$:
+$$\xi(T)\xrightarrow[n \to \infty]{d}\xi_0.$$
+Более того, при этом  $\eta_n\xrightarrow[T\to\infty]{d}\xi_0.$
+\end{lem}
+\begin{proof}
+ Фиксируем $\varepsilon>0$. Поскольку $\gamma_n\xrightarrow[n \to \infty]{d}0$,
+ то для непрерывной ограниченной функции $f(x)=\frac{|x|}{1+|x|}$
+ имеем $\mathbb{E}f(\gamma_n) \xrightarrow[n\to\infty]{}\mathbb{E}f(0),$
+ или $\mathbb{E}\frac{|\gamma_n|}{1+|\gamma_n|}\xrightarrow[n\to\infty]{}0.$
+ Следовательно, можно выбрать $N$ так, что при $n \ge N$
+ $$\mathbb{E}\frac{|\gamma_n|}{1+|\gamma_n|}\le \varepsilon.$$
+ Пусть $\rho$ обозначает расстояние Вассерштейна нулевого порядка, т.е. для случайных величин $\xi, \eta$
+ $$\rho(\xi, \eta)=\inf\limits_{\xi'\stackrel{d}{=}\xi, \eta'\stackrel{d}{=}\eta}
+  \mathbb{E}\frac{|\xi'-\eta'|}{1+|\xi'-\eta'|}.$$
+ Как известно, расстояние Вассерштейна метризует сходимость по распределению. 
+ Следовательно, при любом $n$
+ $$\rho(\gamma_n(T), \gamma_n)\xrightarrow[T\to\infty]{}0.$$
+ Отсюда следует, что при достаточно больших $T\ge T_0(n)$ имеет место 
+ $\rho(\gamma_n(T), \gamma_n)\le \varepsilon$, и
+ при $n\ge N, T\ge T_0(n)$:
+ $$\mathbb{E}\frac{|\gamma_n(T)|}{1+|\gamma_n(T)|}=\rho(\gamma_n(T), 0)
+ \le \rho(\gamma_n(T), \gamma_n)+\rho(\gamma_n,0)\le
+ \rho(\gamma_n,0)+\varepsilon=\mathbb{E}\frac{|\gamma_n|}{1+|\gamma_n|}+\varepsilon\le 2\varepsilon.$$
+ Для каждого $n\ge N$ выберем $T_1(n)$ так, чтобы при $T\ge T_1(n)$ выполнялись следующие условия:
+ \begin{itemize}
+  \item $\mathbb{E}\frac{|\gamma_n(T)|}{1+|\gamma_n(T)|}\le 2\varepsilon$;
+  \item $\rho(\eta_n(T), \eta_n)\le \varepsilon.$
+ \end{itemize}
+ Имеем тогда при $n\ge N$, $T\ge T_1(n)$, учитывая неравенство $|\xi(T)-\eta_n(T)|\le \gamma_n(T)$:
+$$\rho(\xi(T),\eta_n(T))\le \mathbb{E}\frac{|\xi(T)-\eta_n(T)|}{1+|\xi(T)-\eta_n(T)|}\le
+\mathbb{E}\frac{|\gamma_n(T)|}{1+|\gamma_n(T)|}\le 2\varepsilon.$$
+Далее, имеем при $n\ge N$, $T\ge T_1(n)$
+$$\rho(\xi(T),\eta_n)\le\rho(\xi(T),\eta_n(T))+\rho(\eta_n(T),\eta_n)
+\le 2\varepsilon+\varepsilon = 3\varepsilon.$$
+Отсюда следует, что для любых $t_1, t_2\ge T_1(N)$ имеет место
+$$\rho(\xi(t_1), \xi(t_2))\le \rho(\xi(t_1), \eta_N)+\rho(\xi(t_2),\eta_N)\le 6 \varepsilon.$$
+Следовательно, в силу произвольности выбора $\varepsilon$, 
+$\{\xi(T)\}$ фундаментальна в метрике $\rho$ и имеет предел:
+$$\xi(T)\xrightarrow[T\to\infty]{d} \xi_0.$$
+Осталось показать, что $\eta_n\xrightarrow[n\to\infty]{d}\xi_0.$
+Выберем $T_2$ так, что при $T\ge T_2$:
+$$\rho(\xi(T), \xi_0)\le \varepsilon.$$
+Имеем тогда при $n\ge N, T\ge \max\{T_1(n), T_2\}$:
+$$\rho(\xi_0, \eta_n)\le \rho(\xi_0, \xi(T))+\rho(\xi(T), \eta_n)\le \varepsilon+3\varepsilon=4\varepsilon.$$
+Отсюда следует сходимость $\rho(\eta_n, \xi_0) \xrightarrow[n\to\infty]{}0,$
+и доказательство окончено.
+\end{proof}
+
+                   
+\begin{thebibliography}{99}
+\bibitem{Yor1991} \textit{Marc Yor.} 
+Etude asymptotique des nombres de tours de plusieurs mouvements browniens complexes
+correles//Progress in Probability. --- 1991. --- \textbf{28}.  --- P.~441--455.
+
+\bibitem{Monin} \textit{Монин А. С., Яглом И. М.} 
+Статистическая гидромеханика: В 2-х ч. --- М.: Наука, 1967. --- Часть 2. --- 720~с.
+
+\bibitem{LeJan}
+\textit{Le~Jan Y.}
+On isotropic Brownian motions//
+Z. Wahrsch. verw. Gebiete. --- 1985. --- \textbf{70}, No~1. --- P.609--620.
+
+\bibitem{Kesten} \textit{Kesten~H., Papanicolaou~G.} 
+A limit theorem for turbulent diffusion//
+Commun. Math. Phys. --- 1979. ---
+\textbf{65}, No~2. --- P.97--128.
+
+\bibitem{Kunita} \textit{Kunita~H.} 
+Stochastic Flows and Stochastic Differential Equations. --- 
+Cambridge: Univ. Press, 1997. --- 346~p.
+
+\bibitem{Yaglom} \textit{Yaglom~A.M.} 
+Correlation Theory of Stationary and Related Random Functions. --- 
+Springer, New York, 1987. --- 258~p.
+
+\bibitem{ZirbelRotation}
+\textit{Craig L. Zirbel and Wojbor A. Woyczy\'nski.}
+Rotation of particles in polarized Brownian flows//
+Stochastics and Dynamics. --- 2002. --- \textbf{2}, No~1. --- P.109--129.
+
+\bibitem{Baxendale} 
+\textit{Peter H. Baxendale.}
+The Lyapunov spectrum of a stochastic flow of diffeomorphisms//
+Lyapunov Exponents, Lecture Notes in Mathematics, vol.~1186.
+--- Springer, New York, 1986. --- P.~322--337.
+
+\bibitem{ZirbelOccupation}
+\textit{Craig L. Zirbel and Wojbor A. Woyczy\'nski.}
+Mean occupation times of continuous one-dimensional Markov processes//
+Stochastic Processes and Their Applications. --- 1997. --- \textbf{69}, No~2. --- P.161--178.
+
+\bibitem{Thiffeault} \textit{Jean-Luc Thiffeault.} 
+Braids of entangled particle trajectories//Chaos. --- 2010. --- \textbf{20}, No~1.
+
+\bibitem{ZirbelDissertation}
+\textit{Craig L. Zirbel.}
+Stochastic flows ---
+dispersion of a mass distribution and Lagrangian observations of a random field. --- 
+PhD Thesis, Princeton University. --- 1993. 
+
+\bibitem{Kallenberg}
+\textit{Kallenberg O.} 
+Foundations of Modern Probability. --- Springer, 2002. --- 638~p.
+
+\bibitem{PitmanYor1986} \textit{Jim Pitman, Marc Yor.} 
+Asymptotic Laws of Planar Brownian Motion//Ann. Probab. --- 1986. ---
+\textbf{14}, No~3. --- P.~733--779.
+
+\bibitem{WhittakerWatson}
+\textit{Уиттекер Э.Т., Ватсон Дж. Н.}
+Курс современного анализа. --- М., 1963. --- Часть 2. --- 516~с.
+
+\bibitem{RevuzYor} 
+\textit{Daniel Revuz, Mare Yor.}
+Continuous Martingales and Brownian Motion. --- Springer-Verlag Berlin Heidelberg, --- 1991. --- 535~pp.
+
+\bibitem{MortersPerez} 
+\textit{Peter M\"orters, Yuval Peres.}
+Brownian Motion. --- Cambridge Univ. Press, 2010. --- 416~pp.
+
+\bibitem{ItoMcKean} \textit{Ито К., Маккин Г.}
+Диффузионные процессы и их траектории. ---М.:"Мир, 1968. --- 396~c.
+
+\bibitem{ZirbelTranslation}
+\textit{Craig L. Zirbel and Wojbor A. Woyczy\'nski.}
+Translation and dispersion of mass by isotropic Brownian flows//
+Stochastic Processes and Their Applications. --- 1997. --- \textbf{70}, No~1. --- P. 1--29.
+
+\bibitem{Bingham} 
+\textit{Bingham, N.H., Goldie, C.M., Teugels, J.L.}
+Regular Variation. --- Cambridge University Press, 1987. --- 494~pp.
+
+\end{thebibliography}
+
+\end {document}
+

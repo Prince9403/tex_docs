@@ -1,0 +1,61 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+
+%opening
+\title{Пояснения к статье из yahoo}
+\author{}
+\date{}
+
+
+
+
+\begin{document}
+\maketitle
+
+
+
+\section{Предложение 1 (стр. 27)}
+Приведём пояснение к предложению 1 статьи \cite{yahoo_article}. 
+Допустим, у нас есть случайная величина $\theta.$ Мы проводим $n$ независимых измерений, в результате $i$-го
+измерения мы получаем значение $\theta+\varepsilon_i$, 
+где $\varepsilon_i \sim N(0, \sigma_i^2)$.
+Итак, в результате измерений мы получили $a_1, \ldots, a_n$:
+$$\theta + \varepsilon_i = a_i.$$
+Тогда мы находимся в условиях предложения 1 из~\cite{yahoo_article}. Действительно, \\ из $i$-го измерения мы получили $\theta \sim N(a_i, \sigma_i^2)$, и независимость измерений здесь как раз означает условную независимость $a_i$ при условии $\theta$. 
+
+Апостериорное распределение $\theta$ после наших измерений\\ есть (prior неинформативный!)
+$$Ap_1(a_1-\theta)p_2(a_2-\theta)\ldots p_n(a_n-\theta),$$
+где $p_i$ --- плотность распределения $\varepsilon_i$, то есть 
+$$p_i(x)=\frac{1}{\sqrt{2\pi}\sigma_i}e^{-\frac{x^2}{2\sigma_i^2}},$$
+$A$ --- нормировочная константа. 
+Имеем
+\begin{multline*}
+Ap_1(a_1-\theta)p_2(a_2-\theta)\ldots p_n(a_n-\theta)=
+A_1e^{-\frac{\theta^2}{2\sigma_1^2}-\ldots-\frac{\theta^2}{2\sigma_n^2}}
+e^{\frac{a_1}{\sigma_1^2}+\ldots+\frac{a_n}{\sigma_n^2}\theta}=\\=
+A_2e^{-\frac{(\theta-m)^2}{2\sigma^2}}
+\end{multline*}
+(нормировочные константы $A$, $A_1$, $A_2$ зависят от $a_i$).
+Отсюда
+$$\frac{1}{\sigma^2}=\frac{1}{\sigma_1^2}+\ldots+\frac{1}{\sigma_n^2},$$
+$$\frac{m}{\sigma^2}=\frac{a_1}{\sigma_1^2}+\ldots+\frac{a_n}{\sigma_n^2}.$$
+Отсюда получаем формулы из предложения 1 из~\cite{yahoo_article}
+
+\begin{thebibliography}{2}
+ \bibitem{yahoo_article} Agarwal, Chen, Elango. Spatio-temporal models for estimating click-through rate.
+\end{thebibliography}
+
+
+\end{document}

@@ -1,0 +1,1082 @@
+\documentclass[12pt, a4paper, titlepage]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float, bbm}
+\usepackage{tikz}
+\usepackage{verbatim}
+
+\pagestyle{plain}
+\righthyphenmin = 2
+
+\usepackage{geometry}
+\geometry{left=3cm}
+\geometry{right=1cm}
+\geometry{top=3cm}
+\geometry{bottom=3cm}
+
+\usepackage{amsthm} \makeatletter
+\renewcommand*{\@seccntformat}[1]{ \csname the#1\endcsname.\enskip
+}
+\makeatother
+
+\newcommand{\startvec}{\begin{pmatrix}
+                        1\\0
+                       \end{pmatrix}}
+\newcommand{\nullvec}{\begin{pmatrix}
+                        0\\0
+                       \end{pmatrix}}
+
+\begin{document}
+
+\newtheorem{theorem}{Теорема}
+\newtheorem{statement}{Утверждение}
+\newtheorem{proposition}{Предложение}
+\newtheorem{definition}{Определение}
+\newtheorem{lem}{Лемма}
+\newtheorem{example}{Пример}
+\newtheorem{remark}{Замечание}
+
+\section{Асимптотика инвариантов Васильева высших порядков}
+\begin{comment}
+Пусть $Z_t, t \ge 1$ --- двумерное броуновское движение, выходящее из точки $\startvec$:
+$$Z(1)=\startvec.$$
+Введём, следуя~\cite{BertoinWerner}, процесс $X_t$ с помощью экспоненциальной замены времени
+для $Z_t$:
+$$X(t)=e^{-t/2}Z(e^t), t \ge 0.$$
+Тогда $X(t)$ --- двумерный процесс Орнштейна-Уленбека. \\
+Пусть $R(t)=|X(t)|, H(t)=\int\limits_0^t \frac{ds}{R_s^2}.$
+\end{comment}
+
+\begin{comment}
+Можно показать, что конечномерные распределения процесса
+$\frac{H(tT)}{T^2}$ сходятся при $T\to\infty$ к конечномерным
+распределениям процесса $S,$
+где \\
+$$S(t)=\int\limits_0^{\sigma(t)}\mathbbm{1}_{w_s \le 0}ds, t \ge 0,$$
+$w$ --- одномерное броуновское движение с $w(0)=0,$ \\
+$l_t$ --- локальное время $w$ в нуле, \\
+$\sigma(t)=\inf\{s > 0: l_s >t\}.$
+\end{comment}
+
+\begin{comment}
+\begin{statement}
+ Пусть $L(t)=\int\limits_0^t H_1(u)dH_2(u).$
+Тогда 
+$$\frac{L(t)}{t^2}\xrightarrow[t\to\infty]{d}\int\limits_0^1 S_1(u)dS_2(u).$$
+\end{statement}
+\begin{proof}
+ Процессы $H_1, H_2$ --- возрастающие с вероятностью $1.$
+Для любого $n\in \mathbb{N}$ имеем 
+\begin{multline*}
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right) \le
+ \frac{1}{t^4}\int\limits_0^t H_1(u)dH_2(u) 
+ \le 
+ \\
+ \le
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k+1}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right).
+\end{multline*}
+Заметим, что в силу сходимости конечномерных распределений процессов $H_1, H_2$, при фиксированном $n$
+имеем
+ \begin{multline*}
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right)
+ \xrightarrow[t\to\infty]{d}
+  \sum\limits_{k=0}^{n-1}S_1\left(\frac{k}{n}\right)
+ \left(S_2\left(\frac{k+1}{n}\right)-S_2\left(\frac{k}{n}\right)\right).
+\end{multline*}
+
+С другой стороны,
+\begin{multline*}
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k+1}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right)-\\-
+ \frac{1}{t^4}\sum\limits_{k=0}^{n-1}H_1\left(\frac{k}{n}t\right)
+ \left(H_2\left(\frac{k+1}{n}t\right)-H_2\left(\frac{k}{n}t\right)\right)
+ \xrightarrow[t\to\infty]{d} 
+ \\
+ \xrightarrow[t\to\infty]{d}
+ \sum\limits_{k=0}^{n-1}\left(S_1\left(\frac{k+1}{n}\right)-S_1\left(\frac{k}{n}\right)\right)
+ \left(S_2\left(\frac{k+1}{n}\right)-S_2\left(\frac{k}{n}\right)\right).
+\end{multline*}
+Заметим, что
+$$
+\sum\limits_{k=0}^{n-1}\left(S_1\left(\frac{k+1}{n}\right)-S_1\left(\frac{k}{n}\right)\right)
+ \left(S_2\left(\frac{k+1}{n}\right)-S_2\left(\frac{k}{n}\right)\right)\xrightarrow[n\to\infty]{P}0.
+$$
+Действительно, 
+\end{proof}
+
+\begin{statement}
+ Имеет место асимптотическое соотношение
+ $$\frac{1}{T}\int\limits_0^T\alpha_{12}(s)ds\xrightarrow[T\to\infty]{d}$$
+\end{statement}
+\begin{proof}
+ Сначала покажем, что $\frac{1}{T}\int\limits_0^T\alpha_{12}(s)ds$ имеет предел по распределению.
+ Рассмотрим разность
+\begin{multline*}
+\frac{1}{T^2}\int\limits_0^T \alpha_{12}(s)ds-
+ \frac{1}{T^2}\sum\limits_{k=0}^{n-1}\int\limits_{\frac{k}{n}T}^{\frac{k+1}{n}T}
+  \frac{T}{n}\alpha_{12}(kT/n)=
+ \sum\limits_{k=0}^{n-1}
+ \int\limits_{\frac{k}{n}T}^{\frac{k+1}{n}T}\left(\alpha_{12}(s)-\alpha_{12}(kT/n)\right)ds
+ \le \\ \le
+ \frac{1}{Tn}\sum\limits_{k=0}^{n-1}\max\limits_{s\in [kT/n, (k+1)T/n]}|\alpha_{12}(s)-\alpha_{12}(kT/n)|.
+\end{multline*}
+ Вспомним, что $\alpha_{12}(s)=\theta_{12}(e^s).$
+ Имеем
+ $$<\theta_{12}>_t=2\int\limits_0^t\frac{ds}{|Z_{12}(s)|^2}.$$
+Отсюда получаем
+$$<\alpha_{12}>(t)=<\theta_{12}>(e^t)=2\int\limits_0^t\frac{ds}{R_{12}(s)^2}=H_{12}(t).$$
+Итак, имеем
+$$\alpha_{12}(t)=\beta_{12}(H_{12}(t))$$
+для некоторого броуновского движения $\beta_{12}$, не зависящего от процесса $R_{12}.$
+Поэтому
+\begin{multline*}
+ \frac{1}{Tn}\sum\limits_{k=0}^{n-1}\max\limits_{s\in [kT/n, (k+1)T/n]}|\alpha_{12}(s)-\alpha_{12}(kT/n)|
+ \xrightarrow[T\to\infty]{d}\\
+ \xrightarrow[T\to\infty]{d}
+ \frac{1}{n}\sum\limits_{k=0}^{n-1}\max\limits_{s\in [S(k/n), S((k+1)/n)]}|\beta(s)-\beta(S(k/n))|.
+\end{multline*}
+\end{proof}
+
+\begin{lem}\label{WeakConvergenceFirstLem}
+Пусть набор случайных величин $\gamma_n(T) (T>0), \gamma_n$
+ таков, что
+\begin{itemize}
+ \item $\forall n \,\gamma_n(T)\xrightarrow[T\to\infty]{d}\gamma_n;$
+ \item $\gamma_n \xrightarrow[n\to\infty]{d} 0.$
+\end{itemize}
+Тогда 
+$$\forall \varepsilon>0 \enskip \exists n_0 \enskip
+\forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+P(|\gamma_n(T)|>\varepsilon)<\varepsilon.$$
+\end{lem}
+\begin{proof}
+  Фиксируем $\varepsilon>0.$
+Выберем $n$ так, что 
+$$\forall n \ge n_0 \enskip P(|\gamma_n|>\varepsilon)<\varepsilon.$$
+Выберем при любом $n \ge n_0$ точку $\alpha_n$, такую, что
+\begin{itemize}
+ \item $\varepsilon<\alpha_n<2\varepsilon$;
+ \item $\alpha_n$ --- точка непрерывности функции распределения случайной величины $|\gamma_n|.$
+\end{itemize}
+Тогда из слабой сходимости $\gamma_n(T)\xrightarrow[T\to\infty]{d}\gamma_n$
+вытекает
+$$P(|\gamma_n(T)|>\alpha_n)\to P(|\gamma_n|>\alpha_n), T\to\infty.$$ 
+Но $P(|\gamma_n|>\alpha_n)<\varepsilon.$
+Следовательно, существует $T_0(n)$:
+$$\forall T \ge T_0(n) P(|\gamma_n(T)|>\alpha_n) \le \varepsilon.$$
+Значит, при $n \ge n_0, T \ge T_0(n)$
+$$P(|\gamma_n(T)|>2\varepsilon)\le P(|\gamma_n(T)|>\alpha_n)\le
+\varepsilon<2\varepsilon.$$
+Поскольку $\varepsilon$ произвольно, лемма доказана.
+\end{proof}
+
+\begin{lem}\label{WeakConvergenceSecondLem}
+Пусть набор случайных величин $\gamma_n(T)\ge 0 (T>0), \gamma_n\ge 0$
+и броуновских движений $\beta_{n,T}$
+таков, что
+\begin{itemize}
+ \item $\forall n \,\gamma_n(T)\xrightarrow[T\to\infty]{d}\gamma_n;$
+ \item $\gamma_n \xrightarrow[n\to\infty]{d} 0.$
+\end{itemize}
+Тогда
+$$\forall \varepsilon>0 \enskip \exists n_0 \enskip
+\forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+P(\sup\limits_{0\le s \le \gamma_n(T)}|\beta_{n,T}(s)|>\varepsilon)<\varepsilon.$$
+\end{lem}
+\begin{proof}
+ Фиксируем $\varepsilon>0$. Выберем $\delta, 0<\delta<\varepsilon$ так, что для винеровского
+процесса $\beta$
+$$P(\sup\limits_{0\le s \le \delta}|\beta(s)|>\varepsilon)<\varepsilon.$$
+Используя лемму~\ref{WeakConvergenceFirstLem}, получаем:
+$$\exists n_0 \enskip
+\forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+P(\gamma_n(T)>\delta)<\delta.$$
+Отсюда при $n \ge n_0, T \ge T_0(n)$ имеем
+$$P(\sup\limits_{0\le s \le \gamma_n(T)}|\beta_{n,T}(s)|>\varepsilon) \le 
+P(\sup\limits_{0\le s \le \delta}|\beta_{n, T}(s)|>\varepsilon)+
+P(\gamma_n(T)>\delta)<\varepsilon+\delta<2\varepsilon.$$
+Поскольку $\varepsilon$ произвольно, лемма доказана.
+\end{proof}
+\end{comment}
+
+\begin{lem}\label{WeakConvergenceThirdLem} 
+ Пусть набор случайных величин $\xi(T), T>0$ таков, что
+ имеются случайные величины $\eta_n(T), \gamma_n(T)\ge 0, \gamma_n\ge 0, \eta_n$
+ такие, что
+\begin{itemize}
+ \item $\forall T\, |\xi(T)-\eta_n(T)| \le \gamma_n(T)$;
+ \item $\forall n \,\eta_n(T)\xrightarrow[T\to\infty]{d}\eta_n$;
+ \item $\forall \varepsilon>0 \enskip \exists n_0 \enskip
+\forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+P(\gamma_n(T)>\varepsilon)<\varepsilon.$
+\end{itemize}
+Тогда $\xi(T)$ имеет предел по распределению при $T\to\infty$:
+$$\xi(T)\xrightarrow[n \to \infty]{d}\xi_0.$$
+Более того, при этом  $\eta_n\xrightarrow[T\to\infty]{d}\xi_0.$
+\end{lem}
+\begin{proof}
+ Фиксируем $\varepsilon>0$. Выберем $n_0$ и $T_0(n)$
+ так, что при $n \ge n_0, T \ge T_0(n)$:
+ $$P(\gamma_n(T)>\varepsilon)<\varepsilon.$$
+ Тогда при $n \ge n_0, T \ge T_0(n)$:
+ $$\mathbb{E}\frac{\gamma_n(T)}{1+\gamma_n(T)} \le 2\varepsilon.$$
+ 
+ Пусть $\mu_{\xi}$---распределение случайной величины $\xi$,
+ и пусть $\rho$ обозначает расстояние Вассерштейна нулевого порядка, 
+ т.е. для случайных величин $\xi, \eta$
+ $$\rho(\mu_{\xi}, \mu_{\eta})=\inf\limits_{\xi'\stackrel{d}{=}\xi, \eta'\stackrel{d}{=}\eta}
+  \mathbb{E}\frac{|\xi'-\eta'|}{1+|\xi'-\eta'|}.$$
+ Для каждого $n \ge n_0$ выберем $T_1(n)>T_0(n)$ так, чтобы при $T \ge T_1(n)$ выполнялось следующее условие:
+  $$\rho(\mu_{\eta_n(T)}, \mu_{\eta_n})\le \varepsilon.$$
+ В силу $T_1(n)>T_0(n)$, при $n \ge n_0, T \ge T_1(n)$ выполнено ещё и
+ $$\mathbb{E}\frac{\gamma_n(T)}{1+\gamma_n(T)}\le 2\varepsilon.$$
+
+ Имеем тогда при $n \ge n_0$, $T\ge T_1(n)$, учитывая неравенство $|\xi(T)-\eta_n(T)|\le \gamma_n(T)$:
+$$\rho(\mu_{\xi(T)},\mu_{\eta_n(T)})\le \mathbb{E}\frac{|\xi(T)-\eta_n(T)|}{1+|\xi(T)-\eta_n(T)|}\le
+\mathbb{E}\frac{|\gamma_n(T)|}{1+|\gamma_n(T)|}\le 2\varepsilon.$$
+Далее, имеем при $n \ge n_0$, $T\ge T_1(n)$:
+$$\rho(\mu_{\xi(T)},\mu_{\eta_n})\le\rho(\mu_{\xi(T)}, \mu_{\eta_n(T)})+\rho(\mu_{\eta_n(T)},\mu_{\eta_n})
+\le 2\varepsilon+\varepsilon = 3\varepsilon.$$
+Отсюда следует, что для любых $t_1, t_2\ge T_1(n_0)$ имеет место
+$$\rho(\mu_{\xi(t_1)}, \mu_{\xi(t_2)})\le \rho(\mu_{\xi(t_1)}, \mu_{\eta_N})+
+\rho(\mu_{\xi(t_2)}, \mu_{\eta_{n_0}})\le 6 \varepsilon.$$
+Следовательно, в силу произвольности выбора $\varepsilon$, последовательность
+$\{\mu_{\xi(T)}\}$ фундаментальна в метрике $\rho$ и имеет слабый предел:
+$$\xi(T)\xrightarrow[T\to\infty]{d} \xi_0.$$
+Осталось показать, что $\eta_n\xrightarrow[n\to\infty]{d}\xi_0.$
+Выберем $T_2$ так, что при $T\ge T_2$:
+$$\rho(\mu_{\xi(T)}, \mu{\xi_0})\le \varepsilon.$$
+Имеем тогда при $n\ge N, T\ge \max\{T_1(n), T_2\}$:
+$$\rho(\mu_{\xi_0}, \mu_{\eta_n})
+\le 
+\rho(\mu_{\xi_0}, \mu_{\xi(T)})+
+\rho(\mu_{\xi(T)}, \mu_{\eta_n})
+\le
+\varepsilon+3\varepsilon=4\varepsilon.$$
+Отсюда следует сходимость $\rho(\mu_{\eta_n}, \mu_{\xi_0}) \xrightarrow[n\to\infty]{}0,$
+и доказательство окончено.
+\end{proof}
+
+\begin{comment}
+\begin{lem}\label{WeakConvergenceFourthLem}
+ Пусть набор случайных величин $\xi(T), T>0$ таков, что
+ имеются случайные величины $\eta_n(T), \gamma_n(T) (T>0), \gamma_n, \eta_n$
+ такие, что
+\begin{itemize}
+ \item $\forall T\, |\xi(T)-\eta_n(T)| \le \gamma_n(T)$;
+ \item $\forall n \,\gamma_n(T)\xrightarrow[T\to\infty]{d}\gamma_n;$
+ \item $\gamma_n \xrightarrow[n\to\infty]{d} 0;$
+ \item $\forall n \,\eta_n(T)\xrightarrow[T\to\infty]{d}\eta_n.$
+\end{itemize}
+Тогда $\xi(T)$ имеет предел по распределению при $T\to\infty$:
+$$\xi(T)\xrightarrow[n \to \infty]{d}\xi_0.$$
+Более того, при этом  $\eta_n\xrightarrow[T\to\infty]{d}\xi_0.$
+\end{lem}
+\begin{proof}
+ Сразу следует из лемм~\ref{WeakConvergenceFirstLem}
+ и~\ref{WeakConvergenceThirdLem}.
+\end{proof}
+
+
+\begin{lem}\label{WeakConvergenceFifthLem}
+ Пусть набор случайных величин $\xi(T), T>0$ таков, что
+ имеются случайные величины $\eta_n(T), \zeta_n(T) \ge 0, \mu_n(T) \ge 0, \mu_n \ge 0, \eta_n$
+ и винеровские процессы $\beta_{n, T}$ такие, что
+\begin{itemize}
+ \item $\forall T\, |\xi(T)-\eta_n(T)| \le |\beta_{n, T}(\zeta_n(T))|;$
+ \item $\zeta_n(T) \le \mu_n(T);$
+ \item $\forall n \,\mu_n(T)\xrightarrow[T\to\infty]{d}\mu_n;$
+ \item $\mu_n \xrightarrow[n\to\infty]{d} 0;$
+ \item $\forall n \,\eta_n(T)\xrightarrow[T\to\infty]{d}\eta_n.$
+\end{itemize}
+Тогда $\xi(T)$ имеет предел по распределению при $T\to\infty$:
+$$\xi(T)\xrightarrow[n \to \infty]{d}\xi_0.$$
+Более того, при этом  $\eta_n\xrightarrow[T\to\infty]{d}\xi_0.$
+\end{lem}\begin{proof}
+ Сразу следует из лемм~\ref{WeakConvergenceSecondLem}
+ и~\ref{WeakConvergenceThirdLem}.
+\end{proof}
+\end{comment}
+
+\begin{lem}\label{infiniteTreeLem}
+ Пусть $\varepsilon>0$, $f\in \mathbb{D}[0,1]$ не имеет скачков величины больше $\varepsilon.$
+ Тогда 
+ $$\exists n_0 \forall n\ge n_0 \forall k, 0\le k \le 2^n-1 \colon 
+ \sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]} |f(s)-f(t)|<\varepsilon.$$ 
+\end{lem}
+\begin{proof}
+ Допустим, это не так. Тогда при каждом $n$ существуют отрезки разбиения,
+ на которых $\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]} |f(s)-f(t)| \ge \varepsilon.$
+ Построим дерево, в котором вершинами будут такие отрезки. 
+ При этом для вершины, соответствующей отрезку $[\frac{k}{2^n}, \frac{k+1}{2^n}]$,
+ дочерними будут вершины, соответствующие отрезкам 
+ $[\frac{k}{2^n}, \frac{2k+1}{2^{n+1}}]$ и
+ $[\frac{2k+1}{2^{n+1}}, \frac{k+1}{2^n}]$ (если они входят в дерево).
+ По предположению, наше дерево бесконечно. Значит, в нём есть бесконечная ветвь.
+ В пересечении отрезки, соответствующие вершинам этой ветви, дают некоторую точку $x$. 
+ Эта точка $x$ обладает тем свойством, что в любой её окрестности есть $s,t$, такие, что
+ $|f(s)-f(t)| \ge \varepsilon$. Следовательно, скачок в точке $x$ не меньше $\varepsilon.$ 
+\end{proof}
+
+\begin{lem}\label{boundedJumpsNumberLem}
+ Пусть $f\in \mathbb{D}[0,1]$, $\varepsilon>0$ задано. Тогда существует $K>0$, такое, что
+ при всех достаточно больших $n$ ($n \ge n_0$) выполнено
+ $$\sum\limits_{k=0}^{2^n-1}\mathbbm{1}_{\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}
+|f(s)-f(t)|>\varepsilon} \le K,$$
+причём при $n \ge n_0$ все отрезки $[\frac{k}{2^n}, \frac{k+1}{2^n}]$, для которых 
+$\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|f(s)-f(t)|>\varepsilon$,
+содержатся среди отрезков, содержащих точки разрыва величины $\ge \varepsilon.$
+\end{lem}
+\begin{proof}
+ Уберём из $f$ все скачки величины $\ge \varepsilon.$ Тогда лемма сводится к лемме~\ref{infiniteTreeLem}.
+\end{proof}
+
+\begin{lem}\label{simultaneousJumpsLem}
+ Пусть $f, g \in \mathbb{D}[0,1]$ не имеют общих моментов скачков. Тогда
+ $$\forall \varepsilon>0 \enskip \exists n_0 \enskip \forall n\ge n_0
+ \sum\limits_{k=0}^{2^n-1}
+ \mathbbm{1}_{\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|f(s)-f(t)|>\varepsilon}
+ \mathbbm{1}_{\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|g(s)-g(t)|>\varepsilon}
+ =0.
+ $$
+ \end{lem}
+ \begin{proof}
+  Согласно лемме~\ref{boundedJumpsNumberLem}, при всех достаточно больших $n$ ($n \ge n_0$)
+ неравенства
+  $$\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|f(s)-f(t)|>\varepsilon,$$
+  $$\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|g(s)-g(t)|>\varepsilon$$
+  могут выполняться лишь для отрезков $[\frac{k}{2^n}, \frac{k+1}{2^n}]$,
+  содержащих разрывы $f, g$ соответственно величины $\ge \varepsilon.$
+  Поскольку разрывов $f$, $g$ величины $\ge \varepsilon$ конечное число, и все они находятся в разных
+  точках, то при достаточно больших $n$ они будут разделены отрезками разбиения, и при достаточно больших $n$
+  никакие два таких разрыва не придутся на один отрезок вида 
+  $[\frac{k}{2^n}, \frac{k+1}{2^n}]$.
+ \end{proof}
+ 
+ \begin{lem}\label{sumOverJumpsLem}
+  Пусть $f, g \in \mathbb{D}[0,1]$ не имеют общих моментов скачков, $\varepsilon>0$
+  фиксировано. Тогда
+ $$\sum\limits_{k=0}^{2^n-1}
+ \mathbbm{1}_{\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|f(s)-f(t)|>\varepsilon}
+ \left|g\left(\frac{k+1}{2^n}\right)-g\left(\frac{k}{2^n}\right)\right|\xrightarrow[n\to\infty]{}0.
+ =0.
+ $$
+ \end{lem}
+ \begin{proof}
+  По лемме~\ref{boundedJumpsNumberLem}, для некоторого $K > 0$ при всех достаточно больших $n$
+ в интересующей нас сумме не болеее $K$ слагаемых. 
+ С другой стороны, по лемме~\ref{simultaneousJumpsLem}, при всех достаточно больших $n$
+ на всех отрезках $[\frac{k}{2^n}, \frac{k+1}{2^n}]$, которые дают вклад в сумму, 
+ имеет место неравенство 
+ $\left|g\left(\frac{k+1}{2^n}\right)-g\left(\frac{k}{2^n}\right)\right| \le \varepsilon.$
+ Отсюда следует, что наша сумма при достаточно больших $n$ не превосходит $K\varepsilon.$
+ Однако, это ещё не доказывает лемму. 
+ 
+ Поэтому усложним наше рассуждение. Выберем произвольное $\delta, 0 < \delta < \varepsilon.$
+ При достаточно больших $n$ все ненулевые слагаемые в сумме не превосходят $\delta$
+ в силу леммы~\ref{simultaneousJumpsLem}, а количество ненулевых слагаемых не более $K$ (константа 
+ $K$ та же, что в начале доказательства).
+ Следовательно, при достаточно больших $n$ наша сумма не превосходит $K\delta.$
+ Поскольку $\delta$ произвольное, а $K$ фиксировано, то лемма доказана. 
+ \end{proof}
+
+  \begin{lem}
+  Пусть $f, g \in \mathbb{D}[0,1]$ --- неубывающие функции без общих
+  моментов скачков, $h\in C[0,\infty)$ --- непрерывная функция. Тогда
+ $$S_n=\sum\limits_{k=0}^{2^n-1}
+ \sup\limits_{s,t \in [f(\frac{k}{2^n}), f(\frac{k+1}{2^n})]}(h(s)-h(t))^2
+ \left|g\left(\frac{k+1}{2^n}\right)-g\left(\frac{k}{2^n}\right)\right|\xrightarrow[n\to\infty]{}0. 
+ $$
+ \end{lem}
+ \begin{proof}
+ Фиксируем $\varepsilon>0$. Выберем $\delta>0$ так, что при любых $s,t \in [f(0), f(1)]$,
+ для которых $|s-t| \le \delta$, имеет место неравенство $|h(s)-h(t)| \le \varepsilon$.
+ Этот выбор возмолжен в силу непрерывности $h$. 
+ Разобъём интересующую нас сумму $S_n$ на две части:
+ $$S_n=G_n+H_n.$$
+ К $G_n$ отнесём те слагаемые, в которых 
+ $f(\frac{k+1}{2^n})-f(\frac{k}{2^n}) > \delta.$
+ К $H_n$ отнесём те слагаемые, в которых 
+ $f(\frac{k+1}{2^n})-f(\frac{k}{2^n}) \le \delta.$
+ По лемме~\ref{sumOverJumpsLem}, учитывая ограниченность функции $h$
+ на отрезке $[f(0), f(1)]$, получаем $G_n \to 0 (n \to \infty).$
+ С другой стороны, ясно, что для $H_n$ выполнена оценка
+ $H_n \le \varepsilon^2(g(1)-g(0)).$
+ Следовательно,
+ $$\varlimsup\limits_{n\to \infty}S_n \le \varepsilon^2(g(1)-g(0)).$$
+ В силу произвольности $\varepsilon$ получаем 
+ $\varlimsup\limits_{n\to \infty}S_n = 0$, что и завершает доказательство леммы.
+ \end{proof}
+ 
+ \begin{definition}
+ Будем говорить, что семейство случайных величин $\gamma_{n,T}$
+ стохастически мало на бесконечности, если
+  $$\forall \varepsilon>0 \enskip \exists n_0 \enskip
+    \forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+    P(\gamma_{n, T}>\varepsilon)<\varepsilon.$$
+ \end{definition}
+
+  \begin{definition}
+ Будем говорить, что семейство случайных величин $\gamma_{n,T}$
+ стохастически ограничено на бесконечности, если
+  $$\forall \varepsilon>0 \enskip \exists C>0 \enskip \exists n_0 \enskip
+    \forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+    P(\gamma_{n, T}>C)<\varepsilon.$$
+ \end{definition}
+ 
+ \begin{lem}\label{simpleLemAboutStochasticSmallness}
+  Пусть $\xi_{n,T}$ стохастически мало на бесконечноости,
+  $\eta_{n,T}$ стохастически ограничено на бесконечности.
+  Тогда $\zeta_{n,T}=\eta_{n,T}\xi_{n,T}$ стохастически мало
+  на бесконечности. 
+ \end{lem}
+ \begin{proof}
+   Фиксируем $\varepsilon>0$. Выберем $C, n_1, n_2$ так, что
+   $$\forall n \ge n_1 \enskip \exists T_1(n)\enskip \forall T \ge T_1(n) \colon
+    P(\xi_{n, T}>\varepsilon)<\varepsilon.$$
+  
+  $$\forall n \ge n_2 \enskip \exists T_2(n)\enskip \forall T \ge T_2(n) \colon
+    P(\eta_{n, T}>C)<\varepsilon.$$
+    Тогда при всех $n \ge n_0=\max\{n_1, n_2\}, T \ge T_0(n)=\max\{T_1(n), T_2(n)\}$ имеет место 
+  $$P(\zeta_{n, T}>C\varepsilon)<2\varepsilon.$$
+  Лемма доказана. 
+ \end{proof}
+ 
+ \begin{lem}\label{anyALemma}
+  Если $\varlimsup\limits_{T\to \infty}\xi_T \le \xi \mbox{ п.н.}$, то при любом $A$
+ $$\varlimsup\limits_{T \to \infty}P(\xi_T \ge A) \le P(\xi \ge A).$$
+ \end{lem}
+ \begin{proof}
+  Если $\varlimsup\limits_{T\to \infty}a_T \le a$, то
+ $$\varlimsup\limits_{T\to\infty}\mathbbm{1}_{a_T \ge A} \le \mathbbm{1}_{a \ge A}.$$
+ Итак, 
+ $$\varlimsup\limits_{T\to\infty}\mathbbm{1}_{\xi_T \ge A} \le \mathbbm{1}_{\xi \ge A}.$$
+ В силу леммы Фату,
+ $$P(\xi \ge A)=\mathbb{E}\mathbbm{1}_{\xi \ge A} \ge \mathbb{E}\varlimsup\limits_{T\to \infty}\mathbbm{1}_{\xi_T \ge A} \ge
+ \varlimsup\limits_{T\to \infty}\mathbb{E}\mathbbm{1}_{\xi_T \ge A} =
+ \varlimsup\limits_{T \to \infty}P(\xi_T \ge A).$$
+ \end{proof}
+
+ \begin{lem}\label{sumOverJumpsStochasticLem}
+  Пусть $(\xi^{(T)}, \eta^{(T)})\xrightarrow[t\to\infty]{fd} (\xi, \eta),$
+  где $\xi, \eta$ принимают значения в пространстве $\mathbb{D}[0,1]$
+  и с вероятностью $1$ не имеют общих моментов скачка. 
+  Пусть $\varepsilon_0>0$ фиксировано,
+  $$\gamma_{n,T}=\sum\limits_{k=0}^{2^n-1}
+  \mathbbm{1}_{\sup\limits_{s, t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}
+  |\xi^{(T)}(t)-\xi^{(T)}(s)|>\varepsilon_0}
+  \left|\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right|.$$
+  Тогда $\gamma_{n,T}$ --- стохастически мало на бесконечности. 
+ \end{lem}
+ \begin{proof}
+  Фиксируем $\varepsilon>0.$
+  Пусть 
+  $$\gamma_n=\sum\limits_{k=0}^{2^n-1}
+  \mathbbm{1}_{|\xi(\frac{k+1}{2^n})-\xi(\frac{k}{2^n})| \ge \varepsilon_0/2}
+  \left|\eta\left(\frac{k+1}{2^n}\right)-\eta\left(\frac{k}{2^n}\right)\right|.$$
+  Тогда $\gamma_n\to 0$ п.н. в силу леммы~\ref{sumOverJumpsLem}.
+  Выберем $n_0$ так, что при $n \ge n_0$ $P(\gamma_n \ge \varepsilon)<\varepsilon.$
+  Теперь при $n \ge n_0$ рассуждаем так:
+  для $(\xi^{(T)}(\frac{k}{2^n}), \eta^{(T)}(\frac{k}{2^n}), 0 \le k \le 2^n-1)$
+  и $(\xi(\frac{k}{2^n}), \eta(\frac{k}{2^n}), 0 \le k \le 2^n-1)$
+  существует представление Скорохода, реализующее сходимость п.н.:
+  $$\left(\xi^{(T)}\left(\frac{k}{2^n}\right), \eta^{(T)}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right) \stackrel{d}{=}
+  \left(\tilde{\xi}^{(T)}\left(\frac{k}{2^n}\right), \tilde{\eta}^{(T)}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right),$$
+  $$\left(\xi\left(\frac{k}{2^n}\right), \eta\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right) \stackrel{d}{=}
+  \left(\tilde{\xi}\left(\frac{k}{2^n}\right), \tilde{\eta}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right),$$
+  и при фиксированном $n$
+  $$\left(\tilde{\xi}^{(T)}\left(\frac{k}{2^n}\right), \tilde{\eta}^{(T)}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right) 
+  \xrightarrow[T\to\infty]{}
+  \left(\tilde{\xi}\left(\frac{k}{2^n}\right), \tilde{\eta}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right) \mbox{п.н.}$$
+  Значит, при фиксированном $n \ge n_0$
+  $$\varlimsup\limits_{T \to \infty}\tilde{\gamma}_{n, T} \le \tilde{\gamma}_n,$$
+  и потому в силу леммы~\ref{anyALemma}
+  $$\varlimsup\limits_{T \to \infty}P(\gamma_{n, T} \ge \varepsilon)\le P(\gamma_n \ge \varepsilon).$$
+  Следовательно, для данного фиксированного $n \ge n_0$ имеем при достаточно больших $T$:
+  $$P(\gamma_{n,T}>2\varepsilon) \le P(\gamma_n \ge \varepsilon)<\varepsilon.$$
+  Это и доказывает лемму.
+ \end{proof}
+
+ \begin{lem}\label{mostSubtleGammaNTLem}
+  Пусть $\xi^{(T)}, \eta^{(T)}$ --- неубывающие неотрицательные процессы,
+  $(\xi^{(T)}, \eta^{(T)})\xrightarrow[T\to\infty]{fd} (\xi, \eta),$
+  где $\xi, \eta$ принимают значения в пространстве $\mathbb{D}[0,1]$
+  и с вероятностью $1$ не имеют общих моментов скачка. $\beta_{n, T}$ ---винеровские
+  процессы. 
+  $$\gamma_{n,T}=\sum\limits_{k=0}^{2^n-1}
+  \sup\limits_{s,t \in [\xi^{(T)}(\frac{k}{2^n}), \xi^{(T)}(\frac{k+1}{2^n})]}
+  \left|\beta_{n,T}(t)-\beta_{n,T}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+  Тогда $\gamma_{n,T}$ стохастически мало на бесконечности. 
+ \end{lem}
+ \begin{proof}
+ Фиксируем $\varepsilon>0$. 
+ Выберем $C>0$ так, что 
+ $$P\left(\xi^{(T)}(1)>C\right)<\varepsilon, T>T_0.$$
+ Выберем $\delta>0$ так, что для винеровского процесса $\beta$
+ $$P\left(\sup\limits_{s, t \in [0, C], |s-t| \le \delta}|\beta(t)-\beta(s)|>\varepsilon\right) <\varepsilon.$$ 
+ Обозначим 
+ $$G_{n, T} = \sum\limits_{k=0}^{2^n-1} \mathbbm{1}_{\xi^{(T)}(\frac{k+1}{2^n})-\xi^{(T)}(\frac{k}{2^n})>\delta}
+  \sup\limits_{s,t \in [\xi^{(T)}(\frac{k}{2^n}), \xi^{(T)}(\frac{k+1}{2^n})]}  
+  \left|\beta_{n,T}(t)-\beta_{n,T}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right),$$
+ 
+ $$H_{n, T} = \sum\limits_{k=0}^{2^n-1}
+  \mathbbm{1}_{\xi^{(T)}(\frac{k+1}{2^n})-\xi^{(T)}(\frac{k}{2^n}) \le \delta}
+  \sup\limits_{s,t \in [\xi^{(T)}(\frac{k}{2^n}), \xi^{(T)}(\frac{k+1}{2^n})]}  
+  \left|\beta_{n,T}(t)-\beta_{n,T}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+  
+  Заметим, что 
+  $$ G_{n,T} \le 
+   4 \sup\limits_{t \in [0, \xi^{(T)}(1)]}
+  \left|\beta_{n,T}(t)\right|^2
+  \sum\limits_{k=0}^{2^n-1} \mathbbm{1}_{\xi^{(T)}(\frac{k+1}{2^n})-\xi^{(T)}(\frac{k}{2^n})>\delta}
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).
+ $$  
+ Тогда $G_{n, T}$ стохастически мало на бесконечности
+ в силу лемм~\ref{simpleLemAboutStochasticSmallness},
+ ~\ref{sumOverJumpsStochasticLem} и стохастической ограниченности на бесконечности
+ $\sup\limits_{t \in [0, \xi^{(T)}(1)]}\left|\beta_{n,T}(t)\right|^2$.
+ Для $H_{n, T}$ имеем при $T>T_0$: 
+ \begin{multline*}
+   P\left(H_{n, T} > \varepsilon^2 \left(\eta^{(T)}(1)-\eta^{(T)}(0)\right)\right)\le 
+  P\left(\xi^{(T)}(1)>C\right)+\\+
+  P\left(\sup\limits_{s, t \in [0, C], |s-t| \le \delta}|\beta_{n,T}(t)-\beta_{n,T}(s)|>\varepsilon\right) <
+  2\varepsilon.
+ \end{multline*}
+  Поэтому и $\gamma_{n,T}=G_{n,T}+H_{n,T}$ стохастически мало на бесконечности в силу произвольности $\varepsilon.$ 
+ \end{proof}
+ 
+ 
+ \begin{lem}\label{mostSubtleCharacteristicsGammaNTLem}
+  Пусть $\eta^{(T)}$ --- неубывающие неотрицательные процессы,
+  $(\xi^{(T)}, \eta^{(T)})\xrightarrow[t\to\infty]{fd} (\xi, \eta),$
+  где $\xi, \eta$ принимают значения в пространстве $\mathbb{D}[0,1]$
+  и с вероятностью $1$ не имеют общих моментов скачка,  
+  $$\gamma_{n,T}=\sum\limits_{k=0}^{2^n-1}
+  \sup\limits_{s,t \in [\frac{k}{2^n}), \frac{k+1}{2^n}]}
+  \left|\xi^{(T)}(t)-\xi^{(T)}(s)\right|
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+    Тогда $\gamma_{n,T}$ стохастически мало на бесконечности. 
+ \end{lem}
+ \begin{proof}  
+ Фиксируем $\varepsilon>0$. Обозначим 
+ $$G_{n, T} = \sum\limits_{k=0}^{2^n-1} \mathbbm{1}_{\exists s, t \in [\frac{k}{2^n}), \frac{k+1}{2^n}] \colon
+ |\xi(t)-\xi(s)| \ge \varepsilon}
+  \sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}  
+   \left|\xi^{(T)}(t)-\xi^{T}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right),$$
+ 
+ $$H_{n, T} = \sum\limits_{k=0}^{2^n-1}
+  \mathbbm{1}_{\forall s, t \in [\frac{k}{2^n}), \frac{k+1}{2^n}] \colon |\xi(t)-\xi(s)| \le \varepsilon}
+  \sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}  
+  \left|\xi^{(T)}(t)-\xi^{(T)}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+  
+  Тогда $G_{n, T}$ стохастически мало на бесконечности
+  в силу лемм~\ref{simpleLemAboutStochasticSmallness},
+  ~\ref{sumOverJumpsStochasticLem} 
+  и стохастической ограниченности $\sup\limits_{s\in [0,1]}|\xi^{(T)}(s)|.$
+  
+  Для $H_{n, T}$ имеем при $T>T_0$
+  $$
+   H_{n, T} \le \varepsilon^2 \left(\eta^{(T)}(1)-\eta^{(T)}(0)\right).
+  $$
+  Поэтому и $\gamma_{n,T}=G_{n,T}+H_{n,T}$ стохастически мало на бесконечности
+  в силу произвольности $\varepsilon.$ 
+ \end{proof}
+
+\begin{lem}\label{integralDominatedConvergenceLem}
+Пусть $\xi$ --- случайный процесс со значениями в $\mathbb{D}[0,1]$
+без фиксированных моментов скачка, 
+$\eta$ --- семимартингал с траекториями в $\mathbb{D}[0,1]$. 
+Тогда сумма
+$$\sum\limits_{k=0}^{n-1}\xi\left(\frac{k}{n}\right)\left(\eta\left(\frac{k+1}{n}\right)-
+\eta\left(\frac{k}{n}\right)\right)$$
+сходится по вероятности к $\int\limits_0^1 \xi(s-)d\eta(s).$
+\end{lem}
+\begin{proof}
+ Эта сходимость выполняется в силу теоремы об ограниченной сходимости для стохастических
+ интегралов (см.\cite{Meyer}, глава~8).
+Поясним более детально. Согласно~\cite{Kallenberg}, теорема 26.4, выполнено
+соотношение:
+если $X$ --- семимартингал,
+$V_n\to 0$ и $|V_n|\le V$, где все процессы $V_n, V$ --- предсказуемые и локально
+ограниченные, то 
+$$\sup\limits_{t \in [0,1]}\int\limits_0^t V_n(s)dX(s)\xrightarrow[n\to\infty]{P}0.$$
+Положим
+$$X(s)=\eta(s),s \ge 0,$$
+$$H_n(s)=\xi\left(\frac{[ns]}{n}\right),$$
+$$G_n(s)=\xi(s-),$$\
+$$V_n(s)=G_n(s)-H_n(s).$$
+В силу непрерывности слева процесса $\xi(s-)$, имеем
+$$\xi\left(\frac{[ns]}{n}\right)\xrightarrow[n\to\infty]{}\xi(s).$$
+(Заметим, что с вероятностью $1$ процесс $\xi$ вообще не имеет разрывов в рациональных
+точках, и потому с вероятностью $1$ сходимость имеет место для всех $s$).
+Отсюда заключаем, что с вероятностью $1$ имеет место 
+$$V_n\to 0, n \to \infty.$$
+В роли мажорирующего процесса возьмём
+$$V(t)=2\sup\limits_{s\in [0,t]}|\xi(s-)|.$$
+Этот процесс является непрерывным слева, а потому предсказуемым и локально ограниченным. 
+\end{proof}
+
+ \begin{theorem}\label{firstMainTheorem}
+  Пусть $\xi^{(T)}, \eta^{(T)}$ --- 
+  непрерывные семимартингалы на $[0,1]$ относительно общей фильтрации, причём
+  $$\left(\xi^{(T)}, \eta^{(T)}, \left<\xi^{(T)}\right>,\left<\eta^{(T)}\right>\right)
+  \xrightarrow[T\to\infty]{fd} \left(\xi, \eta, \zeta_1, \zeta_2\right),$$
+  где $\xi, \eta$ принимают значения в пространстве $\mathbb{D}[0,1]$;
+  $\zeta_1, \zeta_2$ принимают значения в пространстве $\mathbb{D}[0,1]$
+  и с вероятностью $1$ не имеют общих моментов скачка.
+$$\int\limits_0^1 \xi^{(T)}(s)d\eta^{(T)}(s)
+\xrightarrow[T \to \infty]{d} \int\limits_0^1 \xi(s-)d\eta(s).$$
+ \end{theorem}
+ \begin{proof}
+  Пусть
+$$\gamma_{n, T}=
+ \int\limits_0^1 \xi^{(T)}(s)d\eta^{(T)}(s)-
+ \sum\limits_{k=0}^{2^n-1}\xi^{(T)}\left(\frac{k}{2^n}\right)\left(\eta^{(T)}
+ \left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+Тогда
+$$\gamma_{n, T}=
+ \sum\limits_{k=0}^{2^n-1}
+ \int\limits_{\frac{k}{2^n}}^{\frac{k+1}{2^n}}
+ \left(\xi^{(T)}(s)-\xi^{(T)}\left(\frac{k}{2^n}\right)\right)d\eta^{(T)}(s)=
+ w_{n,T}\left(\sum\limits_{k=0}^{2^n-1}
+ \int\limits_{\frac{k}{2^n}}^{\frac{k+1}{2^n}}
+ \left(\xi^{(T)}(s)-\xi^{(T)}\left(\frac{k}{2^n}\right)\right)^2d\left<\eta^{(T)}\right>_s\right),
+$$
+где $w_{n,T}$ --- некоторые винеровские процессы. 
+Пусть $\beta_{n,T}$ --- ассоциированные с $\xi^{(T)}$ винеровские процессы. Имеем
+  \begin{multline*}\mu_{n, T}=
+\sum\limits_{k=0}^{2^n-1}
+ \int\limits_{\frac{k}{2^n}}^{\frac{k+1}{2^n}}
+ \left(\xi^{(T)}(s)-\xi^{(T)}\left(\frac{k}{2^n}\right)\right)^2d\left<\eta^{(T)}\right>_s \le \\ \le
+\sum\limits_{k=0}^{2^n-1}
+ \sup\limits_{s, t \in [\left<\xi^{(T)}\right>(\frac{k}{2^n}), \left<\xi^{(T)}\right>(\frac{k+1}{2^n})]}
+  \left|\beta_{n,T}(t)-\beta_{n,T}(s)\right|^2
+ \left(\left<\eta^{(T)}\right>\left(\frac{k+1}{2^n}\right)-\left<\eta^{(T)}\right>\left(\frac{k}{2^n}\right)
+ \right).
+ \end{multline*}
+ За счёт леммы~\ref{mostSubtleGammaNTLem} $\mu_{n,T}$ стохастически мало на бесконечности.
+ Тогда и $\gamma_{n, T}=w_{n, T}(\mu_{n,T})$ стохастически мало на бесконечности. 
+ За счёт лемм~\ref{WeakConvergenceThirdLem}, \ref{integralDominatedConvergenceLem} 
+ получаем нужное утверждение. 
+ \end{proof}
+ 
+\begin{theorem}\label{secondMainTheorem}
+  Пусть 
+  $(\xi^{(T)}, \eta^{(T)}, \left<\xi^{(T)}\right>,\left<\eta^{(T)}\right>)
+  \xrightarrow[T\to\infty]{fd} (\xi, \eta, \zeta_1, \zeta_2),$
+  где $\xi, \eta$ принимают значения в пространстве $\mathbb{D}[0,1]$;
+  $\zeta_1, \zeta_2$ принимают значения в пространстве $\mathbb{D}[0,1]$
+  и с вероятностью $1$ не имеют общих моментов скачка. Тогда
+$$\int\limits_0^1 \xi^{(T)}(s)^2d\left<\eta^{(T)}\right>(s)
+\xrightarrow[T \to \infty]{d} \int\limits_0^1 \xi(s-)^2d\left<\zeta_2\right>(s).$$
+\end{theorem}
+
+\begin{proof}
+Пусть
+ \begin{multline*}\gamma_{n, T}=
+ \int\limits_0^1 \xi^{(T)}(s)^2d\left<\eta^{(T)}\right>(s)-
+ \sum\limits_{k=0}^{2^n-1}\xi^{(T)}\left(\frac{k}{2^n}\right)^2\left(\left<\eta^{(T)}\right>
+ \left(\frac{k+1}{2^n}\right)-\left<\eta^{(T)}\right>\left(\frac{k}{2^n}\right)\right)=\\=
+ \sum\limits_{k=0}^{2^n-1}
+ \int\limits_{\frac{k}{2^n}}^{\frac{k+1}{2^n}}
+ \left(\xi^{(T)}(s)^2-\xi^{(T)}\left(\frac{k}{2^n}\right)^2\right)d\left<\eta^{(T)}\right>(s).
+ \end{multline*} 
+Имеем
+$$
+|\gamma_{n, T}| \le 
+\sum\limits_{k=0}^{2^n-1}
+ \sup\limits_{s, t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}
+  \left|\xi^{(T)}(t)^2-\xi^{(T)}(s)^2\right|
+ \left(
+ \left<\eta^{(T)}\right>\left(\frac{k+1}{2^n}\right)-\left<\eta^{(T)}\right>\left(\frac{k}{2^n}\right)
+ \right).
+$$
+  За счёт леммы~\ref{mostSubtleCharacteristicsGammaNTLem} $\gamma_{n,T}$
+стохастически мало на бесконечности.  
+ За счёт леммы~\ref{WeakConvergenceThirdLem} получаем нужное утверждение.
+\end{proof}
+
+\section{Процессы, порождённые винеровским процессом}
+\begin{definition}
+Пусть $\beta$ --- винеровский процесс. Семейством процессов $\mathcal U$, порождённым $\beta$, будем 
+называть семейство всех процессов вида
+$$\int \ldots \int d\eta_1 \ldots d\eta_n,$$
+где $d\eta_k(s)=d\beta(s)$ или $d\eta_k(s)=ds$
+при каждом $k$.
+В частности, процессы
+$\xi_1(t)=t,$  
+$\xi_2(t)=\beta(t), \xi_3(t)=\int\limits_0^t \beta(s)d\beta(s),$
+$\xi_4(t)=\int\limits_0^t \beta(s)d\beta(s),
+\xi_5(t)=\int\limits_0^t \xi_2(s) ds$
+входят в семейство $\mathcal U$. 
+Ясно, что все процессы, порождённые $\beta$, являются
+непрерывными семимартингалами относительно фильтрации, 
+порождённой $\beta$.
+\end{definition}
+
+\begin{comment} 
+Будем рассматривать следующее семейство процессов $\mathfrak{A}$, которое будем называть семейством 
+процессов, порождённых $\beta.$
+\begin{itemize}
+ \item Процесс $\beta$ входит в $\mathfrak{A}$;
+ \item если процесс $U$ входит в $\mathfrak{A}$, то процесс $V$,
+ задаваемый равенством
+ $$V_t=\int\limits_0^t U_s ds$$
+ входит в $\mathfrak{A}$;
+  \item если процесс $U$ входит в $\mathfrak{A}$, то процесс $V$,
+ задаваемый равенством
+ $$V_t=\int\limits_0^t U_s d\beta_s$$
+ входит в $\mathfrak{A}$. 
+\end{itemize}
+\end{comment}
+
+\begin{comment}
+ \begin{remark}
+ Все процессы, порождённые процессом $\beta$, являются
+ непрерывными семимартингалами относительно фильтрации, 
+ порождённой процессом $\beta$.
+\end{remark}
+\end{comment}
+
+\begin{lem}\label{WienerCalculusLem}
+ Если $L$ --- процесс, порождённый процессом $\beta$, то
+при любом $n \ge 0$
+$$X_t=\int\limits_0^t \beta^n(s)dL_s$$
+представляется в виде $X=F(\beta)$,
+где $F$ --- некоторое непрерывное отображение
+$$F \colon C[0, \infty) \to C[0, \infty).$$
+В частности, при $n=0$ получаем, что сам процесс $L$ представляется
+в таком виде. 
+\end{lem}
+\begin{proof}
+ Доказательство проведём индукцией по минимальной длине цепочки процессов, порождающей $L$. 
+Проверим, что $X$ представляется в виде $F(\beta)$. Два случая
+\begin{itemize}
+ \item $X_t = \int\limits_0^t Y_s ds$, и $Y$ --- процесс, порождённый $\beta$,
+ для которого утверждение леммы доказано. Тогда
+$$\int\limits_0^t \beta^n(s)dX_s = \int\limits_0^t \beta^n(s) Y_s ds,$$
+и ясно, что это --- непрерывный функционал от $\beta$. 
+ \item $X_t = \int\limits_0^t Y_s d\beta(s)$, и для $Y$ утверждение доказано. Тогда
+\begin{multline*}
+ \int\limits_0^t \beta^n(s)dX_s = \int\limits_0^t \beta^n(s) Y_s d\beta(s)=
+ \frac{1}{n}\int\limits_0^t Y_s d\beta^n(s)-\frac{n-1}{2}\int\limits_0^t \beta(s)^{n-2} Y_s ds=\\=
+ \frac{1}{n}Y_t \beta^n(t)-\frac{1}{n}\int\limits_0^t \beta^n(s)dY_s-
+ \frac{1}{n}\left<Y, \beta^n\right>_t-
+ \frac{n-1}{2}\int\limits_0^t \beta(s)^{n-2} Y_s d.
+\end{multline*}
+Для всех слагаемых, кроме $\frac{1}{n}\left<Y, \beta^n\right>_t$, ясно, что они являются непрерывными 
+функционалами от $\beta$. Для $Y$ возможны 2 случая: 
+\begin{itemize}
+\item $Y_t=\int\limits_0^t Q_s ds,$ и в этом случае 
+$\left<Y, \beta^n\right>_t=0$; 
+\item $Y_t=\int\limits_0^t Q_s d\beta(s)$,
+и в этом случае 
+$\frac{1}{n}\left<Y, \beta^n\right>_t=\int\limits_0^t \beta(s)^{n-1}Q_s ds,$
+и ясно, что это --- непрерывный функционал от $\beta$. 
+\end{itemize}
+Лемма доказана. 
+\end{itemize}
+\end{proof}
+
+\section{Асимптотика инвариантов Васильева}
+\begin{definition}
+  Пусть $Y_1^{(T)}, \ldots, Y_n^{(T)}$ --- семейства непрерывных семимартингалов
+ относительно общей (при каждом фиксированном $T$) фильтрации. 
+Назовём совокупностью семейств процессов, порождаемой $Y_1, \ldots, Y_n$,
+наименьшую совокупность $S$, такую, что
+\begin{itemize}
+ \item при любом $k=1, \ldots, n \colon Y_k^{(T)}\in S, \left<Y_k^{(T)}\right> \in S$;
+ \item если $U^{(T)}\in S$, то при любом $k$ семейства $V^{(T)}, Q^{(T)}$, определяемые 
+равенствами
+$$V^{(T)}_t = \int\limits_0^t U^{(T)}(s)dY_k^{(T)}(s), t \ge 0$$
+$$Q^{(T)}_t = \int\limits_0^t U^{(T)}(s)d\left<Y_k^{(T)}\right>(s), t \ge 0,$$
+лежат в $S$: $V^{(T)}\in S, Q^{(T)}\in S.$
+\end{itemize}
+\end{definition}
+
+\begin{theorem}\label{YDefinedProcessesTheorem}
+ Пусть $Y^{(T)}$ --- семейство непрерывных локальных мартингалов, такое, что
+$$Y^{(T)}(t)=\beta^{(T)}\left(\left<Y^{(T)}\right>_t\right),$$
+и для любых $t_1, \ldots, t_k$ случайные элементы
+$$(\beta^{(T)}, \left<Y^{(T)}\right>(t_1), \ldots, \left<Y^{(T)}\right>(t_k)) 
+\in C[0, \infty)\times \mathbb{R}^k$$
+сходятся по распределению при $T \to \infty$. 
+Пусть $S$ --- совокупность семейств, порождённых $Y^{(T)}$.
+Тогда для любого семейства $U^{(T)}\in S$: 
+$$(Y^{(T)}, U_1^{(T)}, \ldots,  U_k^{(T)})$$
+имеет предел в смысле конечномерных 
+распределений:
+$$\left(Y^{(T)}, \left<Y^{(T)}\right>,
+U_1^{(T)}, \ldots,  U_m^{(T)}\right) \xrightarrow[T \to \infty]{fd}
+\left(Y, Q, U_1, \ldots,  U_k\right),$$
+и все точки разрыва процессов $Y, U_1, \ldots, U_k$
+с вероятностью $1$ лежат среди точек разрыва процесса $Q$. 
+\end{theorem}
+\begin{proof}
+ Из леммы~\ref{WienerCalculusLem} следует, что все процессы
+ из указанной совокупности представляются в виде
+$$U^{(T)}=F(\beta^{(T)})(\left<Y^{(T)}\right>),$$
+где $F\colon C[0,\infty) \to C[0, \infty)$ --- непрерывный функционал от винеровского процесса. 
+Отсюда всё сразу следует. 
+\end{proof}
+
+\begin{theorem}\label{generalTheorem}
+ Пусть $X^{(T)}, Y^{(T)}$ --- непрерывные семимартингалы относительно общей (при каждом фиксированном $T$)
+фильтрации, причём
+$$(X^{(T)}, Y^{(T)})\xrightarrow[T \to \infty]{d}(X, Y),$$
+а процессы $X, Y$ с вероятностью $1$ не имеют общих моментов скачка. 
+Пусть также семейство $Y^{(T)}$ удовлетворяет условиям теоремы~\ref{YDefinedProcessesTheorem}.
+Обозначим
+$$L^{(T)}_0(t) = Y^{(T)}(t),$$
+$$L^{(T)}_{k+1}(t) = \int\limits_0^t L_k^{(T)}(s) dY^{(T)}(s).$$
+Тогда при любом $k$ для любых семейств $U^{(T)}$ из совокупности, 
+порождённой $Y^{(T)}$ (см. теорему~\ref{YDefinedProcessesTheorem}),
+конечномерные распределения процессов
+$$\int\limits_0^t L_k^{(T)}(s)U^{(T)}(s)dY^{(T)}(s),
+\int\limits_0^t L_k^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>(s)$$
+сходятся при $T \to \infty$ совместно с $Y^{(T)}$,
+причём все скачки предельных процессов совпадают со скачками процесса $Y.$
+\begin{proof}
+ Проведём доказательство индукцией по $k$. 
+База индукции проверяется за счёт теорем~\ref{firstMainTheorem},
+~\ref{secondMainTheorem}.
+Шаг индукции: пусть утверждение теоремы проверено для $k$, проверим для $k+1$. 
+Обозначим $V^{(T)}(t)=\int\limits_0^t U_k^{(T)}(s)dY_k^{(T)}(s),$
+$Q_t=\int\limits_0^t U_k^{(T)}(s)d\left<Y_k^{(T)}\right>(s).$
+Ясно, что процессы $V^{(T)}, Q^{(T)}$ имеют пределы в смысле сходимости
+конечномерных распределений.
+Имеем
+$$L^{(T)}_{k+1}(t) = \int\limits_0^t L_k^{(T)}(s) dY^{(T)}(s),$$
+\begin{multline*}
+ \int\limits_0^t L_{k+1}^{(T)}(s)U^{(T)}(s)dY^{(T)}(s) = \int\limits_0^t L_{k+1}^{(T)}(s) dV^{(T)}(s)=
+L_{k+1}^{(T)}(t) V^{(T)}(t)-\\-
+\int\limits_0^t L_k^{(T)}(s)V^{(T)}(s)dY^{(T)}(s)-
+\left<L_{k+1}^{(T)}, V^{(T)}\right>_t=
+\int\limits_0^t L_{k+1}^{(T)}(s) dV^{(T)}(s)=\\=
+L_{k+1}^{(T)}(t) V^{(T)}(t)-
+\int\limits_0^t L_k^{(T)}(s)V^{(T)}(s)dY^{(T)}(s)-
+\int\limits_0^t L_k^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>_s,
+\end{multline*}
+и по предположению индукции имеем сходимость конечномерных распределений для 
+$$\int\limits_0^t L_{k+1}^{(T)}(s)U^{(T)}(s)dY^{(T)}(s).$$
+Далее, 
+\begin{multline*}
+ \int\limits_0^t L_{k+1}^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>(s) =
+\int\limits_0^t L_{k+1}^{(T)}(s) dQ^{(T)}(s)=
+L_{k+1}^{(T)}(t) Q^{(T)}(t)-\\-
+\int\limits_0^t L_k^{(T)}(s)Q^{(T)}(s)dY^{(T)}(s)-
+\left<L_{k+1}^{(T)}, V^{(T)}\right>_t=
+\int\limits_0^t L_{k+1}^{(T)}(s) dV^{(T)}(s)=\\=
+L_{k+1}^{(T)}(t) V^{(T)}(t)-
+\int\limits_0^t L_k^{(T)}(s)V^{(T)}(s)dY^{(T)}(s)-
+\int\limits_0^t L_k^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>_s,
+\end{multline*}
+и по предположению индукции имеем сходимость конечномерных распределений для 
+$$\int\limits_0^t L_{k+1}^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>(s).$$
+\end{proof}
+\end{theorem}
+
+\begin{theorem}\label{MainTheoremForWienerProcesses}
+ Пусть $Y_1^{(T)}, \ldots, Y_n^{(T)}$ --- семейства непрерывных локальных мартингалов относительно общей
+(при каждом фиксированном $T$) фильтрации, такие, что 
+$$(Y_1^{(T)}, \ldots, Y_n^{(T)})\xrightarrow[T \to \infty]{fd} (Y_1, \ldots, Y_n),$$
+причём с вероятностью $1$ процессы
+$Y_1, \ldots, Y_n$
+попарно не имеют общих моментов скачка, и
+при любом $k$ выполнено хотя бы одно из двух условий
+\begin{itemize}
+ \item семейство $Y_k^{(T)}$ удовлетворяет условиям 
+теоремы~\ref{YDefinedProcessesTheorem};
+ \item предельный процесс $Y_k$ 
+не имеет точек разрыва с вероятностью $1$,
+а характеристики $\left<Y_k^{(T)}\right>$ совпадают с характеристиками
+$\left<Y_l^{(T)}\right>$ при некотором $l \ne k$, причём
+семейство $Y_l^{(T)}$ удовлетворяет условиям 
+теоремы~\ref{YDefinedProcessesTheorem}. 
+\end{itemize}
+Пусть $S$ --- совокупность семейств процессов, порождаемая $Y_1, \ldots, Y_n$.
+Тогда для любых $X_1, \ldots, X_k \in S$ случайный вектор
+$$(X_1^{(T)}, \ldots, X_k^{(T)})$$
+сходится при $T \to \infty$ в смысле сходимости конечномерных распределений. 
+\end{theorem}
+\begin{proof}
+ Следует из теоремы~\ref{generalTheorem}.  
+\end{proof}
+
+Пусть $Z_k(t), t \ge 1$ --- двумерные броуновские движения, выходящее из попарно различных
+точек плоскости. Пусть $Z_{kl}(t)=\|Z_k(t)-Z_l(t)\|, R_{kl}(t)=|Z_{kl}(t)|$,
+$\theta_{kl}$ --- угол обхода процесса $Z_{kl}$ вокруг начала координат 
+к моменту времени $t$, $\theta_{kl}(1)=0.$
+Введём, следуя~\cite{BertoinWerner}, процессы $X_{kl}$ с помощью экспоненциальной замены времени
+для $Z_{kl}$:
+$$X_{kl}(t)=e^{-t/2}Z_{kl}(e^t), t \ge 0.$$
+Тогда $X_{kl}(t)$ --- двумерный процесс Орнштейна-Уленбека. 
+Пусть $\alpha_{kl}(t)=\theta_{kl}(e^t)$ --- угол обхода процесса $X_{kl}$ вокруг начала координат 
+к моменту времени $t$. Пусть 
+$$\phi_{kl}^{(T)}(t)=\frac{\alpha_{kl}(tT)}{T/2}, 
+r_{kl}^{(T)}=\frac{\ln{R_{kl}(e^{tT})}}{T/2}, T>0.$$
+Имеют место сходимости в смысле конечномерных распределений
+$$\phi_{kl}^{(T)}\xrightarrow[T \to \infty]{fd}\xi, r_{kl}^{(T)}\xrightarrow[T \to \infty]{fd}\eta,$$
+где $\xi$ --- процесс Коши, $\eta(t)=t.$
+Применим теорему~\ref{MainTheoremForWienerProcesses} к семействам непрерывных локальных мартингалов
+$\phi_{kl}^{(T)}, r_{kl}^{(T)}.$
+
+\begin{theorem}
+ Пусть $\mathfrak{S}$ --- совокупность семейств процессов, порождаемая 
+$$\phi_{kl}^{(T)}, r_{kl}^{(T)}, 1 \le k < l \le n,$$
+Тогда для любых $X_1, \ldots, X_k \in \mathfrak{S}$ случайный вектор
+$$(X_1^{(T)}, \ldots, X_k^{(T)})$$
+сходится при $T \to \infty$ в смысле сходимости конечномерных распределений
+\end{theorem}
+ 
+\section{Асимптотика инварианта второго порядка c идентификацией предельного процесса}
+Воспользуемся результатом предыдущего раздела для идентификации предельного распределения.
+
+Пусть $\theta(t)$ --- угол обхода вокруг начала координат 
+броуновского движения, выходящего из точки $(1, 0)$ в момент $1$,
+к моменту времени $t$, $\theta(1)=0.$
+Обозначим 
+$$\alpha(t)=\theta(e^t),
+\phi_T(t)=\frac{\alpha(tT)}{T}.$$
+
+Мы знаем, что конечномерные распределения процесса $\phi_T$ сходятся при $T\to\infty$
+к конечномерным распределениям процесса Коши $C$:
+$$\phi_T\xrightarrow[T\to\infty]{fd}C.$$
+
+Покажем теперь, что для независимых процессов $\phi^{(1)}, \phi^{(2)}$
+имеет место сходимость конечномерных распределений 
+$$\int\limits_0^t \phi^{(1)}_T(s)d\phi^{(2)}_T(s)\xrightarrow[T\to\infty]{fd}
+\int\limits_0^t C_1(s-)dC_2(s),$$
+где $C_1, C_2$ --- независимые процессы Коши.
+
+Для начала проверим, что интеграл
+$$\int\limits_0^t C_1(s-)dC_2(s)$$
+корректно определён. 
+
+Согласно~\cite{Kallenberg}, соответствующий интеграл определён, если 
+$C_1(s-)$ является локально ограниченным процессом, а
+$C_2$ --- семимартиннгал. 
+Проверим, что это так. 
+
+\begin{statement}
+ Процесс $X(s)=C(s-)$, где $C$ --- процесс Коши, является локально ограниченным.
+\end{statement}
+\begin{proof}
+ Нам нужно проверить существование последовательности моментов остановки
+ $\tau_n\to\infty$, такой, что процессы $X^{\tau_n}$
+ являются ограниченными.
+ Выберем 
+ $$\tau_n=\inf\{s\colon |X(s)|>n\}.$$
+ Ясно, что $|X^{\tau_n}|\le n$, поскольку процесс $X$ непрерывен слева. 
+ 
+ Более общо, можно сказать, что любой непрерывный слева ограниченный с вероятностью $1$
+ на каждом конечном интервале случайный процесс является локально ограниченным.  
+\end{proof}
+
+\begin{statement}
+ Процесс Коши $C(s)$ является семимартингалом. 
+\end{statement}
+\begin{proof}
+ Согласно~\cite{Kallenberg}, семимартингалом является непрерывный справа согласованный
+случайный процесс $X$, допускающий представление 
+$$X=M+A,$$
+где $M$ --- локальный мартингал, $A$ --- процесс локально конечной вариации, $A(0)=0$. 
+Выделим из процесса Коши $C$ все скачки величины более $1$ и объединим их в процесс $A$. 
+Тогда $C-A$ будет локальным мартингалом с ограниченными скачками, и потому даже локально
+квадратично интегрируемым мартингалом. 
+ Процесс $A$ имеет конечно много скачков на каждом конечном интервале, поэтому, взяв
+ моменты остановки $\tau_n=n$, получим: $A^{\tau_n}$ --- имеет локально конечную вариацию
+(мы не говорим ``локально ограниченную''!)
+\end{proof}
+
+\begin{statement}\label{integralDominatedConvergenceStatement}
+ Сумма
+$$\sum\limits_{k=0}^{n-1}C_1\left(\frac{k}{n}\right)\left(C_2\left(\frac{k+1}{n}\right)-
+C_2\left(\frac{k}{n}\right)\right)$$
+сходится по вероятности к $\int\limits_0^1 C_1(s-)dC_2(s).$
+\end{statement}
+\begin{proof}
+ Эта сходимость выполняется в силу теоремы об ограниченной сходимости для стохастических
+ интегралов (см. Мейер).
+Поясним более детально. Согласно~\cite{Kallenberg}, теорема 26.4, выполнено
+соотношение:
+если $X$ --- семимартингал,
+$V_n\to 0$ и $|V_n|\le V$, где все процессы $V_n, V$ --- предсказуемые и локально
+ограниченные, то 
+$$\sup\limits_{t \in [0,1]}\int\limits_0^t V_n(s)dX(s)\xrightarrow[n\to\infty]{P}0.$$
+Положим
+$$X(s)=C_2(s),s \ge 0,$$
+$$H_n(s)=C_1\left(\frac{[ns]}{n}\right),$$
+$$G_n(s)=C_1(s-),$$\
+$$V_n(s)=G_n(s)-H_n(s).$$
+В силу непрерывности слева процесса $C_1(s-)$, имеем
+$$C_1\left(\frac{[ns]}{n}\right)\xrightarrow[n\to\infty]{}C_1(s).$$
+(Заметим, что с вероятностью $1$ процесс $C_1$ вообще не имеет разрывов в рациональных
+точках, и потому с вероятностью $1$ сходимость имеет место для всех $s$).
+Отсюда заключаем, что с вероятнсотью $1$ имеет место 
+$$V_n\to 0 (n \to \infty).$$
+В роли мажорирующего процесса возьмём
+$$V(t)=2\sup\limits_{s\in [0,t]}|C_1(s-)|.$$
+Этот процесс является непрерывным слева, а потому предсказуемым и локально ограниченным. 
+\end{proof}
+
+\begin{statement}
+ Имеет место сходимость
+$$\int\limits_0^1 \phi^{(1)}_T(s)d\phi^{(2)}_T(s)
+\xrightarrow[T\to\infty]{d} 
+\int\limits_0^1 C_1(s-)dC_2(s).$$
+\end{statement}
+
+\begin{proof}
+ Применим лемму~\ref{WeakConvergenceSecondLem}. Положим
+$$\xi(T)=\int\limits_0^1 \phi^{(1)}_T(s)d\phi^{(2)}_T(s),$$
+$$\eta_n(T)=
+\sum\limits_{k=0}^{n-1}\phi^{(1)}_T\left(\frac{k}{n}\right)\left(\phi^{(2)}_T\left(\frac{k+1}{n}\right)-
+\phi^{(2)}_T\left(\frac{k}{n}\right)\right),$$
+$$\eta_n=\sum\limits_{k=0}^{n-1}C_1\left(\frac{k}{n}\right)\left(C_2\left(\frac{k+1}{n}\right)-
+C_2\left(\frac{k}{n}\right)\right).$$
+
+По лемме~\ref{WeakConvergenceFifthLem} получаем, что 
+$\xi(T)\xrightarrow[T\to\infty]{d}\xi_0$, и (что позволяет нам идентифицировать предел)
+$\eta_n\xrightarrow[n\to\infty]{d}\xi_0.$
+
+По утверждению~\ref{integralDominatedConvergenceStatement}, получаем
+$$\eta_n\xrightarrow[n\to\infty]{d}\int\limits_0^1 C_1(s-)dC_2(s).$$
+Таким образом,
+$$\xi(T)\xrightarrow[T\to\infty]{d} \int\limits_0^1 C_1(s-)dC_2(s).$$
+\end{proof}
+
+\begin{thebibliography}{99}
+\bibitem{Kallenberg}
+Kallenberg~O.
+Foundations of modern probability. --- Springer, 2002. --- 638~p.
+
+\bibitem{Meyer}
+Dellacherie, Meyer, J. P.
+Probabilities and potential B. Theory of martingales. --- 
+North-Holland Publishing Company, 1982. --- 482~p. 
+
+\bibitem{BertoinWerner}
+Jean Bertoin, Wendelin Werner.
+Asymptotic windings of planar brownian motion revisited via the Ornstein-Uhlenbeck process //
+Seminaire de probabilites de Strasbourg (1994),Vol.~28, pp.~138--152. 
+
+\end{thebibliography}
+
+\end {document}
+

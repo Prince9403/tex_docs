@@ -1,0 +1,64 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{remark}[theorem]{Замечание}
+\newtheorem{algorithm}[theorem]{Алгоритм}
+\newtheorem{corollary}[theorem]{Следствие}
+
+%opening
+\title{Домашняя работа 4 --- Кузнецов}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+
+\section{Задание 4}
+\begin{enumerate}
+ \item  C31. $SAT\le_p 3-SAT$ с сохранением числа выполняющих наборов. 
+ 
+ Пусть имеется некоторая КНФ, не являющаяся 3-КНФ. Выполним такое преобразование: возьмём
+ её дизъюнкт $a_1\vee a_2 \vee \ldots \vee a_n$ с $n>3$ и заменим на
+ $$(a_1 \vee \ldots \vee a_{n-2} \vee b) \wedge (\neg{b}\vee a_{n-1} \vee a_n) \wedge (b \vee \neg{a_{n-1}})
+ \wedge (b \vee \neg{a_n}),$$
+ где $b$ --- новая переменная, не входящая в исходную КНФ. 
+ 
+ Если $a_1=t_1, \ldots, a_n=t_n, \ldots$ был выполняющий набор для исходной КНФ, то
+ $$a_1=t_1, \ldots, a_{n}=t_{n}, b=t_{n-1}\vee t_n, \ldots$$ --- выполняющий набор для новой КНФ.
+ Наоборот, если 
+ $$a_1=t_1, \ldots, a_{n}=t_{n}, b=t, \ldots$$ ---
+ выполняющий набор для новой КНФ, то с необходимостью 
+ из того, что 
+ $$(\neg{b}\vee a_{n-1} \vee a_n) \wedge (b \vee \neg{a_{n-1}})\wedge (b \vee \neg{a_n})$$
+ выполнено при $b=t, a_{n-1}=t_{n-1}, a_n=t_n$,
+ следует $t=t_{n-1}\vee t_n$ (действительно, если $t$ истинно, то одно из $t_{n-1}, t_n$ истинно; если $t$ ложно, то оба $t_{n-1}, t_n$ 
+ ложны), и $$a_1=t_1, \ldots, a_{n}=t_{n}, \ldots$$ --- выполняющий набор для исходной КНФ. Такким образом, наши операции не меняют количества выполняющих наборов. За некоторое количество таких операций сведём нашу КНФ к 3-КНФ.
+ 
+ \item C17. а) Язык USAT coNP-трудный. \\
+ Язык выполнимых 3-SAT NP-полный, значит, язык невыполнимых 
+ 3-SAT coNP-полный. Сведём его к USAT. Пусть $F(x_1, \ldots, x_n)$ --- некоторая $3-SAT$. 
+ Построим по ней формулу 
+ $$A(x_1, \ldots, x_n)=(x_1\wedge x_2\wedge\ldots\wedge x_n)\vee F(x_1,\ldots, x_n) 
+ \vee F(\neg{x_1}, \ldots, \neg{x_n}).$$
+ Ясно, что $F$ невыполнима тогда и только тогда, когда $A$ имеет единственный выполняющий набор
+ $x_1=x_2=\ldots=x_n=1$. 
+ Формулу A можно записать в КНФ, поскольку
+ $$(a \wedge b)\vee c = (a\vee c)\wedge (b \vee c),$$
+то есть И и ИЛИ ведут себя как сложение и умножение, и для них выполнен дистрибутивный закон. Раскроем скобки в "произведении" (дизъюнкции) трёх "сумм" (конъюнкций)  для A --- и получим 7-КНФ. 
+Тем самым построено сведение 3-SAT к USAT.
+\end{enumerate}
+ 
+
+\end{document}

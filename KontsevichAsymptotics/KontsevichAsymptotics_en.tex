@@ -1,0 +1,1511 @@
+\documentclass[12pt, a4paper, titlepage]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian, english]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float, bbm}
+\usepackage{tikz}
+
+\pagestyle{plain}
+\righthyphenmin = 2
+
+\usepackage{geometry}
+\geometry{left=3cm}
+\geometry{right=1cm}
+\geometry{top=3cm}
+\geometry{bottom=3cm}
+
+\usepackage{amsthm} \makeatletter
+\renewcommand*{\@seccntformat}[1]{ \csname the#1\endcsname.\enskip
+}
+\makeatother
+
+\newcommand{\startvec}{\begin{pmatrix}
+                        1\\0
+                       \end{pmatrix}}
+\newcommand{\nullvec}{\begin{pmatrix}
+                        0\\0
+                       \end{pmatrix}}
+
+\begin{document}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{statement}{Statement}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{lem}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+{\it\large Kuznetsov~V.~A., Institute of mathematics, NAS of Ukraine}
+\footnote{Institute of mathematics of the NAS of Ukraine, Tereschenkivska str. 3, Kyiv\\
+V.A. Kuznetsov, Institute of Mathematics of the NAS of Ukraine \\
+e-mail: vasylkuz@mail.ru}
+\vspace{30pt}
+
+The asymptotical distribution of the mutual winding angles of several independent planar Wiener processes
+was studied in the work of M.~Yor. A more general question is to study the asymptotical distribution
+of the full system of Vassiliev invariants for braids formed by independent planar Wiener processes.
+This problem is considered in the current article. 
+
+\section{Introduction}
+\label{Introduction}
+
+A lot of works were devoted to the study of geometrical properties 
+of planar Brownian motion trajectory
+(see, e.g., \cite{HausdorffCutPoints}, \cite{WernerHausdorff}, \cite{CranstonHsu}).
+The asymptotical distribution of the winding angle of the Brownian trajectory
+was studied by F.~Spitzer~\cite{Spitzer}. The more subtle results on Brownian
+winding angle were obtained in the works of 
+Zhan Shi~\cite{ZhanShi}, J.~Bertoin and W.~Werner~\cite{BertoinWerner}. 
+
+The related geometrical questions arise in the theory of stochastic flows. 
+In isotropic Brownian stochastic flows the individual trajectories are 
+Brownian motions. A question of great importance is to study 
+the multi-particle motion in these flows. This question is also motivated
+by the study of turbulence, as Brownian stochastic flows are used to model turbulent flows.
+The characterization of an $n$-point motion in such flows is
+the problem of great importance in turbulence theory~\cite{Falkovich}. 
+
+A natural question concerning multi-particle motion in Brownian flows is 
+to characterize braids formed by particle trajectories. 
+There is a full system of invariants characterizing braids, 
+that is, the Vassiliev invariants system. 
+This system distinguishes braids up to homotopy preserving beginning and endpoints.
+Maxim Kontsevich established integral formulas for Vassiliev invariants
+for smooth knots. These formulas can be generalised for smooth braids~\cite{Berger}. 
+In the present article we study the asymptotical distribution of invariants of braids
+formed by independent planar Wiener processes. 
+In section~\ref{SmoothKontsevich} we discuss Vassiliev invariants and Kontsevich integral.
+In section~\ref{nonSmoothVassiliev} we obtain the representation of Vassiliev
+invariants for braids formed by continuous semimartingales under common flitration
+in the form of multiple Stratonovich integrals. In section~\ref{weakConvergence}
+we discuss some facts about the weak asymptotics of stochastic integrals.
+In section~\ref{weakConvergenceOfVassiliev} we use these results to 
+prove the main result about the asymptotical distribution of Vassiliev invariants
+for braids formed by independent Brownian motions. 
+
+\section{Kontsevich integral for smooth braids}\label{SmoothKontsevich}
+We give the necessary definitions concerning braids and their  invariants.
+
+\begin{definition}\cite{Berger}
+ A braid with $n$ strands is a continuous curve
+\begin{equation}\nonumber
+Z(t)=(Z_1(t),\dots,Z_n(t)), t\in [0,T], Z_k(t)\in \mathbb{C}, t\in [0,T]
+\end{equation}
+in the space 
+$C_{0,n}=\{(z_1,\ldots, z_n)\in\mathbb{C}^n:z_i\ne z_j, i\ne j\}$, that is,
+a continuous mapping from $[0,T]$ to the space $C_{0,n}$.
+The trajectories $Z_k(t), t\in [0,T]$ are called the strands of a braid.
+\end{definition}
+As follows from the definition, the braid's strands do not intersect, that is,
+for any $k\ne l$: 
+$$\forall t\in [0, T] \quad Z_k(t)\ne Z_l(t).$$
+
+There exists a system of Vasssiliev invariants for braids
+which is full in a sence that for two braids with the same starting and endpoints
+all the invariants coinside if and only if the braids are homotopous
+with the homotopy preserving starting and endpoints~\cite{BarNatan}. 
+There is an integral representation for Vassiliev invariants
+for smooth or piecewise-smooth braids
+given by M.~L.~Kontsevich~\cite{Kontsevich}. 
+We describe it briefly based on the article~\cite{Berger}. 
+These invariants take values in the space of diagrams. 
+So, we first describe objects called diagrams. 
+
+Let $\mathbb{P}_{mn}$ be the set of all possible matrices
+\begin{equation}\nonumber
+P=
+\begin{pmatrix}
+    P_{11} & P_{12}\\
+    P_{21} & P_{22}\\
+    \hdotsfor{2}\\
+    P_{m1} & P_{m2}
+\end{pmatrix}
+\end{equation}
+of the size $m\times 2$, where for all 
+$i=1,\ldots, m \quad P_{i1}, P_{i2} \in\{1,\ldots,n\}, P_{i1}\ne P_{i2}$.
+It is obvious that $|\mathbb{P}_{mn}|=(n(n-1)/2)^m$. 
+Here $n$ is a number of strands of the braid in concern. 
+Put in correspondence to any matrix $P\in\mathbb{P}_{mn}$ some object $D(P)$
+--- ``the diagram``. 
+The diagram $D(P)$ corresponding to the matrix $P\in \mathbb{P}_{mn}$ consists of $n$ 
+vertical segments corresponding to the braid's strands, 
+and of connecting them horizontal segments representing the rows of the matrix $P$. 
+A horizontal segment representing the $i$th row $(P_{i1} P_{i2})$ connects 
+vertical segments with numbers $P_{i1}$ and $P_{i2}$. 
+For $i<j$ the segment which corresponds to the $i$th row is higher 
+then the segment which corresponds to the $j$th row.
+
+\begin{example}
+ Let $n=4$ (the braid for $4$ braids), $m=3$, and the matrix $P\in\mathbb{P}_{34}$ has the form
+$P=\begin{pmatrix}1 & 3\\2 & 3\\ 3 & 4\end{pmatrix}$.
+Then the diagram $D(P)$ has the form
+\begin{center}
+\begin{tikzpicture}[line width=4pt, scale=0.8]
+  \draw[grey] (0,0) -- (0,2);
+  \draw[grey] (1,0) -- (1,2);
+  \draw[grey] (2,0) -- (2,2);
+  \draw[grey] (3,0) -- (3,2);
+
+  \draw[grey] (0,1.7) -- (2,1.7);
+  \draw[grey] (1,1) -- (2,1);
+  \draw[grey] (2,0.3) -- (3,0.3);
+
+  \draw (0,2.2) node{1};
+  \draw (1,2.2) node{2};
+  \draw (2,2.2) node{3};
+  \draw (3,2.2) node{4};
+\end{tikzpicture}
+\end{center}
+\end{example}
+
+We define addition on diagrams which will obey the following relations. 
+\begin{itemize}
+  \item One-term relation:
+let matrix $P'$ be obtained from $P\in \mathbb{P}_{mn}$ by interchanging two rows:
+\begin{equation}\nonumber
+P=\begin{pmatrix}\hdotsfor{2}\\ \hdotsfor{2}\\ i&j\\k&l \\ \hdotsfor{2}\\ \hdotsfor{2}\end{pmatrix},
+P'=\begin{pmatrix}\hdotsfor{2}\\ \hdotsfor{2}\\ k&l\\ i&j\\ \hdotsfor{2}\\ \hdotsfor{2}\end{pmatrix},
+\end{equation}
+where $i,j,k,l$ correspond to four pairwise distinct strands.
+Then $D(P)=D(P')$.
+  \item Four-term relation.
+Let matrices $P_1, P_2, P_3, P_4, P_5, P_6 \in \mathbb{P}_{mn}$ be:
+\begin{equation}\nonumber
+P_1=\begin{pmatrix}\hdotsfor{2}\\ \hdotsfor{2}\\ i&j\\j&k \\ \hdotsfor{2}\\ \hdotsfor{2}\end{pmatrix},
+P_2=\begin{pmatrix}\hdotsfor{2}\\ \hdotsfor{2}\\ j&k\\i&k \\ \hdotsfor{2}\\ \hdotsfor{2}\end{pmatrix},
+P_3=\begin{pmatrix}\hdotsfor{2}\\ \hdotsfor{2}\\ i&k\\i&j \\ \hdotsfor{2}\\ \hdotsfor{2}\end{pmatrix},
+\end{equation}
+
+\begin{equation}\nonumber
+P_4=\begin{pmatrix}\hdotsfor{2}\\ \hdotsfor{2}\\ j&k\\i&j \\ \hdotsfor{2}\\ \hdotsfor{2}\end{pmatrix},
+P_5=\begin{pmatrix}\hdotsfor{2}\\ \hdotsfor{2}\\ i&k\\j&k \\ \hdotsfor{2}\\ \hdotsfor{2}\end{pmatrix},
+P_6=\begin{pmatrix}\hdotsfor{2}\\ \hdotsfor{2}\\ i&j\\i&k \\ \hdotsfor{2}\\ \hdotsfor{2}\end{pmatrix},
+\end{equation}
+where $i,j,k$ correspond to four pairwise distinct strands.
+Then
+\begin{equation}\nonumber
+D(P_1)-D(P_4)=D(P_2)-D(P_5)=D(P_3)-D(P_6).
+\end{equation}
+\end{itemize}
+Now introduce the following definition. 
+
+\begin{definition} Let $V$ be the complex vvector space of the dimension $(n(n-1)/2)^m$
+with the basis $\{D(P), P\in \mathbb{P}_{mn}\}$, that is, the space of formal finite
+linear combinations of the diagrams $D(P), P\in \mathbb{P}_{mn}$ with coefficients from $\mathbb{C}$. 
+We consider its subspace $U\subset V$, that is the span of vectors of the form
+$D(P)-D(P'),D(P_1)-D(P_4)-D(P_2)+D(P_5), D(P_1)-D(P_4)-D(P_3)+D(P_6)$ 
+for all possible matrices
+$P, P', P_1, P_2, P_3, P_4, P_5, P_6$ of the form we mentioned in the definition of one-term
+and four-term relations.
+The factorspace of the space $V$ over its subspace $U$ is called
+the space of the diagrams of the order $m$. 
+\end{definition}
+
+\begin{definition} Any linear function on the space of the diagrams of the order $m$ 
+is called the system of weights of the order $m$.
+\end{definition}
+
+ We shall also need the definition of the product of the diagrams. 
+
+\begin{definition} The product of the diagrams $D(P)$ and $D(P')$, where
+\begin{equation}\nonumber
+P=
+\begin{pmatrix}
+    P_{11} & P_{12}\\
+    P_{21} & P_{22}\\
+    \hdotsfor{2}\\
+    P_{r1} & P_{r2}
+\end{pmatrix},
+P'=
+\begin{pmatrix}
+    Q_{11} & Q_{12}\\
+    Q_{21} & Q_{22}\\
+    \hdotsfor{2}\\
+    Q_{s1} & Q_{s2}
+\end{pmatrix},
+\end{equation}
+is the diagram $D(P'')$, where
+\begin{equation}\nonumber
+P''=
+\begin{pmatrix}
+    P_{11} & P_{12}\\
+    P_{21} & P_{22}\\
+    \hdotsfor{2}\\
+    P_{r1} & P_{r2}\\
+    Q_{11} & Q_{12}\\
+    Q_{21} & Q_{22}\\
+    \hdotsfor{2}\\
+    Q_{s1} & Q_{s2}
+\end{pmatrix}.
+\end{equation}
+We shall write: $D(P'')=D(P)\times D(P').$
+
+\end{definition}
+
+Now we can give the definition of the Kontsevich integral. 
+
+\begin{definition}\label{integralInvariantDefinition} \cite{Berger}
+The Kontsevich integral of the order $m$ for a piecewise-smooth braid $Z(t)=(Z_1(t),\dots,Z_n(t))$ 
+is the following element of the space of diagrams of the order~$m$:
+\begin{equation}\nonumber
+ K_m=\sum\limits_{P\in \mathbb{P}_{mn}}\int\limits_{\Delta_m}
+ \omega_{P_{11}P_{12}}(t_1)\wedge \ldots \wedge \omega_{P_{m1}P_{m2}}(t_m)D(P),
+\end{equation}
+where $\Delta_m=\Delta_m(T)=\{(t_1,\dots,t_m)\mid 0\le t_1\le\dots\le t_m \le T\},$
+$$\omega_{kl}(t)=\omega_{lk}(t)=\frac{1}{2\pi i}\frac{dZ_k(t)-dZ_l(t)}{Z_k(t)-Z_l(t)}.$$
+The numerical invariants of the order $m$ (we shall call them, as in~\cite{Berger}, 
+\textit{the invariants of the order $m$}) 
+are obtained from the integrals $K_m$ and linear functions on the space of diagrams 
+of the order $m$ with the help of exchange of diagrams on the corresponding weights
+(thus, any system of weights defines its own invariant). 
+\end{definition}
+
+\begin{example}
+ The invariants of the first order are the all possible linear combinations of 
+the variable
+\begin{center}
+$\lambda_{kl}(T)=\frac{1}{2\pi i}\int\limits_{0}^T\frac{dZ_k(t')-dZ_l(t')}{Z_k(t')-Z_l(t')}=
+\frac{1}{2\pi i} \left( \ln \frac{R_{kl}(T)}{R_{kl}(0)}+i(\Phi_{kl}(T)-\Phi_{kl}(0))\right),$
+\end{center}
+where $R_{kl}(t)=|Z_k(t)-Z_l(t)|$,
+$\Phi_{kl}(t)$ is a continuous on $t$ version of the argument of the complex number
+$Z_k(t)-Z_l(t)$. In other words,
+$\Phi_{kl}(T)-\Phi_{kl}(0)$ is an angle that the strand $Z_k$ wounds around the strand $Z_l$
+up to time~$T$.
+\end{example}
+
+\begin{example}\label{smoothIntegralExample}\cite{Berger}
+ An example of the invariant of the first order is the following invariant 
+for the smooth braid of three strands $(Z_1(t),Z_2(t),Z_3(t)), t \in [0, T]$:
+\begin{multline*}
+ \Psi_{123}=\frac12 \int_0^T(\lambda_{12}(s)d\lambda_{13}(s)-\lambda_{13}(s)d\lambda_{12}(s))+
+\frac12 \int\limits_0^T(\lambda_{13}(s)d\lambda_{23}(s)-\lambda_{23}(s)d\lambda_{13}(s))+\\+
+\frac12 \int\limits_0^T(\lambda_{23}(s)d\lambda_{12}(s)-\lambda_{12}(s)d\lambda_{23}(s)),
+\end{multline*}
+where $\lambda_{kl}(t)=\frac{1}{2\pi i}\int\limits_{0}^t\frac{dZ_k(t')-dZ_l(t')}{Z_k(t')-Z_l(t')}$.
+\end{example}
+
+\section{Vassiliev invariants for random braids}\label{nonSmoothVassiliev}
+
+In this section we obtain the expressions for the Vassiliev invariants for 
+braids formed by continuous semimartingales. First we will consider the invariants
+for non-smooth braids. 
+
+\begin{definition}
+  Let $Z$ be the braid formed by continuous curves $Z_k(t), t\in [0,T], k = 1,\ldots, n$. Let
+$\tau = \{0=t_0<t_1<\dots<t_p=T\}$ be some partition of the interval~$[0,T]$.
+Consider the polygonal lines $Z_k^{\tau}$ with vertices $Z_k(t_0), \ldots, Z_k(t_p)$
+inscribed into the curve $Z_k$. We shall refer to the braid formed by polygonal lines 
+$Z_k^{\tau}$ as to the braid inscribed into the braid $Z$ on the partition $\tau$ and denote 
+it by $Z^{\tau}$.
+\end{definition}
+\begin{remark}
+The polygonal lines $Z_k^{\tau}$ can intersect and thus to form no braid. 
+But it is clear that for smooth enough partitions $\tau$
+this situation will not occur, and we will not make such reservation further.  
+\end{remark}
+
+The following statement takes place. 
+\begin{theorem}\label{KontsevichWithPLsApproximationTheorem}
+Any Vassiliev invariant for the continuous braid $Z$ is the limit of the corresponding 
+invariants for the sequence of the inscribed braids $Z^{\tau_l}$, if the diameters of the partitions
+$\tau_l$ tend to $0$. 
+\end{theorem}
+\begin{proof}
+Let $Z(t)=(Z_1(t),\dots,Z_n(t)), t\in [0,T]$ be the braid.
+Let us show that for fine enough partitions of the time interval the braids 
+formed by the polygonal lines built over this partition are homotopous to the braid $Z$.
+
+The following well-known lemma is used in the proof. 
+ \begin{lem}(the Lebesgue number lemma, \cite[p.~179]{MunkresJames}).
+ For any covering of the compact metric space $X$ by the open sets
+ there exists $\varepsilon>0$ such that for any $x\in X$ 
+ the ball $B_{\varepsilon}(x)$ is contained in one of the sets of the covering.
+ \end{lem}
+
+Let $U_{\alpha}$ be the covering $\mathbb{C}^n \setminus \{\exists i \ne j : z_i = z_j\}$ 
+by the open balls. Then the sets 
+$Z^{-1}(U_{\alpha})$ form an open covering of $X=[0,T]$. For this covering we will choose
+$\varepsilon>0$ from lemma. Beginning from some fineses of the partition,
+for all $i$ we have
+$|t_{i+1}-t_i|<\varepsilon$, and any interval of the partition $[t_i,t_{i+1}]$ is mapped 
+into the fixed set $U_{\alpha}$. Then the change of the trajectory $Z(t)$ on any interval
+$[t_i,t_{i+1}]$ for the segment with the ends $Z(t_i), Z(t_{i+1})$ 
+changes the trajectory for the homotopous to it. 
+To say more precisely, the homotopy is realized by the family of the curves 
+$Z_{\mu}(t), \mu\in [0,1], t\in [0,T]$, where
+$$Z_{\mu}(t)=(1-\mu)Z(t)+\mu\frac{(t-t_i)Z(t_{i+1})+(t_{i+1}-t)Z(t_i)}{t_{i+1}-t_i}, t\in [t_i,t_{i+1}].$$
+When $\mu=0$ we have the initial curve, when $\mu=1$ we have the polygonal line 
+with the ends in points $Z(t_i).$
+\end{proof}
+
+\begin{remark}\label{PartialIntervalHomotopyRemark} It follows from the proof that not only
+all the braid and the corresponding polygonal line will be homotopous,
+but also all the braids that correspond to time intervals $[0,t_i]$. That is, the braids
+\begin{equation}\nonumber
+\left.Z(t)\right |_{t\in[0,t_i]}=(Z_1(t),\dots,Z_n(t)), t\in [0,t_i],
+\end{equation}
+will be homotopous to the corresponding polygonal lines. 
+This fact will be used in the future considerations. 
+\end{remark}
+
+ For any two nonintersecting trajectories $Z_1(t), Z_2(t),$ $t\in [0,T]$ the function
+$$\lambda_{12}(t)=\frac{1}{2\pi}\Phi_{12}(t)-\frac{i}{2\pi}\ln\frac{R_{12}(t)}{R_{12}(0)}$$
+is defined, 
+where
+$R_{12}(t)=|Z_1(t)-Z_2(t)|,$ а $\Phi_{12}(t)$ is the winding angle 
+of the trajectory $Z_2$ around $Z_1$ up to time $t$, 
+i.e. the winding angle of the trajectory $Z(t)=Z_2(t)-Z_1(t)$ around zero.
+
+We give the proof of the following fact as it was not found in the literature
+in this formulation. 
+\begin{statement}\label{IterativeRepresentationStatement}
+Any numerical invariant $L_m$ of the order $m$ for the piecewise-smooth braid $Z(t)$s 
+can be expressed as the sum of the form 
+$$\sum\limits_i \int\limits_{0}^T L^i_{m-1}(t)d\lambda_i(t),$$
+where $L^i_{m-1}$ are some invariants of the order $m-1$ for the same braid, 
+$\lambda_i=\lambda_{kl}$ for some $k\ne l$, 
+where the functions $\lambda_{kl}$ were introduces previously. 
+\end{statement}
+
+\begin{proof}
+An invariant $L_m$ is obtained from some Kontsevich integral $K_m$ of the order $m$
+by replacing diagrams for the corresponding weights. 
+ We have
+ \begin{multline*}
+K_m=\sum\limits_{P\in \mathbb{P}_{mn}}
+\int_{\Delta_m}\omega_{P_{11}P_{12}}(t_1)\dots\omega_{P_{m1}P_{m2}}(t_m)D(P)=\\=
+\sum\limits_{i \ne j}\sum\limits_{P\in \mathbb{P}_{m-1,n}}
+\int\limits_{0}^{T}\left\{\int\limits_{\Delta_{m-1}(t_m)}\omega_{P_{11}P_{12}}(t_1)\dots
+\omega_{P_{m-1,1}P_{m-1,2}}(t_{m-1})\right\} \omega_{ij}(t_m)\times \\ \times 
+(D(P)\times D(P^{ij})),
+ \end{multline*}
+where $P^{ij}=
+\begin{pmatrix}
+ i & j
+\end{pmatrix}
+.$
+
+For the fixed weights system, putting in correspondence to any diagram $D$ the number $w(D)$, 
+we get for the corresponding invariant $L_m=w(K_m)$:
+\begin{multline*}
+ L_m=
+ \sum\limits_{i \ne j}\sum\limits_{P\in \mathbb{P}_{m-1,n}}
+\int\limits_{0}^{T}\left\{\int\limits_{\Delta_{m-1}(t)}\omega_{P_{11}P_{12}}(t_1)\dots
+\omega_{P_{m-1,1}P_{m-1,2}}(t_{m-1})\right\} \omega_{ij}(t)  \times \\ \times
+w(D(P)\times D(P^{i j})).
+\end{multline*}
+
+ The system of weights $w'(D(P))=w(D(P)\times D(P'))$ on the diagrams $P\in \mathbb{P}_{m-1,n}$ 
+is correctly defined, as the one-term and four-term relations for it are implied
+by the same relations for the weights $w(D(P)\times D(P')).$ 
+Thus, for fixed $i, j$ every sum 
+\begin{center}
+$\sum\limits_{P\in \mathbb{P}_{m-1,n}}\int\limits_{\Delta_{m-1}(t_m)}\omega_{P_{11}P_{12}}(t_1)\dots
+\omega_{P_{m-1,1}P_{m-1,2}}(t_{m-1}) w(D(P)\times D(P^{ij}))$
+\end{center}
+is itself an invariant (of the order $m-1$). The proof is complete. 
+\end{proof}
+
+Let us consider the braid $Z$, formed by continuous curves
+$$Z_k(t), t\in [0,T], k = 1,\ldots, n,$$ 
+and the sequence of partitions
+$\tau=\tau_p = \{0=t_0<t_1<\dots<t_p=T\}$ of the interval~$[0,T]$ with $|\tau_p|\to 0, p \to \infty$. 
+Let $L(t)$ be some invariant of the order~$m$ for the braid $Z(s), 0\le s\le t$
+formed by the curves $Z_k(s), 0\le s\le t$, $\lambda=\lambda_{kl}$ for some~$k\ne l$.
+Let us consider the polygonal lines $Z_k^{\tau}$ inscribed into the curves $Z_k$ 
+with vertices $Z_k(t_0), \ldots, Z_k(t_p)$, and let $Z^{\tau}$ be the braid
+formed by these polygonal lines. Denote by $L_{\tau}(t)$ the value of the invariant in question
+on the braid 
+$Z^{\tau}(s), 0\le s\le t$, and let $\lambda_{\tau}(t)$ be the corresponding to $\lambda(t)$ 
+function for this polygonal line.
+In this situation the following takes place.
+\begin{theorem}\label{PathwiseTheorem} If for any $k$
+the sums $\sum\limits_{i=0}^{p-1}|Z_k(t_{i+1})-Z_k(t_i)|^2$ are bounded
+uniformly over partitions $\tau_p$, then the following convergence takes place: 
+\begin{equation}
+ \sum_{i=0}^{p-1}
+ \frac{L(t_i)+L(t_{i+1})}{2}(\lambda(t_{i+1})-\lambda(t_i))- 
+ \int\limits_0^T L_{\tau_p}(t)d\lambda_{\tau_p}(t) \to 0, p \to \infty.
+\end{equation}
+\end{theorem}
+
+\begin{remark}\label{differentiabilityRemark}
+ The functions $L_{\tau}, \lambda_{\tau}$ are piecewise smooth. 
+More precisely, they are differentiable everywhere except the points $t_i$, 
+where they have right-side and left-side derivatives. 
+This differentiability is implied by the explicit expression of the Vassiliev invariants
+in the form of the integrals, which holds for the piecewise-smooth curves,
+exactly as the braid  $Z_{\tau}$ is.
+\end{remark}
+
+\begin{remark}
+ The condition of the theorem holds for the braid whose strands
+ $Z_1, \ldots, Z_n$ are H{\"o}lder continuous with exponent $1/2$.
+\end{remark}
+
+ Let us prove the theorem~$\ref{PathwiseTheorem}$.
+\begin{proof}
+We first mention that due to homotopical invariance of $L(t),\lambda(t)$ 
+and the remark~\ref{PartialIntervalHomotopyRemark}, for all fine enough
+partitions $\tau=\tau_p$ from the sequence in question the equalities  
+$$L(t_i)=L_{\tau}(t_i), \lambda(t_i)=\lambda_{\tau}(t_i)$$
+are satisfied for any $i$. All the subsequent estimations will be conducted just
+for these small enough partitions. 
+Replace any $L_{\tau}$ for its piecewise-linear version $\tilde{L}$:
+for any $i$ $L_{\tau}(t_i)=\tilde{L}(t_i)$, $\tilde{L}(t)$ is linear on$[t_i,t_{i+1}]$.
+
+We estimate the difference: 
+\begin{eqnarray}\label{differenceLabel}
+ \left|\int_{0}^T (L_{\tau}(t)-\tilde{L}(t))d\lambda_{\tau}(t)\right|
+\le\sum_{i=0}^{p-1}\max_{t\in [t_i,t_{i+1}]}|L_{\tau}(t)-\tilde{L}(t)||\lambda(t_{i+1})-\lambda(t_i)|\le \nonumber \\
+\le \sum_{i=0}^{p-1}\max_{t \in [t_i, t_{i+1}]}|L_{\tau}''(t)|(t_{i+1}-t_i)^2 |\lambda(t_{i+1})-\lambda(t_i)|.
+\end{eqnarray}
+
+ Indeed, we have $L_{\tau}(t_i)=\tilde{L}(t_i), L_{\tau}(t_{i+1})=\tilde{L}(t_{i+1})$.
+According to Lagrange's theorem applied to the 
+function $L_{\tau}$ differentiable on the line segment $[t_i,t_{i+1}]$
+(see reference~\ref{differentiabilityRemark}), there exists
+$\tilde{t}\in [t_{i},t_{i+1}]$ such that
+$$L_{\tau}'(\tilde{t})=
+\frac{L_{\tau}(t_{i+1})-L_{\tau}(t_i)}{t_{i+1}-t_i}=\tilde{L}'(\tilde{t}),$$
+and thus for all $t\in[t_i,t_{i+1}]:$
+\begin{multline*}
+ |L_{\tau}'(t)-\tilde{L}'(t)|=|L_{\tau}'(t)-\tilde{L}'(\tilde{t})|=
+|L_{\tau}'(t)-L_{\tau}'(\tilde{t})|
+\le \\ \le
+\max_{[t_i, t_{i+1}]}|L_{\tau}''(t)| |t-\tilde{t}|\le 
+\max_{[t_i, t_{i+1}]}|L''(t)| |t_{i+1}-t_i|.
+\end{multline*}
+From here we get for $t\in[t_i,t_{i+1}]$:
+\begin{multline*}
+ |L_{\tau}(t)-\tilde{L}(t)| = 
+\left|\int\limits_{t_i}^{t}(L_{\tau}'(s)-\tilde{L}'(s))ds\right|
+\le \\ \le
+\max_{s \in [t_i,t_{i+1}]}|L_{\tau}'(s)-\tilde{L}'(s)||t_{i+1}-t_{i}|
+\le 
+\max_{s \in [t_i, t_{i+1}]}|L_{\tau}''(s)| (t_{i+1}-t_i)^2.
+\end{multline*}
+ Thus, the inequality (\ref{differenceLabel}) is established.
+
+ The following estimation on $L_{\tau}''(t), t\in [t_i, t_{i+1}]$ takes place:
+\begin{equation}\label{estimateLabel}
+|L_{\tau}''(t)|\le C\max_{k=1,\dots, n}\frac{\Delta X_k(t_i)^2+\Delta Y_k(t_i)^2}{{\Delta t_i}^2},
+\end{equation}
+where $X_k, Y_k$ are the coordinates of the $k$th strand of the braid $Z$, i.e.
+$Z_k(t) = X_k(t)+i Y_k(t)$, \\
+$\Delta X_k(t_i)=X_k(t_{i+1})-X_k(t_i)$,
+$\Delta Y_k(t_i)=Y_k(t_{i+1})-Y_k(t_i)$,
+$C>0$ is some constant that depends only on the initial braid (but not on the
+partition). 
+ Indeed, $L_{\tau}(t)$ is expressed in the form of the sum of the integrals of the form
+$\int\limits_0^T L_{\tau}^{m-1}(t)d\lambda_{\tau}(t)$, where $L_{\tau}^{m-1}(t)$ are some invariants
+of the order $m-1$ (for the polygonal line approximating our braid), $\lambda_{\tau}(t)=\lambda_{kl}^{\tau}(t)$
+for some $k\ne l, 1\le k,l \le n$ are the invariants of the first order (also for the polygonal braids).
+ We have for $t\in [t_i, t_{i+1}]$
+\begin{equation} \label{derivativeEstimation}
+ \left(\int\limits_{0}^{t} L_{\tau}^{m-1}(t)d\lambda_{\tau}(t)\right)''=
+(L_{\tau}^{m-1}(t)\lambda_{\tau}'(t))'=
+(L_{\tau}^{m-1}(t))'\lambda_{\tau}'(t) + L_{\tau}^{m-1}(t)\lambda_{\tau}''(t)).
+\end{equation}
+ Denote $X_{kl}(t)=X_l(t)-X_k(t), Y_{kl}(t)=Y_l(t)-Y_k(t)$. We have
+$$
+\lambda_{\tau}'(t)=(\lambda_{\tau}^{kl})'(t)=
+\frac{1}{2\pi}\left(\frac{X_{kl}Y_{kl}'-Y_{kl}X_{kl}'}{X_{kl}^2+Y_{kl}^2}-
+i\frac{X_{kl}X_{kl}'+Y_{kl}Y_{kl}'}{X_{kl}^2+Y_{kl}^2}\right).
+$$
+Taking into account that $X''_l=Y''_l=X''_k=Y''_k=0$, we get
+\begin{multline*}
+2\pi \lambda_{\tau}''(t)=
+\frac{X_{kl}Y_{kl}''-Y_{kl}X_{kl}''}{X_{kl}^2+Y_{kl}^2}-
+2\frac{(X_{kl}Y_{kl}'-Y_{kl}X_{kl}')(X_{kl}X_{kl}'+Y_{kl}Y_{kl}')}
+{(X_{kl}^2+Y_{kl}^2)^2}-\\
+-i\frac{X_{kl}X_{kl}''+Y_{kl}Y_{kl}''+2X_{kl}'Y_{kl}'}{X_{kl}^2+Y_{kl}^2}+
+2i\frac{(X_{kl}X_{kl}'+Y_{kl}Y_{kl}')(X_{kl}X_{kl}'+Y_{kl}Y_{kl}')}
+{(X_{kl}^2+Y_{kl}^2)^2}=\\
+=-2\frac{(X_{kl}Y_{kl}'-Y_{kl}X_{kl}')(X_{kl}X_{kl}'+Y_{kl}Y_{kl}')}
+{(X_{kl}^2+Y_{kl}^2)^2}-
+2i\frac{X_{kl}'Y_{kl}'}{X_{kl}^2+Y_{kl}^2}+2i\frac{(X_{kl}X_{kl}'+Y_{kl}Y_{kl}')^2}
+{(X_{kl}^2+Y_{kl}^2)^2},
+\end{multline*}
+and we get for some $C_1, C_2>0$ for all fine enough partitions
+when $t\in[t_i, t_{i+1}]$
+\begin{multline*}
+ |\lambda_{\tau}''(t)|\le C_1 (X_l'^2+Y_l'^2+X_k'^2+Y_k'^2)=\\=
+C_1 \frac{\Delta X_k(t_i)^2+\Delta Y_k(t_i)^2 + \Delta X_l(t_i)^2 + \Delta Y_l(t_i)^2}{\Delta t_i^2}
+\le \\ \le 
+C_2 \max_{k=1,\dots, n}\frac{\Delta X_k(t_i)^2+\Delta Y_k(t_i)^2}{\Delta t_i^2}.
+\end{multline*}
+ The estimation of $(L_{\tau}^{m-1}(t))'$ is made in the similar way.  
+From these estimates and from (\ref{derivativeEstimation}) we get (\ref{estimateLabel}).
+From it and from (\ref{differenceLabel}), taking into account the piecewise linearity 
+of $X,Y$, we get 
+\begin{multline*}
+\left|\int\limits_{0}^T (L_{\tau}(t)-\tilde{L}(t))d\lambda_{\tau}(t)\right| \le
+C\sum\limits_{i=0}^{p-1}\max_{[t_i,t_{i+1}]}|L_{\tau}''(t)|(t_{i+1}-t_i)^2|\lambda(t_{i+1})-\lambda(t_i)|
+\le \\ \le 
+C' \max_{i=0,\dots p-1} |\lambda(t_{i+1})-\lambda(t_i)|
+\sum\limits_{k=1}^{n} \sum_{i=0}^{p-1}(\Delta X_k(t_i)^2 +\Delta Y_k(t_i)^2)\xrightarrow[p\to\infty]{}0
+\end{multline*}
+due to the sum $\sum_{i=0}^{p-1}(\Delta X_k(t_i)^2 +\Delta Y_k(t_i)^2)$
+being uniformly bounded. 
+ Further, replace $\lambda_{\tau}(\cdot)$ by piecewise-smooth version $\tilde{\lambda}(\cdot)$. 
+We have
+$$\int\limits_0^T \tilde{L}(t) d\lambda_{\tau}(t)=
+\tilde{L}(T)\lambda_{\tau}(T)-\int\limits_0^T \lambda_{\tau}(t) d\tilde{L}(t).$$
+The difference
+$$\left|\int\limits_0^T \lambda_{\tau}(t) d\tilde{L}(t)-\int_0^T \tilde{\lambda}(t) d\tilde{L}(t)\right|$$
+is estimated similarly to the difference
+$$\left|\int\limits_{0}^T (L_{\tau}(t)-\tilde{L}(t))d\lambda_{\tau}(t)\right|.$$
+ Thus, we get:
+\begin{equation}\nonumber
+\int\limits_0^T \tilde{L}(t)d\tilde{\lambda}(t) - \int\limits_0^T L_{\tau}(t)d\lambda_{\tau}(t) \to 0, p \to \infty.
+\end{equation}
+But,
+\begin{equation}\nonumber
+ \int\limits_0^T \tilde{L}(t)d\tilde{\lambda}(t) = \sum\limits_{i=0}^{p-1}\frac{L(t_i)+L(t_{i+1})}2 (\lambda(t_{i+1})-\lambda(t_i)).
+\end{equation}
+This finishes the proof of the theorem~$\ref{PathwiseTheorem}$.
+\end{proof}
+
+Now we proceed to the braids formed by continuous semimartingales. First consider
+the invariants of the first order. 
+
+\begin{lem}\label{AngleIsSemimartingaleLem}
+Let $X_t, Y_t$ be such continuous semimartingales with respect to the common
+filtration $(\mathfrak{F}_t), t\in[0,T],$
+that with probability $1$ 
+$$\forall t\in [0,T] \quad Z(t)=X(t)+iY(t) \ne 0.$$
+Then the processes $\ln{R(t)}=\ln{|Z(t)|}$ and the winding angle $\Phi(t)$ of the process
+$Z$ around the origin are all semimartingales with respect to $(\mathfrak{F}_t), t\in[0,T].$
+\end{lem}
+\begin{proof}
+ Using Ito's formula, we get for the process 
+$$R_t^2=X_t^2+Y_t^2$$
+the equality
+$$R_t^2=R_0^2+2\int\limits_0^t X_sdX_s+2\int\limits_0^t Y_sdY_s + \left<X\right>_t+\left<Y\right>_t,$$
+and the process $R^2$ is a continuous semimrtingale with the characteristics
+$$\left<R^2\right>_t=4\int\limits_0^t X_s^2 d\left<X\right>_s+4\int\limits_0^t Y_s^2 d\left<Y\right>_s +
+8\int\limits_0^t X_s Y_s d\left<X,Y\right>_s.$$
+ For the process $\ln{R(t)}=\frac12\ln{R(t)^2}$ with the help of Ito's formula we now obtain
+\begin{multline*}
+ \ln{R(t)}=\ln{R(0)}+\int\limits_0^t \frac{1}{R_s^2}(X_s dX_s + Y_s dY_s)-\\-
+\int\limits_0^t \frac{X_s^2-Y_s^2}{2 R_s^4}(d\left<X\right>_s-d\left<Y\right>_s)-
+\int\limits_0^t \frac{4}{R_s^4}X_s Y_s d\left<X, Y\right>_s.
+\end{multline*}
+As Ito's integrals of continuous semimartingales with respect to continuous semimartingales
+are continuous semimartingales (\cite{Kunita}, p.~58), then 
+$\ln{R(t)}$ is a continuous semimartingale. 
+
+Now we show that $\Phi(t)$ is also a continuous semimartingale. 
+We consider a sequence of partitions
+$\tau_l: 0=t_0<\ldots<t_l=T$ of the segment $[0, T]$ with finenes $|\tau_l|$
+that converges to zero.
+For large enough $l\ge l_0=l_0(\omega)$ all the line segments of the trajectories $Z$ 
+on the intervals 
+$[t_i, t_{i+1}]$ will be contained in one of the sets $\{(x,y)\colon x>0\}$,
+$\{(x,y)\colon x<0\}$,
+$\{(x,y)\colon y>0\}$,
+$\{(x,y)\colon y<0\}$.
+Thus, for large enough $l\ge l_0=l_0(\omega)$ the increments $\Phi(t_{i+1})-\Phi(t_i)$
+will coincide with the increments of one of the functions $\arctg{\frac{Y_s}{X_s}}$, $\arcctg{\frac{X_s}{Y_s}}.$
+Thus, we conclude that for large enough $l \ge l_0(\omega)$
+$\Phi(t)-\Phi(0)$ for all $t \in [0, T]$
+coincides with one of the $2^l$ sums
+$$S_J=\sum\limits_{i=0}^{l-1}(f_{j_i}(X(t_{i+1}\wedge t), Y(t_{i+1} \wedge t))-
+f_{j_i}(X(t_i \wedge t), Y(t_i \wedge t))),$$
+where $f_1(x, y)=\arctg{\frac{y}{x}}$, $f_2(x, y)=\arcctg{\frac{x}{y}}$,
+and the set $J=(j_1, \ldots, j_l)$ runs over all $2^l$ possible values from $\{1, 2\}^l.$
+applying the Ito's formula, we get
+$$d\frac{Y_s}{X_s}=-\frac{Y_s}{X_s^2}dX_s+\frac{1}{X_s}dY_s+\frac{Y_s}{X_s^3}d\left<X\right>_s-
+\frac{1}{X_s^2}d\left<X,Y\right>_s,$$
+and therefore
+$$d\left<\frac{Y}{X}\right>_s=\frac{Y_s^2}{X_s^4}d\left<X\right>_s+\frac{1}{X_s^2}d\left<Y\right>_s-
+2\frac{Y_s}{X_s^3}d\left<X, Y\right>_s.$$
+From the Ito's formula and the expressions obtained we get
+\begin{multline*}
+ d\arctg{\frac{Y_s}{X_s}}=\frac{X_s^2}{X_s^2+Y_s^2}d\frac{Y_s}{X_s}-
+\frac{X_s^3 Y_s}{(X_s^2+Y_s^2)^2}d\left<\frac{Y}{X}\right>_s=\\=
+\frac{X_s dY_s-Y_s dX_s}{X_s^2+Y_s^2}+\frac{X_sY_s}{(X_s^2+Y_s^2)^2}(d\left<X\right>_s-d\left<Y\right>_s)-
+\frac{X_s^2-Y_s^2}{(X_s^2+Y_s^2)^2}d\left<X,Y\right>_s.
+\end{multline*}
+The analagous computations allow to obtain the formula
+\begin{multline*}
+ d\arcctg{\frac{X_s}{Y_s}}=\\=
+\frac{X_s dY_s-Y_s dX_s}{X_s^2+Y_s^2}+\frac{X_sY_s}{(X_s^2+Y_s^2)^2}(d\left<X\right>_s-d\left<Y\right>_s)-
+\frac{X_s^2-Y_s^2}{(X_s^2+Y_s^2)^2}d\left<X,Y\right>_s.
+\end{multline*}
+Thus, for all $l_0 \ge l_0(\omega)$ we have
+\begin{multline*}
+ \Phi(t)-\Phi(0)=\\=\int\limits_0^t \frac{X_s dY_s-Y_s dX_s}{X_s^2+Y_s^2}+
+\int\limits_0^t \frac{X_sY_s}{(X_s^2+Y_s^2)^2}(d\left<X\right>_s-d\left<Y\right>_s)-
+\int\limits_0^t \frac{X_s^2-Y_s^2}{(X_s^2+Y_s^2)^2}d\left<X,Y\right>_s.
+\end{multline*}
+So, $\Phi(t)$ is also a continuous semimartingale. 
+\end{proof}
+
+\begin{theorem}\label{VassilievInvariantsMainTheorem}
+ For continuous semimartingales $Z_k(t), t\in [0,T], k = 1,\dots, n$ 
+with respect to the common filtration $(\mathfrak{F}_t), t\in[0,T],$
+such that with probability $1$ 
+$$\forall t\in [0,T] \quad \forall k\ne l \quad Z_k(t)\ne Z_l(t),$$
+the Kontsevich integrals are computed as the corresponding multiple Stratonovich integrals. 
+\end{theorem}
+\begin{proof}
+The theorem $\ref{VassilievInvariantsMainTheorem}$ 
+is obviously implied by the theorem~$\ref{PathwiseTheorem}$, 
+and the statement~\ref{IterativeRepresentationStatement}, by taking into account the fact that
+for finite number of continuous semimartingales $U_k(t)$
+with respect to the common filtration $\mathfrak{F}_t$ there exists a deterministic
+sequence of partitions 
+\begin{equation}\nonumber
+ \tau_p: 0 = t_0^{(p)}<t_1^{(p)}\ldots<t_{j_p-1}^{(p)}<t_{j_p}^{(p)}=T
+\end{equation}
+with the finenes tending to zero
+(i.e. $\max\limits_{0\le j\le j_p-1}(t_{j+1}^{(p)}-t_j^{(p)})\xrightarrow[p\to\infty]{} 0$), 
+such that all the sequences of the sums
+\begin{center}
+ $\sum\limits_{j=0}^{j_p - 1}|U_k(t_{j+1}^{(p)})-U_k(t_j^{(p)})|^2, k=1,\ldots,n,$
+\end{center}
+ are bounded with the probability~1. Indeed, choosing an arbitrary 
+sequence of partitions
+\begin{equation}\nonumber
+\Lambda_q: 0 = s_0^{(q)}<s_1^{(q)}\ldots<s_{l_q-1}^{(q)}<s_{l_q}^{(q)}=T
+\end{equation}
+ with the finenes converging to zero, we get that the corrresponding sums
+\begin{center}
+$\sum\limits_{j=0}^{l_q - 1}|U_k(s_{j+1}^{(q)})-U_k(s_j^{(q)})|^2$
+\end{center}
+converge in probability when $q\to\infty$~\cite[p.~51]{Kunita}, 
+and as there is a finite number of these sums,
+then we can choose a subsequence of the sequence $\Lambda_q$, 
+for which the corresponing sums will converge with the probability~1.
+\end{proof}
+
+\begin{example}
+ The invariant from the example~\ref{smoothIntegralExample} is now written in the form
+\begin{multline}\label{stratonovichSpecificInvariantFormula}
+ \Psi_{123}=\frac12 \int_0^T(\lambda_{12}(s) \circ d\lambda_{13}(s)-\lambda_{13}(s) \circ d\lambda_{12}(s))+\\+
+\frac12 \int\limits_0^T(\lambda_{13}(s)\circ d\lambda_{23}(s)-\lambda_{23}(s)\circ \lambda_{13}(s))+
+\frac12 \int\limits_0^T(\lambda_{23}(s)\circ d\lambda_{12}(s)-\lambda_{12}(s)\circ d\lambda_{23}(s)).
+\end{multline}
+Note that in this case instead of Stratonovich integrals 
+we can write Ito integrals, i.e. 
+\begin{multline}\label{simleItoEquivalentRepresentation}
+ \Psi_{123}=\frac12 \int_0^T(\lambda_{12}(s) d\lambda_{13}(s)-\lambda_{13}(s) d\lambda_{12}(s))+\\+
+\frac12 \int\limits_0^T(\lambda_{13}(s) d\lambda_{23}(s)-\lambda_{23}(s) \lambda_{13}(s))+
+\frac12 \int\limits_0^T(\lambda_{23}(s) d\lambda_{12}(s)-\lambda_{12}(s) d\lambda_{23}(s)).
+\end{multline}
+\end{example}
+
+\section{Some facts about weak convergence of stochastic integrals}\label{weakConvergence}
+In order to study the asymptotical behaviour of Vassiliev invariants
+for braids formed by independent Wiener processes
+we need some lemmas about weak convergence of stochastic integrals. 
+
+\begin{lem}\label{WeakConvergenceThirdLem} 
+ Let the set of random variables $\xi(T), T>0$ be such that there are random variables
+ $\eta_n(T), \gamma_n(T)\ge 0, \gamma_n\ge 0, \eta_n$
+ such that
+\begin{itemize}
+ \item $\forall T\, |\xi(T)-\eta_n(T)| \le \gamma_n(T)$;
+ \item $\forall n \,\eta_n(T)\xrightarrow[T\to\infty]{d}\eta_n$;
+ \item $\forall \varepsilon>0 \enskip \exists n_0 \enskip
+\forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+P(\gamma_n(T)>\varepsilon)<\varepsilon.$
+\end{itemize}
+Then $\xi(T)$ has a limit in distribution when $T\to\infty$:
+$$\xi(T)\xrightarrow[n \to \infty]{d}\xi_0.$$
+Moreover, we have $\eta_n(T)\xrightarrow[T\to\infty]{d}\xi_0.$
+\end{lem}
+\begin{proof}
+ Fix $\varepsilon>0$. Choose $n_0$ and $T_0(n)$
+ in such a way that when $n \ge n_0, T \ge T_0(n)$:
+ $$P(\gamma_n(T)>\varepsilon)<\varepsilon.$$
+ Then for $n \ge n_0, T \ge T_0(n)$:
+ $$\mathbb{E}\frac{\gamma_n(T)}{1+\gamma_n(T)} \le 2\varepsilon.$$
+ 
+ Let $\mu_{\xi}$ be the distribution of $\xi$,
+ and let $\rho$ be the Wasserstein distance of the order zero, 
+ i.e. for random variables $\xi, \eta$
+ $$\rho(\mu_{\xi}, \mu_{\eta})=\inf\limits_{\xi'\stackrel{d}{=}\xi, \eta'\stackrel{d}{=}\eta}
+  \mathbb{E}\frac{|\xi'-\eta'|}{1+|\xi'-\eta'|}.$$
+ For any $n \ge n_0$ choose $T_1(n)>T_0(n)$ in such a way that for $T \ge T_1(n)$ 
+ the following condition holds:
+  $$\rho(\mu_{\eta_n(T)}, \mu_{\eta_n})\le \varepsilon.$$
+ As $T_1(n)>T_0(n)$, for $n \ge n_0, T \ge T_1(n)$ we have
+ $$\mathbb{E}\frac{\gamma_n(T)}{1+\gamma_n(T)}\le 2\varepsilon.$$
+
+ Then for $n \ge n_0$, $T\ge T_1(n)$, with the help of the inequality $|\xi(T)-\eta_n(T)|\le \gamma_n(T)$:
+$$\rho(\mu_{\xi(T)},\mu_{\eta_n(T)})\le \mathbb{E}\frac{|\xi(T)-\eta_n(T)|}{1+|\xi(T)-\eta_n(T)|}\le
+\mathbb{E}\frac{|\gamma_n(T)|}{1+|\gamma_n(T)|}\le 2\varepsilon.$$
+Further, for $n \ge n_0$, $T\ge T_1(n)$:
+$$\rho(\mu_{\xi(T)},\mu_{\eta_n})\le\rho(\mu_{\xi(T)}, \mu_{\eta_n(T)})+\rho(\mu_{\eta_n(T)},\mu_{\eta_n})
+\le 2\varepsilon+\varepsilon = 3\varepsilon.$$
+Thus, for any $t_1, t_2\ge T_1(n_0)$ we have
+$$\rho(\mu_{\xi(t_1)}, \mu_{\xi(t_2)})\le \rho(\mu_{\xi(t_1)}, \mu_{\eta_N})+
+\rho(\mu_{\xi(t_2)}, \mu_{\eta_{n_0}})\le 6 \varepsilon.$$
+Therefore, due to the choice of $\varepsilon$ being arbitrary, the sequence
+$\{\mu_{\xi(T)}\}$ is fundamental in the metrics $\rho$ and has the weak limit:
+$$\xi(T)\xrightarrow[T\to\infty]{d} \xi_0.$$
+It remains to show that $\eta_n\xrightarrow[n\to\infty]{d}\xi_0.$
+Choose $T_2$ in such a way that for $T\ge T_2$:
+$$\rho(\mu_{\xi(T)}, \mu_{\xi_0})\le \varepsilon.$$
+Then for $n\ge N, T\ge \max\{T_1(n), T_2\}$ we have:
+$$\rho(\mu_{\xi_0}, \mu_{\eta_n})
+\le 
+\rho(\mu_{\xi_0}, \mu_{\xi(T)})+
+\rho(\mu_{\xi(T)}, \mu_{\eta_n})
+\le
+\varepsilon+3\varepsilon=4\varepsilon.$$
+Thus, we get the convergence $\rho(\mu_{\eta_n}, \mu_{\xi_0}) \xrightarrow[n\to\infty]{}0,$
+and the proof is finished. 
+\end{proof}
+
+Denote by $\mathbb{D}[0,1]$ the Skorokhod space of right-continuous with left-hand limits at every point
+functions. 
+\begin{lem}\label{infiniteTreeLem}
+ Let $\varepsilon>0$, $f\in \mathbb{D}[0,1]$. Suppose that all jumps of $f$
+ are in absolute value smaller than $\varepsilon.$
+ Then
+ $$\exists n_0 \forall n\ge n_0 \forall k, 0\le k \le 2^n-1 \colon 
+ \sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]} |f(s)-f(t)|<\varepsilon.$$ 
+\end{lem}
+\begin{proof}
+ Suppose the converse. Then for any $n$ there exist segments of the partition
+ with $\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]} |f(s)-f(t)| \ge \varepsilon.$
+ Thus, we can choose points $s_n, t_n$ with $|s_n-t_n| \le \frac{1}{2^n}$
+ and $|f(s_n)-f(t_n)| \ge \varepsilon(1-\frac{1}{2^n})$.
+ There exists a subsequence $n_k$ and a point $t_0 \in [0,1]$ with 
+ $s_{n_k}\to t_0, t_{n_k}\to t_0$. Thus, for any $\varepsilon' < \varepsilon$
+ in any neighbourhood of $t_0$
+ we can find points $s, t$ with $|f(s)-f(t)| \ge \varepsilon'.$ 
+ This contradicts the fact that the jump in $t_0$ is less than $\varepsilon$. 
+\end{proof}
+
+\begin{lem}\label{boundedJumpsNumberLem}
+ Let $f\in \mathbb{D}[0,1]$, $\varepsilon>0$ be specified. 
+ Then there exists $K>0$ such that for all large enough $n$ ($n \ge n_0$) 
+ we have $$\sum\limits_{k=0}^{2^n-1}\mathbbm{1}_{\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}
+|f(s)-f(t)|>\varepsilon} \le K,$$
+and for $n \ge n_0$ all the segments $[\frac{k}{2^n}, \frac{k+1}{2^n}]$, for which
+$\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|f(s)-f(t)|>\varepsilon$,
+are among the segments containing the discontinuities of the value not less then $\varepsilon.$
+\end{lem}
+\begin{proof}
+ Remove from $f$ all the jumps of the magnitude not less then $\varepsilon.$ 
+Then the lemma is reduced to the lemma~\ref{infiniteTreeLem}.
+\end{proof}
+
+\begin{lem}\label{simultaneousJumpsLem}
+ Let $f, g \in \mathbb{D}[0,1]$ be without simultaneous jumps. Then
+ $$\forall \varepsilon>0 \enskip \exists n_0 \enskip \forall n\ge n_0
+ \sum\limits_{k=0}^{2^n-1}
+ \mathbbm{1}_{\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|f(s)-f(t)|>\varepsilon}
+ \mathbbm{1}_{\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|g(s)-g(t)|>\varepsilon}
+ =0.
+ $$
+ \end{lem}
+ \begin{proof}
+  By lemma~\ref{boundedJumpsNumberLem}, for all large enough $n$ ($n \ge n_0$)
+the inequalities
+  $$\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|f(s)-f(t)|>\varepsilon,$$
+  $$\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|g(s)-g(t)|>\varepsilon$$
+can be satisfied only for the $[\frac{k}{2^n}, \frac{k+1}{2^n}]$,
+that contain the jump points of $f, g$ respectively of the magnitudes not less than $\varepsilon.$
+As there is only finite number of jumps of $f$, $g$ of the magnitude not less than $\varepsilon$,
+and they are all in different points, then for large enough $n$ they will be 
+divided by segments of partition, and for large enough $n$
+no two such jumps will be on the same segment of the form 
+$[\frac{k}{2^n}, \frac{k+1}{2^n}]$.
+\end{proof}
+
+ 
+ \begin{lem}\label{sumOverJumpsLem}
+  Let  $f, g \in \mathbb{D}[0,1]$ have no simultaneous jumps, $\varepsilon>0$
+ be fixed. Then
+ $$\sum\limits_{k=0}^{2^n-1}
+ \mathbbm{1}_{\sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}|f(s)-f(t)|>\varepsilon}
+ \left|g\left(\frac{k+1}{2^n}\right)-g\left(\frac{k}{2^n}\right)\right|\xrightarrow[n\to\infty]{}0.
+ =0.
+ $$
+ \end{lem}
+ \begin{proof}
+  By lemma~\ref{boundedJumpsNumberLem}, for some $K > 0$ for all large enough $n$
+ there are no more than $K$ summands in the sum we are interested in. 
+ From the other side, by lemma~\ref{simultaneousJumpsLem}, for all large enough $n$
+ on all the segments $[\frac{k}{2^n}, \frac{k+1}{2^n}]$ that contribute to the sum
+ the next inequality takes place:
+ $\left|g\left(\frac{k+1}{2^n}\right)-g\left(\frac{k}{2^n}\right)\right| \le \varepsilon.$
+ Thus, our sum for large enough $n$ does not surmount $K\varepsilon.$
+ But this is not enough to prove lemma. 
+ 
+ So, we need a more sophisticated argument. Choose any $\delta, 0 < \delta < \varepsilon.$
+ For large enough $n$ all the nonzero summands do not surmount $\delta$
+ by lemma~\ref{simultaneousJumpsLem}, and the number of nonzero terms 
+ is not more than $K$ (the constant 
+ $K$ is the same as in the beginning of the proof).
+ Thus, for large enough $n$ our sum does not surmount $K\delta.$
+ As $\delta$ is arbitrary, and $K$ is fixed, the lemma is proved.  
+ \end{proof}
+  
+ \begin{lem}
+ Let $f, g \in \mathbb{D}[0,1]$ be nondecreasing functions without 
+ simultaneous jumps, $h\in C[0,\infty)$ be a continuous function. Then
+ $$S_n=\sum\limits_{k=0}^{2^n-1}
+ \sup\limits_{s,t \in [f(\frac{k}{2^n}), f(\frac{k+1}{2^n})]}(h(s)-h(t))^2
+ \left|g\left(\frac{k+1}{2^n}\right)-g\left(\frac{k}{2^n}\right)\right|\xrightarrow[n\to\infty]{}0. 
+ $$
+ \end{lem}
+ \begin{proof}
+ Fix $\varepsilon>0$. Choose $\delta>0$ in such a way that for any $s,t \in [f(0), f(1)]$,
+ for which $|s-t| \le \delta$, the following inequality takes place: $|h(s)-h(t)| \le \varepsilon$.
+ This choice is possible due to $h$ being continuous. 
+ Divide the sum $S_n$ into two parts:
+ $$S_n=G_n+H_n.$$
+ To $G_n$ we attribute those summands in which 
+ $f(\frac{k+1}{2^n})-f(\frac{k}{2^n}) > \delta.$
+ To $H_n$ we attribute those summands where 
+ $f(\frac{k+1}{2^n})-f(\frac{k}{2^n}) \le \delta.$
+ By lemma~\ref{sumOverJumpsLem}, considering the boundedness of $h$
+ on segment $[f(0), f(1)]$, we get $G_n \to 0 (n \to \infty).$
+ From the other side, it is clear that for $H_n$ the following estimation takes place: 
+ $H_n \le \varepsilon^2(g(1)-g(0)).$
+ Thus,
+ $$\varlimsup\limits_{n\to \infty}S_n \le \varepsilon^2(g(1)-g(0)).$$
+ Due to $\varepsilon$ being arbitrary, we get
+ $\varlimsup\limits_{n\to \infty}S_n = 0$, which finishes the proof of lemma. 
+ \end{proof}
+ 
+  \begin{definition}
+  We say that the family of random variables $\gamma_{n,T}$
+ is stochastically small at infinity, if 
+  $$\forall \varepsilon>0 \enskip \exists n_0 \enskip
+    \forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+    P(\gamma_{n, T}>\varepsilon)<\varepsilon.$$
+ \end{definition}
+ 
+   \begin{definition}
+ We say that the family of random variables $\gamma_{n,T}$
+ is stochastically bounded at infinity, if
+  $$\forall \varepsilon>0 \enskip \exists C>0 \enskip \exists n_0 \enskip
+    \forall n \ge n_0 \enskip \exists T_0(n)\enskip \forall T \ge T_0(n) \colon
+    P(\gamma_{n, T}>C)<\varepsilon.$$
+ \end{definition}
+ 
+  \begin{lem}\label{simpleLemAboutStochasticSmallness}
+  Let $\xi_{n,T}$ be stochastically small at infinity,
+  $\eta_{n,T}$ be stochastically bounded at infinity.
+  Then $\zeta_{n,T}=\eta_{n,T}\xi_{n,T}$ is stochastically small at infinity. 
+ \end{lem}
+ \begin{proof}
+   Fix $\varepsilon>0$. Choose $C, n_1, n_2$ in such a way that
+   $$\forall n \ge n_1 \enskip \exists T_1(n)\enskip \forall T \ge T_1(n) \colon
+    P(\xi_{n, T}>\varepsilon)<\varepsilon.$$
+  
+  $$\forall n \ge n_2 \enskip \exists T_2(n)\enskip \forall T \ge T_2(n) \colon
+    P(\eta_{n, T}>C)<\varepsilon.$$
+    Then for all $n \ge n_0=\max\{n_1, n_2\}, T \ge T_0(n)=\max\{T_1(n), T_2(n)\}$ we have
+  $$P(\zeta_{n, T}>C\varepsilon)<2\varepsilon.$$ 
+ \end{proof}
+ 
+  \begin{lem}\label{anyALemma}
+  If $\varlimsup\limits_{T\to \infty}\xi_T \le \xi \mbox{ п.н.}$, then for any $A$
+ $$\varlimsup\limits_{T \to \infty}P(\xi_T \ge A) \le P(\xi \ge A).$$
+ \end{lem}
+ \begin{proof}
+  If $\varlimsup\limits_{T\to \infty}a_T \le a$, then
+ $$\varlimsup\limits_{T\to\infty}\mathbbm{1}_{a_T \ge A} \le \mathbbm{1}_{a \ge A}.$$
+ Thus, 
+ $$\varlimsup\limits_{T\to\infty}\mathbbm{1}_{\xi_T \ge A} \le \mathbbm{1}_{\xi \ge A}.$$
+ By Fatou's lemma,
+ $$P(\xi \ge A)=\mathbb{E}\mathbbm{1}_{\xi \ge A} \ge \mathbb{E}\varlimsup\limits_{T\to \infty}\mathbbm{1}_{\xi_T \ge A} \ge
+ \varlimsup\limits_{T\to \infty}\mathbb{E}\mathbbm{1}_{\xi_T \ge A} =
+ \varlimsup\limits_{T \to \infty}P(\xi_T \ge A).$$
+ \end{proof}
+ 
+ In what follows we denote by $\xrightarrow[агдд]{fd}$ 
+ convergence of random processes in a sense of finite-dimentional distributions. 
+ \begin{lem}\label{sumOverJumpsStochasticLem}
+  Let $(\xi^{(T)}, \eta^{(T)})\xrightarrow[t\to\infty]{fd} (\xi, \eta),$
+  where $\xi, \eta$ take values in the space $\mathbb{D}[0,1]$
+  and with probability $1$ have no common jumps.  
+  Let $\varepsilon_0>0$ be fixed,
+  $$\gamma_{n,T}=\sum\limits_{k=0}^{2^n-1}
+  \mathbbm{1}_{\sup\limits_{s, t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}
+  |\xi^{(T)}(t)-\xi^{(T)}(s)|>\varepsilon_0}
+  \left|\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right|.$$
+  Then $\gamma_{n,T}$ is stochastically small at infinity. 
+ \end{lem}
+ \begin{proof}
+  Fix $\varepsilon>0.$
+  Let 
+  $$\gamma_n=\sum\limits_{k=0}^{2^n-1}
+  \mathbbm{1}_{|\xi(\frac{k+1}{2^n})-\xi(\frac{k}{2^n})| \ge \varepsilon_0/2}
+  \left|\eta\left(\frac{k+1}{2^n}\right)-\eta\left(\frac{k}{2^n}\right)\right|.$$
+  Then $\gamma_n\to 0$ a.s. by lemma~\ref{sumOverJumpsLem}.
+  Choose $n_0$ in such a way that for any $n \ge n_0$ $P(\gamma_n \ge \varepsilon)<\varepsilon.$
+  Then for $n \ge n_0$ we argue in such a way:
+  for $(\xi^{(T)}(\frac{k}{2^n}), \eta^{(T)}(\frac{k}{2^n}), 0 \le k \le 2^n-1)$
+  and $(\xi(\frac{k}{2^n}), \eta(\frac{k}{2^n}), 0 \le k \le 2^n-1)$
+  there exists Skorohod's representation that realizes the almost sure convergence:
+  $$\left(\xi^{(T)}\left(\frac{k}{2^n}\right), \eta^{(T)}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right) \stackrel{d}{=}
+  \left(\tilde{\xi}^{(T)}\left(\frac{k}{2^n}\right), \tilde{\eta}^{(T)}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right),$$
+  $$\left(\xi\left(\frac{k}{2^n}\right), \eta\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right) \stackrel{d}{=}
+  \left(\tilde{\xi}\left(\frac{k}{2^n}\right), \tilde{\eta}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right),$$
+  and for fixed $n$
+  $$\left(\tilde{\xi}^{(T)}\left(\frac{k}{2^n}\right), \tilde{\eta}^{(T)}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right) 
+  \xrightarrow[T\to\infty]{}
+  \left(\tilde{\xi}\left(\frac{k}{2^n}\right), \tilde{\eta}\left(\frac{k}{2^n}\right), 
+  0 \le k \le 2^n-1\right) \mbox{п.н.}$$
+  Thus, for fixed $n \ge n_0$
+  $$\varlimsup\limits_{T \to \infty}\tilde{\gamma}_{n, T} \le \tilde{\gamma}_n,$$
+  and by lemma~\ref{anyALemma}
+  $$\varlimsup\limits_{T \to \infty}P(\gamma_{n, T} \ge \varepsilon)\le P(\gamma_n \ge \varepsilon).$$
+  Thus, for given fixed $n \ge n_0$ we have for large enough $T$:
+  $$P(\gamma_{n,T}>2\varepsilon) \le P(\gamma_n \ge \varepsilon)<\varepsilon.$$
+  This proves the lemma. 
+ \end{proof}
+ 
+ 
+ \begin{lem}\label{mostSubtleGammaNTLem}
+  Let $\xi^{(T)}, \eta^{(T)}$ be nondecreasing nonnegative processes,
+  $(\xi^{(T)}, \eta^{(T)})\xrightarrow[T\to\infty]{fd} (\xi, \eta),$
+  where $\xi, \eta$ take values in the space $\mathbb{D}[0,1]$
+  and have no simultaneous jumps with probability $1$. 
+  Let also $\beta_{n, T}$ be Wiener processes. Let
+  $$\gamma_{n,T}=\sum\limits_{k=0}^{2^n-1}
+  \sup\limits_{s,t \in [\xi^{(T)}(\frac{k}{2^n}), \xi^{(T)}(\frac{k+1}{2^n})]}
+  \left|\beta_{n,T}(t)-\beta_{n,T}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+  Then $\gamma_{n,T}$ is stochastically small at infinity.  
+ \end{lem}
+ \begin{proof}
+ Fix $\varepsilon>0$. 
+ Choose $C>0$ in such a way that
+ $$P\left(\xi^{(T)}(1)>C\right)<\varepsilon, T>T_0.$$
+ Choose $\delta>0$ in such a way that for Wiener process $\beta$
+ $$P\left(\sup\limits_{s, t \in [0, C], |s-t| \le \delta}|\beta(t)-\beta(s)|>\varepsilon\right) <\varepsilon.$$ 
+ Denote
+ $$G_{n, T} = \sum\limits_{k=0}^{2^n-1} \mathbbm{1}_{\xi^{(T)}(\frac{k+1}{2^n})-\xi^{(T)}(\frac{k}{2^n})>\delta}
+  \sup\limits_{s,t \in [\xi^{(T)}(\frac{k}{2^n}), \xi^{(T)}(\frac{k+1}{2^n})]}  
+  \left|\beta_{n,T}(t)-\beta_{n,T}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right),$$
+ 
+ $$H_{n, T} = \sum\limits_{k=0}^{2^n-1}
+  \mathbbm{1}_{\xi^{(T)}(\frac{k+1}{2^n})-\xi^{(T)}(\frac{k}{2^n}) \le \delta}
+  \sup\limits_{s,t \in [\xi^{(T)}(\frac{k}{2^n}), \xi^{(T)}(\frac{k+1}{2^n})]}  
+  \left|\beta_{n,T}(t)-\beta_{n,T}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+  
+  Notice that 
+  $$ G_{n,T} \le 
+   4 \sup\limits_{t \in [0, \xi^{(T)}(1)]}
+  \left|\beta_{n,T}(t)\right|^2
+  \sum\limits_{k=0}^{2^n-1} \mathbbm{1}_{\xi^{(T)}(\frac{k+1}{2^n})-\xi^{(T)}(\frac{k}{2^n})>\delta}
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).
+ $$  
+ Then $G_{n, T}$ is stochastically small at infinity
+ by lemmas~\ref{simpleLemAboutStochasticSmallness},
+ ~\ref{sumOverJumpsStochasticLem} and due to
+ $\sup\limits_{t \in [0, \xi^{(T)}(1)]}\left|\beta_{n,T}(t)\right|^2$
+ being stochastically bounded. 
+ For $H_{n, T}$ we have forи $T>T_0$: 
+ \begin{multline*}
+   P\left(H_{n, T} > \varepsilon^2 \left(\eta^{(T)}(1)-\eta^{(T)}(0)\right)\right)\le 
+  P\left(\xi^{(T)}(1)>C\right)+\\+
+  P\left(\sup\limits_{s, t \in [0, C], |s-t| \le \delta}|\beta_{n,T}(t)-\beta_{n,T}(s)|>\varepsilon\right) <
+  2\varepsilon.
+ \end{multline*}
+  Thus, $\gamma_{n,T}=G_{n,T}+H_{n,T}$ is stochastically small at infinity
+  due to $\varepsilon$ being arbitrary.  
+ \end{proof}
+ 
+  \begin{lem}\label{mostSubtleCharacteristicsGammaNTLem}
+  Let $\eta^{(T)}$ be nondecreasing nonnegative processes, 
+  $(\xi^{(T)}, \eta^{(T)})\xrightarrow[t\to\infty]{fd} (\xi, \eta),$
+  where $\xi, \eta$ take values in $\mathbb{D}[0,1]$
+  and with probability $1$ do not have simultaneous jumps,  
+  $$\gamma_{n,T}=\sum\limits_{k=0}^{2^n-1}
+  \sup\limits_{s,t \in [\frac{k}{2^n}), \frac{k+1}{2^n}]}
+  \left|\xi^{(T)}(t)-\xi^{(T)}(s)\right|
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+    Then $\gamma_{n,T}$ is stochastically small at infinity.  
+ \end{lem}
+ \begin{proof}  
+ Fix $\varepsilon>0$. Denote
+ $$G_{n, T} = \sum\limits_{k=0}^{2^n-1} \mathbbm{1}_{\exists s, t \in [\frac{k}{2^n}), \frac{k+1}{2^n}] \colon
+ |\xi(t)-\xi(s)| \ge \varepsilon}
+  \sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}  
+   \left|\xi^{(T)}(t)-\xi^{T}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right),$$
+ 
+ $$H_{n, T} = \sum\limits_{k=0}^{2^n-1}
+  \mathbbm{1}_{\forall s, t \in [\frac{k}{2^n}), \frac{k+1}{2^n}] \colon |\xi(t)-\xi(s)| \le \varepsilon}
+  \sup\limits_{s,t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}  
+  \left|\xi^{(T)}(t)-\xi^{(T)}(s)\right|^2
+  \left(\eta^{(T)}\left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+  
+  Then $G_{n, T}$ is stochastically small at infinity
+  by lemmas~\ref{simpleLemAboutStochasticSmallness},
+  ~\ref{sumOverJumpsStochasticLem} 
+  and $\sup\limits_{s\in [0,1]}|\xi^{(T)}(s)|$
+  being stochasticall bounded. 
+  
+  For $H_{n, T}$ we have for $T>T_0$
+  $$
+   H_{n, T} \le \varepsilon^2 \left(\eta^{(T)}(1)-\eta^{(T)}(0)\right).
+  $$
+  Thus, $\gamma_{n,T}=G_{n,T}+H_{n,T}$ is stochastically amall at infinity
+  due to $\varepsilon$ being arbitrary.  
+ \end{proof}
+ 
+ \begin{lem}\label{integralDominatedConvergenceLem}
+Let $\xi$ be a random process with values in $\mathbb{D}[0,1]$
+without fixed jumps, 
+$\eta$ be a semimartingale with trajectories in $\mathbb{D}[0,1]$. 
+Then the sum
+$$\sum\limits_{k=0}^{n-1}\xi\left(\frac{k}{n}\right)\left(\eta\left(\frac{k+1}{n}\right)-
+\eta\left(\frac{k}{n}\right)\right)$$
+converges in probability to $\int\limits_0^1 \xi(s-)d\eta(s).$
+\end{lem}
+\begin{proof}
+ First note that the integral $\int\limits_0^1 \xi(s-)d\eta(s)$ exists
+because $\xi(s-)$ is left-continuous and bounded on $[0,1]$, hence locally bounded, 
+and the integral is defined for any locally bounded predictable integral 
+(see ~\cite{Kallenberg}, theorem 26.4). 
+ This holds by dominated convergence
+ theorem for stochastic integrals (see~\cite{Meyer}, chapter~8).
+We will explain this now in more details. By~\cite{Kallenberg}, theorem 26.4, 
+the following relation holds: 
+if $X$ is a semimartingale,
+$V_n\to 0$ and $|V_n|\le V$, where all the processes $V_n, V$ are predictable and locally bounded,
+then 
+$$\sup\limits_{t \in [0,1]}\int\limits_0^t V_n(s)dX(s)\xrightarrow[n\to\infty]{P}0.$$
+Set
+$$X(s)=\eta(s),s \ge 0,$$
+$$H_n(s)=\xi\left(\frac{[ns]}{n}\right),$$
+$$G_n(s)=\xi(s-),$$\
+$$V_n(s)=G_n(s)-H_n(s).$$
+Due to the process $\xi(s-)$ being left-continuous, we have
+$$\xi\left(\frac{[ns]}{n}\right)\xrightarrow[n\to\infty]{}\xi(s).$$
+(Notice that with probability $1$ the process $\xi$ has no discontinuities
+in rational points at all, 
+and thus with probability $1$
+the convergence takes place for all $s$).
+Thus, we conclude that with probability $1$
+$$V_n\to 0, n \to \infty.$$
+As a dominating process we take
+$$V(t)=2\sup\limits_{s\in [0,t]}|\xi(s-)|.$$
+This process is left-continuous, and thus, predictable and locally bounded.  
+\end{proof}
+
+
+ \begin{theorem}\label{firstMainTheorem}
+Let $\xi^{(T)}, \eta^{(T)}$ 
+be continuous semimartingales on $[0,1]$ with respect to the common filtrations, and
+$$\left(\xi^{(T)}, \eta^{(T)}, \left<\xi^{(T)}\right>,\left<\eta^{(T)}\right>\right)
+ \xrightarrow[T\to\infty]{fd} \left(\xi, \eta, \zeta_1, \zeta_2\right),$$
+where $\xi, \eta$ take values in $\mathbb{D}[0,1]$;
+$\zeta_1, \zeta_2$ take values in space $\mathbb{D}[0,1]$
+and with probability $1$ have no simultaneous jumps.
+$$\int\limits_0^1 \xi^{(T)}(s)d\eta^{(T)}(s)
+\xrightarrow[T \to \infty]{d} \int\limits_0^1 \xi(s-)d\eta(s).$$
+ \end{theorem}
+ \begin{proof}
+  Let
+$$\gamma_{n, T}=
+ \int\limits_0^1 \xi^{(T)}(s)d\eta^{(T)}(s)-
+ \sum\limits_{k=0}^{2^n-1}\xi^{(T)}\left(\frac{k}{2^n}\right)\left(\eta^{(T)}
+ \left(\frac{k+1}{2^n}\right)-\eta^{(T)}\left(\frac{k}{2^n}\right)\right).$$
+Then
+$$\gamma_{n, T}=
+ \sum\limits_{k=0}^{2^n-1}
+ \int\limits_{\frac{k}{2^n}}^{\frac{k+1}{2^n}}
+ \left(\xi^{(T)}(s)-\xi^{(T)}\left(\frac{k}{2^n}\right)\right)d\eta^{(T)}(s)=
+ w_{n,T}\left(\sum\limits_{k=0}^{2^n-1}
+ \int\limits_{\frac{k}{2^n}}^{\frac{k+1}{2^n}}
+ \left(\xi^{(T)}(s)-\xi^{(T)}\left(\frac{k}{2^n}\right)\right)^2d\left<\eta^{(T)}\right>_s\right),
+$$
+where $w_{n,T}$ are some Wiener processes~\cite{Kallenberg}, theorem~18.4.  
+Let $\beta_{n,T}$ be associated with $\xi^{(T)}$ Wiener processes. We have
+  \begin{multline*}\mu_{n, T}=
+\sum\limits_{k=0}^{2^n-1}
+ \int\limits_{\frac{k}{2^n}}^{\frac{k+1}{2^n}}
+ \left(\xi^{(T)}(s)-\xi^{(T)}\left(\frac{k}{2^n}\right)\right)^2d\left<\eta^{(T)}\right>_s \le \\ \le
+\sum\limits_{k=0}^{2^n-1}
+ \sup\limits_{s, t \in [\left<\xi^{(T)}\right>(\frac{k}{2^n}), \left<\xi^{(T)}\right>(\frac{k+1}{2^n})]}
+  \left|\beta_{n,T}(t)-\beta_{n,T}(s)\right|^2
+ \left(\left<\eta^{(T)}\right>\left(\frac{k+1}{2^n}\right)-\left<\eta^{(T)}\right>\left(\frac{k}{2^n}\right)
+ \right).
+ \end{multline*}
+ By lemma~\ref{mostSubtleGammaNTLem} $\mu_{n,T}$ is stochastically small at infinity.
+ Then $\gamma_{n, T}=w_{n, T}(\mu_{n,T})$ is stochastically small at infinity as well. 
+ By lemmas~\ref{WeakConvergenceThirdLem}, \ref{integralDominatedConvergenceLem} 
+ we get the required statement.  
+ \end{proof}
+ 
+ \begin{theorem}\label{secondMainTheorem}
+  Let
+  $(\xi^{(T)}, \eta^{(T)}, \left<\xi^{(T)}\right>,\left<\eta^{(T)}\right>)
+  \xrightarrow[T\to\infty]{fd} (\xi, \eta, \zeta_1, \zeta_2),$
+  where $\xi, \eta$ are $\mathbb{D}[0,1]$-valued;
+  $\zeta_1, \zeta_2$ are $\mathbb{D}[0,1]$-valued
+  and have no simultaneous jumps with probability $1$.
+  Then
+$$\int\limits_0^1 \xi^{(T)}(s)^2d\left<\eta^{(T)}\right>(s)
+\xrightarrow[T \to \infty]{d} \int\limits_0^1 \xi(s-)^2d\left<\zeta_2\right>(s).$$
+\end{theorem}
+
+\begin{proof}
+Let
+ \begin{multline*}\gamma_{n, T}=
+ \int\limits_0^1 \xi^{(T)}(s)^2d\left<\eta^{(T)}\right>(s)-
+ \sum\limits_{k=0}^{2^n-1}\xi^{(T)}\left(\frac{k}{2^n}\right)^2\left(\left<\eta^{(T)}\right>
+ \left(\frac{k+1}{2^n}\right)-\left<\eta^{(T)}\right>\left(\frac{k}{2^n}\right)\right)=\\=
+ \sum\limits_{k=0}^{2^n-1}
+ \int\limits_{\frac{k}{2^n}}^{\frac{k+1}{2^n}}
+ \left(\xi^{(T)}(s)^2-\xi^{(T)}\left(\frac{k}{2^n}\right)^2\right)d\left<\eta^{(T)}\right>(s).
+ \end{multline*} 
+We have
+$$
+|\gamma_{n, T}| \le 
+\sum\limits_{k=0}^{2^n-1}
+ \sup\limits_{s, t \in [\frac{k}{2^n}, \frac{k+1}{2^n}]}
+  \left|\xi^{(T)}(t)^2-\xi^{(T)}(s)^2\right|
+ \left(
+ \left<\eta^{(T)}\right>\left(\frac{k+1}{2^n}\right)-\left<\eta^{(T)}\right>\left(\frac{k}{2^n}\right)
+ \right).
+$$
+  By lemma~\ref{mostSubtleCharacteristicsGammaNTLem} $\gamma_{n,T}$
+is stochastically small at infinity.  
+ By lemma~\ref{WeakConvergenceThirdLem} we get the needed statement. 
+\end{proof}
+
+\begin{definition}
+Let $\beta$ be a Wiener process. The family of processes $\mathcal U$ generated by $\beta$
+is defined as the family of all the processes of the form
+$$\int\limits_0^t \int\limits_0^{t_{n-1}} \ldots \int\limits_0^{t_2} d\eta_1(t_{n-1}) \ldots d\eta_n(t_0),$$
+where $d\eta_k(s)=d\beta(s)$ or $d\eta_k(s)=ds$
+for any $k$.
+In particular, the processes
+$\xi_1(t)=t,$  
+$\xi_2(t)=\beta(t), \xi_3(t)=\int\limits_0^t \beta(s)d\beta(s),$
+$\xi_4(t)=\int\limits_0^t \xi_2(s) ds$
+are included into the family $\mathcal U$. 
+It is clear that all the processes generated by $\beta$
+are continuous semimartingales with respect to filtration
+generated by $\beta$.
+\end{definition}
+
+\begin{lem}\label{WienerCalculusLem}
+ If $L$ is a process generated by $\beta$, 
+then for any $n \ge 0$
+$$X_t=\int\limits_0^t \beta^n(s)dL_s$$
+can be represented in the form $X=F(\beta)$,
+where $F$ is a continuous mapping
+$$F \colon C[0, \infty) \to C[0, \infty).$$
+In particular, for $n=0$ we get that the process $L$ itself
+can be represented in such form.  
+\end{lem}
+\begin{proof}
+ We will conduct the proof by induction 
+ on minimal length of the chain of processes generating $L$. 
+We will check that $X$ can be represented in the form $F(\beta)$. 
+We have two cases: 
+\begin{itemize}
+ \item $X_t = \int\limits_0^t Y_s ds$, and $Y$ is the process generated by $\beta$,
+for which the statement of lemma is proved. Then 
+$$\int\limits_0^t \beta^n(s)dX_s = \int\limits_0^t \beta^n(s) Y_s ds,$$
+and it is clear that this is a continuous functional of $\beta$. 
+ \item $X_t = \int\limits_0^t Y_s d\beta(s)$, and for $Y$ the statement is proved.
+Then
+\begin{multline*}
+ \int\limits_0^t \beta^n(s)dX_s = \int\limits_0^t \beta^n(s) Y_s d\beta(s)=
+ \frac{1}{n}\int\limits_0^t Y_s d\beta^n(s)-\frac{n-1}{2}\int\limits_0^t \beta(s)^{n-2} Y_s ds=\\=
+ \frac{1}{n}Y_t \beta^n(t)-\frac{1}{n}\int\limits_0^t \beta^n(s)dY_s-
+ \frac{1}{n}\left<Y, \beta^n\right>_t-
+ \frac{n-1}{2}\int\limits_0^t \beta(s)^{n-2} Y_s ds
+\end{multline*}
+for all the summands except $\frac{1}{n}\left<Y, \beta^n\right>_t$
+it is clear that they are continuous functionals of $\beta$. 
+There are two possible cases for $Y$: 
+\begin{itemize}
+\item $Y_t=\int\limits_0^t Q_s ds,$ and in this case
+$\left<Y, \beta^n\right>_t=0$; 
+\item $Y_t=\int\limits_0^t Q_s d\beta(s)$,
+and in this case 
+$\frac{1}{n}\left<Y, \beta^n\right>_t=\int\limits_0^t \beta(s)^{n-1}Q_s ds,$
+and it is clear that this is a continuous functional of $\beta$. 
+\end{itemize}
+The lemma is proved. 
+\end{itemize}
+\end{proof}
+
+\section{Weak convergence of Vassiliev invariants for Wiener braids}\label{weakConvergenceOfVassiliev}
+\begin{definition}
+  Let $Y_1^{(T)}, \ldots, Y_n^{(T)}$ be the families of continuous semimartingales
+with respect to the common (for each fixed $T$) filtration.  
+The сollection of families of processes generated by $Y_1, \ldots, Y_n$
+is the smallest collection $S$ such that
+\begin{itemize}
+ \item for any $k=1, \ldots, n \colon Y_k^{(T)}\in S, \left<Y_k^{(T)}\right> \in S$;
+ \item if $U^{(T)}\in S$, then for any $k$ the families $V^{(T)}, H^{(T)}$, 
+defined by equalities
+$$V^{(T)}_t = \int\limits_0^t U^{(T)}(s)dY_k^{(T)}(s), t \ge 0$$
+$$H^{(T)}_t = \int\limits_0^t U^{(T)}(s)d\left<Y_k^{(T)}\right>(s), t \ge 0,$$
+are in $S$: $V^{(T)}\in S, H^{(T)}\in S.$
+\end{itemize}
+\end{definition}
+
+\begin{theorem}\label{YDefinedProcessesTheorem}
+ Let $Y^{(T)}$ be the family of continuous local martingales such that
+$$Y^{(T)}(t)=\beta^{(T)}\left(\left<Y^{(T)}\right>_t\right),$$
+amd for any $t_1, \ldots, t_k$ the random elements
+$$(\beta^{(T)}, \left<Y^{(T)}\right>(t_1), \ldots, \left<Y^{(T)}\right>(t_k)) 
+\in C[0, \infty)\times \mathbb{R}^k$$
+converge in distribution when $T \to \infty$. 
+Let $S$ be a collection of families generated by $Y^{(T)}$.
+Then for any family $U^{(T)}\in S$: 
+$$(Y^{(T)}, \left<Y^{(T)}\right>, U_1^{(T)}, \ldots,  U_k^{(T)})$$
+has a limit in a sense of convergence of finite-dimensional distributions: 
+\begin{equation} \label{ourJointConvergenceEquation}
+ \left(Y^{(T)}, \left<Y^{(T)}\right>,
+U_1^{(T)}, \ldots,  U_k^{(T)}\right) \xrightarrow[T \to \infty]{fd}
+\left(Y, Q, U_1, \ldots,  U_k\right),
+\end{equation}
+
+and all the jump points of processes $Y, U_1, \ldots, U_k$
+are with probability $1$ among the points of discontinuity of the process $Q$. 
+\end{theorem}
+\begin{proof}
+ By lemma~\ref{WienerCalculusLem} we get that all the processes from the specified
+collection can be expressen in the form
+$$U^{(T)}=F(\beta^{(T)})(\left<Y^{(T)}\right>),$$
+where $F\colon C[0,\infty) \to C[0, \infty)$ is a continuous functional of 
+Wiener process. So, for $U_i^{(T)}=F_i(\beta^{(T)})(\left<Y^{(T)}\right>)$
+we get the existence of limit in~(\ref{ourJointConvergenceEquation}) due to the convergence of
+random vector 
+$$(\beta^{(T)}, \left<Y^{(T)}\right>(t_1), \ldots, \left<Y^{(T)}\right>(t_k))
+\xrightarrow[T\to\infty]{d}(\beta_0, Q(t_1), \ldots, Q(t_k))$$
+for some Wiener process $\beta_0$ and for any $t_1, \ldots, t_k$. Next, the convergence
+$$F_i(\beta^{(T)})(\left<Y\right>)\xrightarrow[T\to\infty]{fd}
+F_i(\beta_0)(Q)$$ yields that all the jumps of the limiting process
+$F_i(\beta_0)(Q)$ will be among the discontinuities of $Q$. 
+\end{proof}
+
+\begin{theorem}\label{generalTheorem}
+Let $X^{(T)}, Y^{(T)}$ be continuous semimartingales
+with respect to the common (for any fixed $T$)
+filtration, and
+$$(X^{(T)}, Y^{(T)})\xrightarrow[T \to \infty]{fd}(X, Y),$$
+and processes $X, Y$ with probability $1$ have no simultaneous jumps.  
+Let the family $Y^{(T)}$ also satisfy the conditions of the theorem~\ref{YDefinedProcessesTheorem}.
+Denote
+$$L^{(T)}_0(t) = Y^{(T)}(t),$$
+$$L^{(T)}_{k+1}(t) = \int\limits_0^t L_k^{(T)}(s) dY^{(T)}(s).$$
+Then for any $k$ for any families $U^{(T)}$ from the collection
+generated by $Y^{(T)}$ (see theorem~\ref{YDefinedProcessesTheorem}),
+the finite-dimensional distributions of the processes
+$$\int\limits_0^t L_k^{(T)}(s)U^{(T)}(s)dY^{(T)}(s),
+\int\limits_0^t L_k^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>(s)$$
+converge when $T \to \infty$ jointly with $Y^{(T)}$,
+and all the jumps of the limiting processes coincide with the jumps
+of the processes $Y$. 
+\begin{proof}
+ We make the proof by induction on $k$. 
+The basis is checked by theorems~\ref{firstMainTheorem},
+~\ref{secondMainTheorem}.
+Induction step: let the statement be checked for $k$, check for $k+1$. 
+Denote $V^{(T)}(t)=\int\limits_0^t U_k^{(T)}(s)dY_k^{(T)}(s),$
+$Q_t=\int\limits_0^t U_k^{(T)}(s)d\left<Y_k^{(T)}\right>(s).$
+It is clear that the processes $V^{(T)}, Q^{(T)}$ have limits in the sense 
+of convergence of finite-dimensional distributions. 
+We have
+$$L^{(T)}_{k+1}(t) = \int\limits_0^t L_k^{(T)}(s) dY^{(T)}(s),$$
+\begin{multline*}
+ \int\limits_0^t L_{k+1}^{(T)}(s)U^{(T)}(s)dY^{(T)}(s) = \int\limits_0^t L_{k+1}^{(T)}(s) dV^{(T)}(s)=
+L_{k+1}^{(T)}(t) V^{(T)}(t)-\\-
+\int\limits_0^t L_k^{(T)}(s)V^{(T)}(s)dY^{(T)}(s)-
+\left<L_{k+1}^{(T)}, V^{(T)}\right>_t=
+\int\limits_0^t L_{k+1}^{(T)}(s) dV^{(T)}(s)=\\=
+L_{k+1}^{(T)}(t) V^{(T)}(t)-
+\int\limits_0^t L_k^{(T)}(s)V^{(T)}(s)dY^{(T)}(s)-
+\int\limits_0^t L_k^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>_s,
+\end{multline*}
+and by assumption we have the convergence of finite-dimensional distributions for 
+$$\int\limits_0^t L_{k+1}^{(T)}(s)U^{(T)}(s)dY^{(T)}(s).$$
+Further,  
+\begin{multline*}
+ \int\limits_0^t L_{k+1}^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>(s) =
+\int\limits_0^t L_{k+1}^{(T)}(s) dQ^{(T)}(s)=
+L_{k+1}^{(T)}(t) Q^{(T)}(t)-\\-
+\int\limits_0^t L_k^{(T)}(s)Q^{(T)}(s)dY^{(T)}(s)-
+\left<L_{k+1}^{(T)}, V^{(T)}\right>_t=
+\int\limits_0^t L_{k+1}^{(T)}(s) dV^{(T)}(s)=\\=
+L_{k+1}^{(T)}(t) V^{(T)}(t)-
+\int\limits_0^t L_k^{(T)}(s)V^{(T)}(s)dY^{(T)}(s)-
+\int\limits_0^t L_k^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>_s,
+\end{multline*}
+and by assumption we have convergence of finite-dimensional distributions for
+$$\int\limits_0^t L_{k+1}^{(T)}(s)U^{(T)}(s)d\left<Y^{(T)}\right>(s).$$
+\end{proof}
+\end{theorem}
+
+\begin{theorem}\label{MainTheoremForWienerProcesses}
+ Let $Y_1^{(T)}, \ldots, Y_n^{(T)}$ be a family 
+of continuous local martingales with respect to the common
+(for any fixed $T$) filtration such that
+$$(Y_1^{(T)}, \ldots, Y_n^{(T)})\xrightarrow[T \to \infty]{fd} (Y_1, \ldots, Y_n),$$
+and with probability $1$ any two of the processes
+$Y_1, \ldots, Y_n$
+have no simultaneous jump points, and for any $k$ 
+at least one of two conditions holds: 
+\begin{itemize}
+ \item the family $Y_k^{(T)}$ satisfies the conditions of the theorem~\ref{YDefinedProcessesTheorem};
+ \item the limiting process $Y_k$ 
+has no discontinuities with probability $1$,
+characteristics $\left<Y_k^{(T)}\right>$ coincide with the caracteristics
+$\left<Y_l^{(T)}\right>$ for some $l \ne k$, and the family
+$Y_l^{(T)}$ satisfies the conditions of the theorem~\ref{YDefinedProcessesTheorem}. 
+\end{itemize}
+Let $S$ be a collection of the families of processes
+generated by $Y_1, \ldots, Y_n$.
+Then for any $X_1, \ldots, X_k \in S$ the random vector
+$$(X_1^{(T)}, \ldots, X_k^{(T)})$$
+converges when $T \to \infty$ in a sense of convergence of finite-dimensional distributions.  
+\end{theorem}
+\begin{proof}
+  Follows from the theorem~\ref{generalTheorem}.  
+\end{proof}
+
+Let $Z_k(t), t \ge 1$ be $2$-dimensional Brownian motions starting from pairwise
+distinct points of the plane. Let $Z_{kl}(t)=\|Z_k(t)-Z_l(t)\|, R_{kl}(t)=|Z_{kl}(t)|$,
+$\theta_{kl}$ ne the winding angle of the process $Z_{kl}$ around the originup to time $t$, $\theta_{kl}(1)=0.$
+Introduce, as in~\cite{BertoinWerner}, the processes $X_{kl}$ with the help of exponential time change
+for $Z_{kl}$:
+$$X_{kl}(t)=e^{-t/2}Z_{kl}(e^t), t \ge 0.$$
+Then $X_{kl}(t)$ is a $2$-dimensional Ornstein-Uhlenbeck process.  
+Let $\alpha_{kl}(t)=\theta_{kl}(e^t)$ be the winding angle 
+of the process $X_{kl}$ around zero up to time $t$. Let 
+$$\phi_{kl}^{(T)}(t)=\frac{\alpha_{kl}(tT)}{T/2}, 
+r_{kl}^{(T)}=\frac{\ln{R_{kl}(e^{tT})}}{T/2}, T>0.$$
+The following convergence in the sense of finite-deimensional distribution takes place:
+$$\phi_{kl}^{(T)}\xrightarrow[T \to \infty]{fd}\xi, r_{kl}^{(T)}\xrightarrow[T \to \infty]{fd}\eta,$$
+where $\xi$ is a Cauchy process, $\eta(t)=t.$
+Apply theorem~\ref{MainTheoremForWienerProcesses} to the families of continuous 
+local martingales
+$\phi_{kl}^{(T)}, r_{kl}^{(T)}.$
+
+\begin{theorem}
+ Let $\mathfrak{S}$ be a collection of the families of processes
+generated by 
+$$\phi_{kl}^{(T)}, r_{kl}^{(T)}, 1 \le k < l \le n,$$
+Then for any $X_1, \ldots, X_k \in \mathfrak{S}$ the random vector
+$$(X_1^{(T)}, \ldots, X_k^{(T)})$$
+converges when $T \to \infty$ in a sense of convergence of finite-dimensional distributions. 
+\end{theorem}
+
+For the processes $\phi_{kl}^{(T)}$ itself we get the well-known result of M.~Yor~\cite{Yor1991}
+about the convergence of mutual winding angles of independent planar Brownian motions.
+However, from our theorem we obtain much more. Indeed, it follows that all the Vassiliev
+invariants for the braid formed by independent planar Brownian motion converge in a sense of 
+finite-dimentional distributions. More precisely, for the numerical invariant $L$ of the order $m$
+we got the weak convergence of $\frac{L}{T^m}$, and all these convergences hold jointly, that is,
+for invariants $L_1, \ldots, L_k$ of the orders $m_1, \ldots, m_k$
+we get the convergence of random vector
+$$\left(\frac{L_1}{T^{m_1}}, \ldots, \frac{L_k}{T^{m_k}}\right).$$
+If we return to the initial processes $Z_{kl}$ instead of $X_{kl}$
+then we get the convergence for the numerical invariants $L_1', \ldots, L_m'$
+of the orders $m_1, \ldots, m_k$
+for the braid formed by the independent Brownian motions $Z_k$: the random vector
+$$\left(\frac{L_1'}{(\ln{T})^{m_1}}, \ldots, \frac{L_k'}{(\ln{T})^{m_k}}\right)$$
+has a limit in a sense of convergence in finite-dimensional distributions. 
+\begin{thebibliography}{99}
+
+\bibitem{HausdorffCutPoints}
+Lawler~G.
+Hausdorff dimension of cut points for Brownian motion//
+Electron. J. Probab. --- 1996. --- \textbf{1}. --- 20~pp. 
+\bibitem{WernerHausdorff}
+\textit{Lawler G. F., Oded Schramm O., Werner W.}
+The dimension of the planar brownian frontier is 4/3//
+Math.Res.Lett. --- 2001. --- P.~401--411.
+
+\bibitem{CranstonHsu}
+Cranston~M., Hsu~P., March~P.
+Smoothness of the convex hull of planar Brownian motion//
+The Annals of Probability. ---  1989. --- \textbf{17}, 1. ---Pp. 144--150. 
+
+\bibitem{Spitzer}
+Spitzer~F.
+Some theorems concerning 2-dimensional Brownian motion //
+Trans. Amer. Math. Soc. --- 1958. --- \textbf{87}, 1. --- Pp.~187--197.
+
+\bibitem{ZhanShi} 
+Shi~Z.
+Liminf behaviours of the windings and Levy's stochastic areas of planar Brownian motion //
+S\'eminaire de probabilit\'es de Strasbourg. --- 1994. ---
+\textbf{28}(1994). --- Pp.~122--137.
+
+\bibitem{BertoinWerner}
+Bertoin~J., Werner~W.
+Asymptotic windings of planar Brownian motion revisited
+via the Ornstein-Uhlenbeck process //
+S\'eminaire de probabilit\'es de Strasbourg,
+\textbf{28}
+(1994),
+138--152.
+
+\bibitem{Falkovich} 
+Falkovich~G., Gaw\c{e}dzki~K., Vergassola~M.
+Particles and fields in fluid turbulence //
+Rev. Mod. Phys. --- 2001. --- \textbf{73}, 4. --- Pp.~913--975.
+
+\bibitem{Berger} 
+Berger~M.~A.
+Topological invariants in braid theory //
+Lett. Math. Phys. --- 2001. --- \textbf{55}, 3. --- P.~181--192. 
+
+\bibitem{Kontsevich} 
+Kontsevich~M. Vassiliev's knot invariants //
+Adv. Soviet Math.--- 1993. --- \textbf{16}, 2.  --- Pp.~137--150.
+
+\bibitem{BarNatan} 
+Bar-Natan~D.
+Vassiliev homotopy string link invariants. --- 
+J. Knot Theory and Ramifications. --- 1995.--- \textbf{4}, 1.  --- Pp.~13--32.
+
+\bibitem{Kallenberg}
+Kallenberg O. 
+Foundations of Modern Probability. --- Springer, 2002. --- 638~p.
+
+
+\bibitem{MunkresJames} 
+Munkres~J.~R.
+Topology: a first course. --- Englewood Cliffs, N.J.: Prentice-Hall, 1974. --- 414~p.
+
+\bibitem{Kunita} 
+Kunita~H.
+Stochastic flows and stochastic differential equations. --- Cambridge: Univ. Press, 1997. --- 346~p.
+
+
+\bibitem{Meyer}
+Dellacherie, Meyer, J. P.
+Probabilities and potential B. Theory of martingales. --- 
+North-Holland Publishing Company, 1982. --- 482~p. 
+
+\bibitem{Yor1991} \textit{Marc Yor.} 
+Etude asymptotique des nombres de tours de plusieurs mouvements browniens complexes
+correles//Progress in Probability. --- 1991. --- \textbf{28}.  --- P.~441--455.
+
+\end{thebibliography}
+
+\end {document}
+
