@@ -1,0 +1,429 @@
+% $Header: /Users/joseph/Documents/LaTeX/beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass{beamer}
+
+% This file is a solution template for:
+
+% - Talk at a conference/colloquium.
+% - Talk length is about 20min.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  %\usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english,ukrainian,russian]{babel}
+% or whatever
+
+\usepackage[cp1251]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\usepackage{tikz}
+\usepackage{pgfmath}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{calc}
+
+
+\title[Интеграл Концевича для случайных траекторий] % (optional, use only with long paper titles)
+{Интеграл Концевича для траекторий случайных процессов}
+
+\author{Кузнецов Василий Алексеевич}
+
+
+\institute[Институт математики НАНУ] % (optional, but mostly needed)
+{
+  Отдел Теории случайных процессов\\
+  Институт математики НАНУ
+}
+
+\date[Conf_TIMA 2013] % (optional, should be abbreviation of conference name)
+{Конференция Ломоносов-2013}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\section{Стохастические потоки}
+
+\begin{frame}{Стохастические потоки}
+
+  \begin{itemize}
+  \item
+    Гладкие: $dx(u,t)=\sum_{k=1}^{\infty}a_k(x(u,t))dw_k(t)$
+	    $d<x(u1,t),x(u_2,t)>=b(||x(u_1,t)-x(u_2,t)||)dt$
+
+$b$-гладкая функция. 
+  \item
+    Негладкие потоки
+	    $d<x(u_1,t),x(u_2,t)>=b(||x(u_1,t)-x(u_2,t)||)dt$
+
+$b$-не гладкая.
+$x(,t)$ может быть разрывным. 
+\item Основной вопрос: геометрические свойства $x$. 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Геометрия потоков.}
+
+$\xi$-векторное поле на трёхмерном замкнутом односвязном многообразии $M$ с мерой $\mu$, $\xi$-бездивергентное поле на $M$. 
+Рассматриваются траектории частичек, которые стартуют из точек $x_1,x_2$, под действием фазового потока поля $\xi.$
+ 
+Асимптотический коэффициент зацепления: $\lambda_{\xi}(x_1,x_2)=\lim\limits_{T_1,T_2\to\infty}\frac{lk_{\xi}(x_1,x_2;T_1,T_2)}{T_1T_2}.$
+ Имеет место такой результат: для почти всех $x_1,x_2\in M$ выполняется:
+$\lambda_{\xi}(x_1,x_2)=\int\limits_{M}\int\limits_{M} \lambda_{\xi}(x_1,x_2)d\mu(x_1)d\mu(x_2).$
+\begin{tikzpicture}[line width=3pt, rounded corners = 4pt]
+ \node (x) at (0,0){$X_1$};
+ \node (y) at (0.5,2){$X_2$};
+
+ \draw[red] (0.5,0) -- (3,2) -- (4,2);
+ \draw[blue] (1,2)-- (1.9,0.5) -- (2.8,0.1)-- (4, 0.5) -- (5.2, 1.8) -- (6, 2);
+ \draw[red] (3, 2) -- (4,2) -- (6,0.5) -- (8,0.2) -- (10, 1.8);
+ \draw[blue] (5.2, 1.8) -- (6, 2) -- (7, 1.85) -- (9.8, 0.3);
+ %\draw[grey, line width = 0.6 pt] (0.5, 0) -- (10, 1.8);
+ %\draw[grey, line width = 0.6 pt] (1,2) -- (9.8, 0.3);
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}{Вращения винеровского процесса на плоскости}
+
+Для двумерного винеровского процесса, который выходит из точки, отличной от различных точек $A_1,\ldots,A_n$, обозначим: $\Phi_k(t)$-
+``количество оборотов``, которое его траектория совершает 
+вокруг точки $A_k$. Тогда $(\frac{2}{\ln t}\Phi_k(t),k=1,\ldots,n)\xrightarrow[t\to\infty]{d}(C_1,\ldots,C_n)$. 
+При этом предельное распределение не зависит от выбора точек $A_1,\ldots,A_n$. 
+
+\pgfmathsetseed{4}
+\begin{tikzpicture}[line width=1pt, decoration={random steps,segment length=2mm}]
+\draw[red, decorate] (0,0)
+  \foreach \i in {1,...,15} {
+    -- ++(4*rnd, 4*rnd)
+};
+\node (a) at (-1/5,0){A};
+\fill [red] ($(a) + 1/5*(1cm,0)$) circle (1pt);
+\node (b) at (1,1) {B};
+\fill [blue] ($(b) + 1/5*(1cm,0)$) circle (1pt);
+\node (c) at (3.1,1.6) {C};
+\fill [blue] ($(c) + 1/5*(1cm,0)$) circle (1pt);
+\node (d) at (2,1.9) {D};
+\fill [blue] ($(d) + 1/5*(1cm,0)$) circle (1pt);
+
+\end{tikzpicture}
+
+\end{frame}
+
+\section{Косы и их характеристики}
+
+
+\begin{frame}{Косы и их инварианты.}
+
+  \begin{itemize}
+  \item
+    Коса $Z(t)=(Z_1(t),\dots,Z_n(t)), t\in [0,T], Z(t)\in \mathbb{C}$ - непрерывная траектория в пространстве $\mathbb{C}^n$
+
+    \begin{tikzpicture}[line width=5pt]
+      \draw[grey] (2,0) .. controls (2,0.8) and (2.8,1) .. (2.8,2);   
+
+      \draw[red] (3,-0.1).. controls (2.9,3) and (2.1,1).. (1.6,4);
+
+      \draw[blue] (2.5,0.2).. controls (2.5,1) and (2.1,1).. (2.1,2.2);
+      \draw[blue] (2.1,2.2).. controls (2.1,3) and (2.6,3).. (2.5,4);
+      \draw[grey] (2.8,2) .. controls (2.8,3) and (2,3) .. (2,4);
+      %\draw (0.1,2.2).. controls (0.1,3) and (0.6,3).. (0.5,4);	
+    \end{tikzpicture} 
+
+  \item
+    Косы различаются с точностью до гомотопии.
+  \item
+    Для кос существует полная система инвариантов, которая различает негомотопные косы (система инвариантов Васильева).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Диаграммы.}
+\begin{itemize}
+\item
+$P=\begin{pmatrix}P_{11} & P_{12}\\P_{21} & P_{22}\\ \hdotsfor{2}\\P_{m1} & P_{m2}\end{pmatrix}$
+---матрица размера $m\times 2$.
+Совокупность таких матриц на $n$ струнах ($P_{ij}\le n$): $\mathbb{P}_{mn}$, $|\mathbb{P}_{mn}|=(n(n-1)/2)^m.$ 
+\item Матрице $P$ отвечает диаграмма $D(P)$.
+ Пример: $n=4$ (коса из 4 струн), $m=3$, $P=\begin{pmatrix}1 & 3\\2 & 3\\ 3 & 4\end{pmatrix}$,
+ тоді $D(P)$:
+\begin{tikzpicture}[line width=4pt, scale=0.8]
+  \draw[grey] (0,0) -- (0,2);
+  \draw[grey] (1,0) -- (1,2);
+  \draw[grey] (2,0) -- (2,2);
+  \draw[grey] (3,0) -- (3,2);
+
+  \draw[grey] (0,1.7) -- (2,1.7);      
+  \draw[grey] (1,1) -- (2,1);
+  \draw[grey] (2,0.3) -- (3,0.3);
+
+  \draw (0,2.2) node{1};
+  \draw (1,2.2) node{2};
+  \draw (2,2.2) node{3};
+  \draw (3,2.2) node{4};
+      
+\end{tikzpicture} 
+ 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Соотношения на диаграммах.}
+\begin{itemize}
+ \item
+ Одночленное соотношение:
+     \begin{tikzpicture}[line width=3pt, scale = 0.6]
+      \draw[grey] (0,0) -- (0,2);
+      \draw[grey] (1,0) -- (1,2);
+      \draw[grey] (2,0) -- (2,2);
+      \draw[grey] (3,0) -- (3,2);
+
+      \draw[grey] (0,1.5) -- (1,1.5);
+      \draw[grey] (2,0.5) -- (3,0.5);
+
+      \draw (0,2.2) node{$i$};
+      \draw (1,2.2) node{$j$};
+      \draw (2,2.2) node{$k$};
+      \draw (3,2.2) node{$l$};
+
+      \draw (3.7, 1.2) -- (4.3, 1.2);
+      \draw (3.7, 0.8) -- (4.3, 0.8);
+
+      \draw[grey] (5,0) -- (5,2);
+      \draw[grey] (6,0) -- (6,2);
+      \draw[grey] (7,0) -- (7,2);
+      \draw[grey] (8,0) -- (8,2);
+
+      \draw[grey] (5,0.5) -- (6,0.5);      
+      \draw[grey] (7,1.5) -- (8,1.5);
+
+      \draw (5,2.2) node{$i$};
+      \draw (6,2.2) node{$j$};
+      \draw (7,2.2) node{$k$};
+      \draw (8,2.2) node{$l$};      
+    \end{tikzpicture} 
+\item
+ Четырёхчленное соотношение:
+     \begin{tikzpicture}[line width=3pt, scale = 0.6]
+%first differencw
+    \foreach \x in {0,1,2}
+    {
+      \foreach \y in {0,1}
+      {
+	\draw[grey] (6*\x+3*\y,0) -- (6*\x+3*\y,2);
+	\draw[grey] (6*\x+3*\y+1,0) -- (6*\x+3*\y+1,2);
+	\draw[grey] (6*\x+3*\y+2,0) -- (6*\x+3*\y+2,2);
+   
+	%\draw[grey] (6*\x+3*\y+\pgfmathmod(\x+1,3),0.5) -- (6*\x+3*\y+\pgfmathmod(\y+1,3),0.5);
+
+	\draw (6*\x+3*\y,2.2) node{$i$};
+	\draw (6*\x+3*\y+1,2.2) node{$j$};
+	\draw (6*\x+3*\y+2,2.2) node{$k$};
+    }
+    
+    \draw[grey](6*\x+2.3,1) -- (6*\x+2.7,1);
+  }
+
+  %first difference
+  \draw[grey] (0,1.5) -- (1, 1.5);
+  \draw[grey] (1,0.5) -- (2, 0.5);
+
+  \draw[grey] (3,0.5) -- (4, 0.5);
+  \draw[grey] (4,1.5) -- (5, 1.5);
+
+  %second difference
+  \draw[grey] (7,1.5) -- (8, 1.5);
+  \draw[grey] (6,0.5) -- (8, 0.5);
+
+  \draw[grey] (10,0.5) -- (11, 0.5);
+  \draw[grey] (9,1.5) -- (11, 1.5);
+
+  %third difference
+  \draw[grey] (12,1.5) -- (14, 1.5);
+  \draw[grey] (12,0.5) -- (13, 0.5);
+
+  \draw[grey] (15,0.5) -- (17, 0.5);
+  \draw[grey] (15,1.5) -- (16, 1.5);
+
+  \foreach \a in {5, 11}
+    {
+      \draw[grey](\a+0.3,1.2) -- (\a+0.7,1.2);
+      \draw[grey](\a+0.3,0.8) -- (\a+0.7,0.8);
+    }
+
+  \end{tikzpicture}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Интеграл Концевича.}
+\begin{itemize}
+ \item 
+Интеграл Концевича
+$K_m=\sum\limits_{P\in \mathbb{P}_{mn}}\int\limits_{\Delta_m}\omega_{P_{11}P_{12}}(t_1)\dots\omega_{P_{m1}P_{m2}}(t_m)D(P),$
+де $\Delta_m=\Delta_m(T)=\{(t_1,\dots,t_m)\mid 0\le t_1\le\dots\le t_m \le T\},$
+$\omega_{ij}(t)=\omega_{ji}(t)=\frac{1}{2\pi i}\frac{dZ_i(t)-dZ_j(t)}{Z_i(t)-Z_j(t)}.$
+ \item
+ Числовые инварианты: при каждом $m$ все диаграммы порядка $m$ заменяем на числа (``веса``) таким образом,
+что удовлетворяются одночленное и четырёхчленное соотношения. При этой замене $K_m$ превращается в числовой инвариант. 
+\item Пример: $\lambda_{kl}(t)=\int\limits_{0}^t\omega_{ij}(t')dt'.$
+
+Интегральный инвариант второго порядка для косы из трёх струн $a,b,c$:
+$2\Psi_{abc}=\int\limits_{0}^t(\lambda_{ab}-\lambda_{bc})\lambda_{ca}+(\lambda_{bc}-\lambda_{ca})\omega_{ab}+(\lambda_{ca}-\lambda_{ab})\lambda_{bc}.$
+\end{itemize} 
+\end{frame}
+
+
+\begin{frame}{Основная задача.}
+Поставленная задача:
+построить интеграл Концевича для кос, порождённых непрерывными семимартингалами. 
+
+    \begin{tikzpicture}[line width=4pt, decoration={random steps,segment length=2mm}]
+      \draw[grey, decorate] (2,0) .. controls (2,0.8) and (2.8,1) .. (2.8,2);   
+
+      \draw[red, decorate] (3,-0.1).. controls (2.9,3) and (2.1,1).. (1.6,4);
+
+      \draw[blue, decorate] (2.5,0.2).. controls (2.5,1) and (2.1,1).. (2.1,2.2);
+      \draw[blue, decorate] (2.1,2.2).. controls (2.1,3) and (2.6,3).. (2.5,4);
+      \draw[grey, decorate] (2.8,2) .. controls (2.8,3) and (2,3) .. (2,4);
+      %\draw (0.1,2.2).. controls (0.1,3) and (0.6,3).. (0.5,4);	
+    \end{tikzpicture} 
+\end{frame}
+
+\section{Результаты}
+
+\begin{frame}{Вычисление инвариантов Концевича для негладких траекторий.}
+Интегральный инвариант Концевича для непрерывной траектории является пределом инвариантов 
+для последовательности вписанных в эту траекторию ломаных, когда мелкость разбиения стремится к 0.
+
+    \begin{tikzpicture}[line width=1pt, decoration=curveto]
+
+      \draw[yellow,decorate,line width=3pt] (2,0) --(2.6, 1) -- (2.8,2) -- (2.5, 3) -- (2,4);
+
+      \draw[red,decorate,line width=3pt] (3, 0) -- (1.8,1)--(1.5,2)--(1.4,3)--(1.6,4);
+
+      \draw[blue,decorate,line width=3pt] (2.5,0)--(2.0,1)-- (1.8,2.2)--(2.0,3)--(2.5,4);
+
+      \draw[grey] (2,0) -- (2.6, 1) -- (2.8,2) -- (2.5, 3) -- (2,4);  
+
+      \draw[grey] (3, 0) -- (1.8,1)--(1.5,2)--(1.4,3)--(1.6,4);
+
+      \draw[grey] (2.5,0)--(2.0,1)-- (1.8,2.2)--(2.0,3)--(2.5,4);
+
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Основное утверждение.}
+\begin{itemize}
+ \item Для семимартингалов относительно общей фильтрации инварианты Концевича вычисляются как соответствующие кратные 
+интегралы Стратоновича. 
+ \item Пример: упомянутый выше инвариант второго порядка становится 
+$\int\limits_{0}^t(\lambda_{ab}-\lambda_{bc})\circ d \lambda_{ca}+(\lambda_{bc}-
+\lambda_{ca})\circ d\lambda_{ab}+(\lambda_{ca}-\lambda_{ab})\circ d\lambda_{bc}.$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Идея доказательства.}
+\begin{itemize}
+ \item
+ Имеет место такое свойство интегралов Стратоновича:
+ $\sum\limits_{i=0}^{n-1}\frac{X(t_i)+X(t_{i+1})}{2}(Y(t_{i+1})-Y(t_{i}))\xrightarrow[\max \Delta t_i\to 0]{P}\int\limits_{0}^T X(t)\circ dY(t),$
+ где $X, Y$ - непрерывнве семимартингалы. 
+\item
+ Во время доказательства непрерывная коса заменяется на ломаные, которые её приближают, а суммы 
+$\sum\limits_{i=0}^{p-1}\frac{K(t_i)+K(t_{i+1})}{2}(\phi(t_{i+1})-\phi(t_i))$
+для ломаных заменяются на соответствующие суммы для исходной косы. Оценивается точность замены.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Дальнейшая работа.}
+\begin{itemize}
+ \item
+ Найти совместную асимптотику при $t\to\infty$ инвариантов Концевича порядка $2$ и выше для независимых винеровских процессов. 
+\item
+ Найти асимптотику при $t\to\infty$ инвариантов Концевича для траекторий в стохастических потоках.
+\end{itemize}
+\end{frame}
+
+% All of the following is optional and typically not needed. 
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{Литература}
+
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{Литература}
+    
+  \begin{thebibliography}{10}
+    
+  \beamertemplatebookbibitems
+  % Start with overview books.
+
+  \bibitem{Baudoin}
+    Fabrice Baudoin.
+    \newblock {\em An introduction to the geometry of stochastic flows}.
+    \newblock World Scientific Publishing Company, 2005.
+
+  \bibitem{ChmutovDuzhin}
+    Chmutov S., Duzhin S., Mostovoy J.
+    \newblock {\em Introduction to Vassiliev knot invariants}.
+    \newblock Cambridge University Press, 2012.
+
+  \bibitem{ArnoldKhesin}
+    Arnold V., Khesin B.
+    \newblock {\em Topological Methods in Hydrodynamics}.
+    \newblock  Springer-Verlag, 1998.
+ 
+    
+  \beamertemplatearticlebibitems
+  % Followed by interesting articles. Keep the list short. 
+
+  \bibitem{BarNatan}
+    Dror Bar-Natan.
+    \newblock Vassiliev homotopy string link invariants.
+    \newblock {\em Journal of Knot Theory and its Ramifications}, 4(1):13--32,
+    1995.
+  
+    \bibitem{PitmanYor}
+    Jim Piman, Marc Yor.
+    \newblock Asymptotic Laws of Planar Brownian Motion.
+    \newblock {\em Annals of Probability}, 14(3):733--779,
+    1986.
+
+  \bibitem{Berger}
+    Mitchell A. Berger.
+    \newblock Topological invariants in braid theory.
+    \newblock {\em Letters in Mathematical Physics }, 55(3):181--192,
+    2001.
+  \end{thebibliography}
+\end{frame}
+
+\end{document}
+
+
