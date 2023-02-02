@@ -37,7 +37,28 @@
  \item
 \end{enumerate}
 
-\section{Kallenberg 2002 --- Глава 6}
+\section{Kallenberg 2002 --- Глава 6. Условное матожидание}
+
+Как доказать предложение 6.6 из Калленберга?
+В первую сторону:
+дано, что
+$$P(H\mid \mathcal{F}, \mathcal{G})=P(H\mid \mathcal{G}), H \in \mathcal{H}$$
+Покажем, что $$\mathcal{F}\amalg_{\mathcal{G}}\mathcal{H}.$$
+Для этого надо показать, что при $F\in \mathcal{F}, H \in \mathcal{H}$
+$$P^{\mathcal{G}}(F\cap H)=P^{\mathcal{G}}F \times P^{\mathcal{G}}H.$$
+Иными словами,
+$$\mathbb{E}(\mathrm{1}_{F\cap H}\mid \mathcal{G})=\mathbb{E}(\mathrm{1}_F\mid \mathcal{G}) \times \mathbb{E}(\mathrm{1}_H\mid \mathcal{G}).$$
+Имеем
+\begin{multline*}
+ \mathbb{E}(\mathrm{1}_{F\cap H}\mid \mathcal{G})=\mathbb{E}(\mathrm{1}_F \mathrm{1}_H\mid \mathcal{G})=
+ \mathbb{E}(\mathbb{E}(\mathrm{1}_F \mathrm{1}_H\mid \mathcal{F}, \mathcal{G})\mid \mathcal{G})=\\=
+ \mathbb{E}(\mathrm{1}_F \mathbb{E}(\mathrm{1}_H\mid \mathcal{F}, \mathcal{G})\mid \mathcal{G})=
+ \mathbb{E}(\mathrm{1}_F \mathbb{E}(\mathrm{1}_H\mid \mathcal{G})\mid \mathcal{G})=
+ \mathbb{E}(\mathrm{1}_H \mid \mathcal{G})\times \mathbb{E}(\mathrm{1}_F \mid \mathcal{G}).
+\end{multline*}
+
+А в другую сторону?
+
 \begin{enumerate}
  \item
  \item
