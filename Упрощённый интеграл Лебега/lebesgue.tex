@@ -1,0 +1,49 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+
+%opening
+\title{Упрощённое изложение интеграла Лебега}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+ Изложим интеграл Лебега очень просто. Для этого будем считать, что пространство $X$ с мерой $\mu$ имеет меру $1$:
+ $$\mu(X)=1,$$
+ а функция $f\colon X \to \mathbb{R}$, которую мы собираемся интегрировать, ограничена. Тогда основные теоремы об интеграле Лебега докажутся очень просто. На самом деле, сложности возникают именно из-за случаев пространств с бесконечной мекрой и неограниченных функций.
+
+
+Определим интеграл Лебега $\int\limits_X fd\mu$ для простых функций стандартным образом. Обозначим (для простых $f$)
+$$If = \int\limits_X f d\mu.$$
+Рассмотрим нормированное пространство $F$ ограниченных на $X$ функций $f\colon X \to \mathbb{R}$ с нормой $\|f\|=\sup\limits_{x\in X} |f(x)|$. Линейных оператор $I$ определён на множестве простых
+ограниченных функций и имеет норму $1$ на этом множестве. Значит, он продолжается до линейного оператора с нормой $1$ на замыкании множества простых ограниченных функций в $F$. В этом замыкании лежат все ограниченные измеримые функции (стандартная лемма). Вот и всё, определили интеграл от ограниченных измеримых функций.
+
+\begin{theorem}
+ (Теорема Лебега об ограниченной сходимости, упрощённый вариант) Если $f_n\to f$ поточечно на $X$ и существует $C>0$, такое, что
+ $$\forall x \in X \enskip \forall n \in \mathbb{N} \enskip |f_n(x)| \le C,$$
+ то
+ $$\int\limits_X f_n d\mu \to \int\limits_X fd\mu, n \to\infty.$$
+\end{theorem}
+В силу линейности оператора $I$, достаточно показать, что если $f_n\to 0$ поточечно на $X$ и $\forall x \in X \enskip \forall n \in \mathbb{N} \enskip |f_n(x)| \le C$,
+то
+ $$\int\limits_X f_n d\mu \to 0, n \to \infty.$$
+В силу поточечной сходимости $f_n\to 0$ для произвольного $\varepsilon > 0$ существует $n_0$, такое, что при $n>n_0$
+$$\mu(\{x \in X \colon |f_n(x)| > \varepsilon\}) < \varepsilon.$$
+Тогда при таких $n$
+$$\left|\int\limits_X f_n d\mu\right| \le C\varepsilon + \varepsilon.$$
+Вот и всё.
+\end{document}
