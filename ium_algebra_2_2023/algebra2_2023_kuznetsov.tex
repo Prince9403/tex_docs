@@ -198,4 +198,39 @@ $$(g+1/g)^2=g^2+2+1/g^2=g^2+2-g^2=2.$$
 А если характеристика поля равна 2, то это не обязательно так. Пример:
 \end{enumerate}
 
+\section{Листок 2}
+\begin{enumerate}
+\item Не буду решать.
+\item Степень расширения $[\mathbb{Q}[\sqrt{n_1}, \ldots, \sqrt{n_m}]:\mathbb{Q}]$ равна произведению степеней
+$[\mathbb{Q}[\sqrt{n_1}, \ldots, \sqrt{n_{s+1}}]:\mathbb{Q}[\sqrt{n_1}, \ldots, \sqrt{n_{s}}]]$. А каждая из этих степеней --- 1 или 2.
+Поэтому степень расширения $[\mathbb{Q}[\sqrt{n_1}, \ldots, \sqrt{n_m}]:\mathbb{Q}]$ --- это степень двойки. Если бы там был $\sqrt[3]{2}$, то
+было бы
+$$[\mathbb{Q}[\sqrt{n_1}, \ldots, \sqrt{n_m}]:\mathbb{Q}]=[\mathbb{Q}[\sqrt{n_1}, \ldots, \sqrt{n_m}]:\mathbb{Q}[\sqrt[3]{2}]][\mathbb{Q}[\sqrt[3]{2}]:\mathbb{Q}].$$
+Но $[\mathbb{Q}[\sqrt[3]{2}]:\mathbb{Q}]$ --- это 3. А слева степень двойки, она на 3 не делится. Противоречие.
+\item Работаем в поле разложения многочлена $x^3-x-a$.
+Имеем
+$$x^3-x-a=(x-\alpha)(x-\beta)(x-\gamma).$$
+Отсюда, приравнивая коэффициенты, получаем
+$$\alpha+\beta+\gamma=0,$$
+$$\alpha\beta+\beta\gamma+\alpha\gamma=-1,$$
+$$\alpha\beta\gamma=a.$$
+Далее, из предыдущих равенств
+$$\alpha^2+\beta^2+\gamma^2=(\alpha+\beta+\gamma)^2-2(\alpha\beta+\beta\gamma+\alpha\gamma)=2,$$
+$$\alpha^2\beta^2+\alpha^2\gamma^2+\beta^2\gamma^2=(\alpha\beta+\beta\gamma+\alpha\gamma)^2-2\alpha\beta\gamma(\alpha+\beta+\gamma)=1.$$
+Теперь имеем
+$$(3\alpha^2-1)(3\beta^2-1)(3\gamma^2-1)=27\alpha^2\beta^2\gamma^2-9(\alpha^2\beta^2+\alpha^2\gamma^2+\beta^2\gamma^2)+3(\alpha^2+\beta^2+\gamma^2)-1=
+27a^2-4.$$
+Из равенств $\alpha\beta\gamma=a$, $\alpha^3-\alpha=a$ получаем
+$$\alpha\beta\gamma=\alpha^3-\alpha,$$
+$$\beta\gamma=\alpha^2-1.$$
+Аналогично, $\alpha\beta=\gamma^2-1$, $\alpha\gamma=\beta^2-1$.
+Имеем
+$$(\alpha-\beta)(\beta-\gamma)=\alpha\beta-\beta^2-\alpha\gamma+\beta\gamma=(\alpha+\gamma)\beta-\beta^2-\alpha\gamma=
+-2\beta^2-\alpha\gamma=-2\beta^2-(\beta^2-1)=1-3\beta^2.$$
+Аналогично, $(\beta-\gamma)(\gamma-\alpha)=1-3\gamma^2$, $(\gamma-\alpha)(\alpha-\beta)=1-3\alpha^2$.
+Итак,
+$$4-27a^2=(1-3\alpha^2)(1-3\beta^2)(1-3\gamma^2)=(\alpha-\beta)^2(\beta-\gamma)^2(\gamma-\alpha)^2.$$
+Осталось показать, что $(\alpha-\beta)(\beta-\gamma)(\gamma-\alpha)$ лежит в $F_p$. Рассмотрим в поле разложения многочлена $x^3-x-a$,
+то есть $F_p[\alpha,\beta,\gamma]$, автоморфизм Фробениуса $x\to x^p.$ Как известно, он оставляет на местах элементы $F_p$ и только их. Кроме того, ясно, что корни многочлена $x^3-x-a$ переходят в его же корни, поэтому $\alpha, \beta, \gamma$ переставляются этим авто\-мор\-физ\-мом. Но поскольку эти корни не лежат в $F_p$, ни один из них не переходит в себя. А все перестановки множества из трёх элементов, не оставляюющие на месте ни один из них, чётные. Поэтому наш автоморфизм производит чётную перестановку $\alpha, \beta, \gamma$, а значит, пере\-водит $(\alpha-\beta)(\beta-\gamma)(\gamma-\alpha)$ в себя. А кто переходит в себя, тот лежит в $F_p$. Всё доказано.
+\end{enumerate}
 \end{document}
