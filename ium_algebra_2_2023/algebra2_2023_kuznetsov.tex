@@ -409,7 +409,80 @@ $$
 $$\sum\limits_{i_1,\ldots,i_n}s(i_1, \ldots, i_n)\alpha_{i_2}\alpha_{i_3}^2\ldots\alpha_{i_{n}}^{n-1}=V.$$
 В итоге,
 $$\det(A_1+A_2+\ldots+A_n)=V^2=\mbox{disc}(f).$$
- \item
+ \item Найдём дискриминант многочлена $\frac{x^n-1}{x-1}, n > 2$. Для этого будем пользоваться формулой из предыдущей задачи.
+ Пусть $\varepsilon_1, \ldots, \varepsilon_{n-1}$ --- корни $\frac{x^n-1}{x-1}$. Пусть $\epsilon_0=1.$
+ $$p_m=\varepsilon_1^m+\ldots+\varepsilon_{n-1}^m.$$
+ Найдём $p_m.$ Пусть $S_m=\sum\limits_{i=0}^n \varepsilon_i^m.$ Тогда $p_m=S_m-1.$
+ Умножение на $\varepsilon_k$ только переставляет $\varepsilon_i$, поэтому
+ $$\varepsilon_k^m S_m=S_m.$$
+ Значит, $S_m=0$, если только не все $\varepsilon_k^m=1.$ Последнее бывает в случае $m$ делящегося на $n$, и только.
+ Итак, $p_m=-1$ при $m$ не делящемся на $n$ и $p_m=n-1$ иначе. Теперь наш определитель для дискриминанта принимает вид
+ определителя матрицы $(n-1)\times(n-1)$
+ $$
+ \begin{pmatrix}
+  n-1 & -1 & -1 & \ldots & -1 \\
+  -1 & -1 & -1 & \ldots & -1 \\
+  -1 & -1 & -1 & \ldots & n-1 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  -1 & -1 & n-1 & \ldots & -1
+ \end{pmatrix}
+ $$
+ Несколько раз переставляя столбцы, можно добиться того, чтобы все $n-1$ стояли на главной диагонали, а все элементы вне главной диагонали были $-1.$
+ Для этого надо сделать
+ $$(n-4)+(n-5)+\ldots+2+1=\frac{(n-4)(n-3)}{2}$$
+ перестановок столбцов. Итак, наш дискриминант равен
+ $$(-1)^{\frac{(n-4)(n-3)}{2}}
+ \det\begin{pmatrix}
+        n-1 & -1 & -1 & \ldots & -1 \\
+      -1 & -1 & -1 & \ldots & -1 \\
+      -1 & -1 & n-1 & \ldots & -1 \\
+      \vdots & \vdots & \vdots &\ddots & \vdots \\
+      -1 & -1 & -1 &\ldots & n-1
+     \end{pmatrix}
+ $$
+ Теперь отнимаем второй столбец от всех остальных и получаем
+ $$(-1)^{\frac{(n-4)(n-3)}{2}}
+ \det\begin{pmatrix}
+        n & -1 & 0 & \ldots & 0 \\
+       0 & -1 & 0 & \ldots & 0 \\
+       0 & -1 & n & \ldots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+       0 & -1 & 0 &\ldots & n
+     \end{pmatrix}
+ $$
+ Теперь меняем знак у второго столбца и переставляем первый и второй столбцы, получаем
+  $$(-1)^{\frac{(n-4)(n-3)}{2}}
+ \det\begin{pmatrix}
+        1 & n & 0 & \ldots & 0 \\
+        1 & 0 & 0 & \ldots & 0 \\
+        1 & 0 & n & \ldots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & 0 & 0 &\ldots & n
+     \end{pmatrix}
+ $$
+ Вынося $n$ из всех столбцов, кроме первого, получаем
+   $$(-1)^{\frac{(n-4)(n-3)}{2}}n^{n-2}
+ \det\begin{pmatrix}
+        1 & 1 & 0 & \ldots & 0 \\
+        1 & 0 & 0 & \ldots & 0 \\
+        1 & 0 & 1 & \ldots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & 0 & 0 &\ldots & 1
+     \end{pmatrix}
+ $$
+ Теперь от первого столбца отнимаем все остальные столбцы, получаем
+   $$(-1)^{\frac{(n-4)(n-3)}{2}}n^{n-2}
+ \det\begin{pmatrix}
+        0 & 1 & 0 & \ldots & 0 \\
+        1 & 0 & 0 & \ldots & 0 \\
+        0 & 0 & 1 & \ldots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 &\ldots & 1
+     \end{pmatrix}
+ $$
+ Ну а оставшийся детерминант равен $-1$ (можно переставить первые два столбца, будет единичная матрица), поэтому получаем ответ. \newline
+ Ответ: $\mbox{disc}(\frac{x^n-1}{x-1})=(-1)^{\frac{(n-3)(n-4)}{2}+1}n^{n-2}=(-1)^{\frac{ n(n+1)}{2}+1}n^{n-2}.$
+
  \item
  \item
  \item
