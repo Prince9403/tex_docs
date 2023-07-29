@@ -71,7 +71,7 @@ $$f(x)=tx^nf\left(\frac{1}{x}\right), t\in \mathbb{Q}.$$
 $$f(x)=(x^{2m+1}+1)+c_1(x^{2m}+x)+\ldots,$$
 и этот многочлен имеет корень $-1$, что тоже невозможно в силу его неприводимости. Всё доказано.
 
-\item a) Кажется, это известная теорема. Воспользуемсяя тем, что мульти\-пли\-катив\-ная группа поля $\mathbb{F}_p$ циклическая. Значит, она порождается неким $g\in\mathbb{F}_p$. Тогда
+\item a) Кажется, это известная теорема. Воспользуемся тем, что мульти\-пли\-катив\-ная группа поля $\mathbb{F}_p$ циклическая. Значит, она порождается неким $g\in\mathbb{F}_p$. Тогда
 $\left(\frac{-1}{p}\right)=1$ тогда и только тогда, когда для некоторого $s, 0 < s < p-1$ имеет место
 $$g^{2s}=-1.$$
 Из этого равенства следует $g^{4s}=1$, и получаем: \\
@@ -228,7 +228,7 @@ $$\frac{p^{42}-p^{21}-p^{14}+p^7-p^6+p^3+p^2-p}{42}.$$
 Это как раз то, что мы искали. Но как быть для случая $F_q$?
 
 Итак, решаем задачу в общем случае. Пусть $Q_k$ --- количество неприводимых многочленов степени $k$ со старшим коэффициентом 1 над $F_q$, где $q$ --- степень простого
-числа.Напишем рекуррентные соотношения для $Q_k$:
+числа. Напишем рекуррентные соотношения для $Q_k$:
 $$Q_1=q,$$
 $$Q_k=q^k-\sum\limits_{s=1}^k \sum_{\substack{0<i_1\le i_2 \le \ldots \le i_s\\ i_1 t_1+\ldots+i_s t_s=k \\t_1+\ldots+t_s>1}}
       \binom{Q_{i_1}+t_1-1}{t_1}\ldots \binom{Q_{i_s}+t_s-1}{t_s}, k > 1.$$
@@ -337,7 +337,78 @@ $$a_1(b_2-b_1)=0.$$
 
 \section{Листок 3}
 \begin{enumerate}
- \item
+ \item $\alpha_1, \ldots, \alpha_n$ --- корни $f(x)$, $p_m=\sum\limits_{i=1}^n \alpha_i^m$.
+ Через $\det(u_1, \ldots, u_n)$ мы будем обозначать детерминант матрицы, образованной столбцами $u_1, \ldots, u_n$.
+ Пусть $A_i$ --- это матрица
+ $$
+ A_i=\begin{pmatrix}
+      1 & \alpha_i &  \ldots & \alpha_i^{n-1} \\
+      \alpha_i & \alpha_i^2  & \ldots & \alpha_i^n \\
+      \vdots & \vdots & \ddots & \vdots \\
+      \alpha_i^{n-1} & \alpha_i^n & \ldots & \alpha_i^{2n-2}
+     \end{pmatrix}
+ $$
+ Тогда детерминант, о котором речь в условии, это
+ $$\det(A_1+A_2+\ldots+A_n).$$
+ Его мы сейчас и посчитаем (и покажем, что он равен дискриминанту $f$).
+ Детерминант суммы матриц можно записать так:
+ $$
+  \det(A_1+\ldots+A_n)=
+  \sum\limits_{i_1, \ldots, i_n} \det(A_{i_1, 1}, A_{i_2, 2}, \ldots, A_{i_n, n}).
+ $$
+Здесь $A_{i_s, s}$ --- $s$-ый столбец матрицы $A_{i_s}$. Ну, то есть сумма всевозможных детерминантов матриц, в которых из одной из суммируемых матриц $A_i$
+взят первый столбец и поставлен на место первого столюца, из другой взят второй столбец и поставлен на место второго и т.д.
+Заметим, что в рссматриваемой сумме
+$$\sum\limits_{i_1, \ldots, i_n} \det(A_{i_1, 1}, A_{i_2, 2}, \ldots, A_{i_n, n}).$$
+слагаемые, в которых некоторые $i_s$ совпадают, обращаются в $0$, поскольку любые два столбца каждой матрицы $A_i$ пропорциональны.
+Значит, сумма на самом деле не по всем последовательностям из $1, \ldots, n$, а по всем перестановкам чисел $1, \ldots, n.$
+И эта сумма равна (выносим из столбцов множители вида $\alpha_i^k$)
+\begin{multline*}
+ \sum\limits_{i_1, \ldots, i_n} \det(A_{i_1, 1}, A_{i_2, 2}, \ldots, A_{i_n, n})=\\=
+ \sum\limits_{i_1,\ldots,i_n}\alpha_{i_2}\alpha_{i_3}^2\ldots\alpha_{i_{n}}^{n-1}\det(A_{i_1, 1}',\ldots, A_{i_n, n}').
+\end{multline*}
+Здесь
+$$
+A_i'=\begin{pmatrix}
+      1 & 1 & \ldots & 1 \\
+      \alpha_i & \alpha_i & \ldots & \alpha_i \\
+      \vdots & \vdots & \ddots & \vdots \\
+      \alpha_i^{n-1} & \alpha_i^{n-1} & \ldots & \alpha_i^{n-1}.
+     \end{pmatrix}
+$$
+Ясно, что $\det(A_{i_1, 1}',\ldots, A_{i_n, n}')$ равен знаку перестановки $i_1,\ldots, i_n$, который мы обозначим через $s(i_1, \ldots, i_n)$,
+умноженному на детерминант матрицы
+$$
+\begin{pmatrix}
+ 1 & 1 & \ldots & 1 \\
+ \alpha_1 & \alpha_2 & \ldots & \alpha_n\\
+ \vdots & \vdots & \ddots & \vdots \\
+ \alpha_1^{n-1} & \alpha_2^{n-1} & \ldots & \alpha_n^{n-1}
+\end{pmatrix}
+$$
+А детерминант этой матрицы --- это определитель Вандермонда
+$$V=\prod\limits_{i<j}(\alpha_j-\alpha_i).$$
+Итак,
+\begin{multline*}
+ \det(A_1+A_2+\ldots+A_n)=\\=
+ \sum\limits_{i_1,\ldots,i_n}\alpha_{i_2}\alpha_{i_3}^2\ldots\alpha_{i_{n}}^{n-1}\det(A_{i_1, 1}',\ldots, A_{i_n, n}')=\\=
+ V \times \sum\limits_{i_1,\ldots,i_n}s(i_1, \ldots, i_n)\alpha_{i_2}\alpha_{i_3}^2\ldots\alpha_{i_{n}}^{n-1}.
+\end{multline*}
+Осталось найти
+$$\sum\limits_{i_1,\ldots,i_n}s(i_1, \ldots, i_n)\alpha_{i_2}\alpha_{i_3}^2\ldots\alpha_{i_{n}}^{n-1}.$$
+Но это есть полное разложение определителя матрицы
+$$
+\begin{pmatrix}
+ 1 & \alpha_1 & \ldots & \alpha_1^{n-1}\\
+1 & \alpha_2 & \ldots & \alpha_2^{n-1} \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & \alpha_n  & \ldots & \alpha_n^{n-1}
+\end{pmatrix}
+$$
+То есть
+$$\sum\limits_{i_1,\ldots,i_n}s(i_1, \ldots, i_n)\alpha_{i_2}\alpha_{i_3}^2\ldots\alpha_{i_{n}}^{n-1}=V.$$
+В итоге,
+$$\det(A_1+A_2+\ldots+A_n)=V^2=\mbox{disc}(f).$$
  \item
  \item
  \item
