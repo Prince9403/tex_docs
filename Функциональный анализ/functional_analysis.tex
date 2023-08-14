@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{bbm}
+\usepackage{enumitem}
 
 
 \newtheorem{theorem}{Теорема}[section]
@@ -167,6 +168,23 @@
  Но это рассуждение неполное. Мы не показали, что $B_n$ являются ограниченными операторами.На самом деле, это непонятно как показывать.
 
 
+\end{enumerate}
+
+\section{Пирковский}
+
+\begin{enumerate}
+ \item Задача о функциональном исчислении.
+ \begin{enumerate}[label=1.\arabic*.]
+  \item Условие $M\supset \{\lambda_1, \ldots, \lambda_n\}$ необходимо для разрешимости задачи функционального исчисления с $A=F(M)$.
+  Допустим, $\lambda_k \notin M$. Нам нужно показать, что не существует гомоморфизма из алгебры всех функций на $M$ в алгебру операторов, который переводит многочлены куда надо. Допустим, такой гомоморфизм $\gamma_A$ существует.
+  Имеем
+   $$\gamma_A(\lambda_k-t)\gamma_A\left(\frac{1}{\lambda_k-t}\right)=\gamma_A(1)=1_E,$$
+   $$(\lambda_k-A)\gamma_A\left(\frac{1}{\lambda_k-t}\right)=1_E.$$
+   Но оператор $\lambda_k-A$ необратим. Противоречие.
+   \item $$T=\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}.$$
+   1) Не существует оператора $S$ с $S^2=T.$ Допустим, $S^2=T.$ Тогда
+
+\end{enumerate}
 \end{enumerate}
 
 \end{document}
