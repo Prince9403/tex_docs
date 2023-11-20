@@ -1,0 +1,46 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+
+%opening
+\title{Алгебра 3 2023 Кузнецов}
+\author{}
+\date{}
+
+
+
+
+\begin{document}
+\maketitle
+
+
+
+\section{Листок 1}
+\begin{enumerate}
+ \item Существует ли функтор из Grp в Ab, переводящий группу в её центр?
+ Покажем, что нет такого функтора. Предположим, что это функтор $\mathcal{F}$. Рассмотрим группы $G=S_2$ и $H=S_n$ с таким $n$, что центр $S_n$ тривиален (например, $n=5$).
+ Рассмотрим гомоморфизмы $g\colon G \to H$, являющийся просто вложением, и $h \colon H \to G$, переводящий чётные перестановки в $e$, а нечётные в $(12)$.
+ Тогда $hg=id_G$. Отсюда
+ $$\mathcal{F}(h)\mathcal{F}(g)=id_{\mathcal{F}(G)}.$$
+ Но $\mathcal{F}(G)$ --- это центр группы $G$, то есть в нашем случае вся $G$. А $\mathcal{F}(g)$ действует из $G$ в центр $H$, то есть обязана быть тривиальным гомоморфизмом (всё в $e$). Но тогда
+ $$\mathcal{F}(h)\mathcal{F}(g)$$
+ тоже обязано всё переводить в $e$, а это не так ($id_{\mathcal{F}(G)}$ тождественно, а не переводит всё в $e$).
+
+\end{enumerate}
+
+
+\end{document}
+
+
+
