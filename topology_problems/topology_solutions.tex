@@ -1,0 +1,109 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
+
+%opening
+\title{Топология --- задачи}
+\author{}
+\date{}
+
+
+
+
+\begin{document}
+\maketitle
+
+
+
+\section{Прасолов-1}
+\begin{enumerate}
+\item
+\begin{enumerate}
+ \item
+\end{enumerate}
+
+\item
+\begin{enumerate}
+ \item Отображения
+ $$f(A, B)=\begin{pmatrix}A & 0 \\ 0 & B \end{pmatrix}, g(A, B)=\begin{pmatrix}AB & 0 \\ 0 & I \end{pmatrix}$$
+ гомотопны как отображения $GL(n, \mathbb{R})\times GL(n, \mathbb{R}) \to GL(2n, \mathbb{R})$.
+ Докажем в несколько этапов.
+\begin{lemma}
+ Отображения
+ $$f(A, B)=\begin{pmatrix}A & 0 \\ 0 & B \end{pmatrix}, h_1(A, B)=\begin{pmatrix}A & AB \\ 0 & B \end{pmatrix}$$
+ гомотопны.
+\end{lemma}
+Доказательство осущетвляется гомотопией
+$$F_{1t}(A, B)=\begin{pmatrix}A & tAB \\ 0 & B \end{pmatrix}, t \in [0,1].$$
+
+\begin{lemma}
+ Отображения
+ $$h_1(A, B)=\begin{pmatrix}A & AB \\ 0 & B \end{pmatrix}, h_2(A, B)=\begin{pmatrix}0 & AB \\ -I & B \end{pmatrix}$$
+ гомотопны.
+\end{lemma}
+Доказательство осущетвляется гомотопией
+$$F_{2t}(A, B)=\begin{pmatrix}A-tA & AB \\ -tI & B \end{pmatrix}=\begin{pmatrix}A-tAB\times B^{-1} & AB \\ -tB\times B^{-1} & B \end{pmatrix}, t \in [0,1].$$
+Ясно, что у матрицы
+$$\begin{pmatrix}A-tAB\times B^{-1} & AB \\ -tB\times B^{-1} & B \end{pmatrix}$$
+определитель тот же, что у
+$$\begin{pmatrix}A & AB \\ 0 & B \end{pmatrix},$$
+поэтому мы не выходим за рамки матриц с ненулевым определителем.
+
+\begin{lemma}
+ Отображения
+ $$h_2(A, B)=\begin{pmatrix}0 & AB \\ -I & B \end{pmatrix}, h_3(A, B)=\begin{pmatrix}0 & AB \\ -I & 0 \end{pmatrix}$$
+ гомотопны.
+\end{lemma}
+Доказательство осуществляется гомотопией
+$$F_{3t}(A, B)=\begin{pmatrix}0 & AB \\ -I & B-tB \end{pmatrix}, t \in [0, 1].$$
+
+\begin{lemma}
+ Отображения
+ $$h_3(A, B)=\begin{pmatrix}0 & AB \\ -I & 0 \end{pmatrix}, h_4(A, B)=\begin{pmatrix}0 & AB \\ -I & I \end{pmatrix}$$
+ гомотопны.
+\end{lemma}
+Доказательство осуществляется гомотопией
+$$F_{4t}(A, B)=\begin{pmatrix}0 & AB \\ -I & tI \end{pmatrix}, t \in [0, 1].$$
+
+\begin{lemma}
+ Отображения
+ $$h_4(A, B)=\begin{pmatrix}0 & AB \\ -I & I \end{pmatrix}, h_5(A, B)=\begin{pmatrix}AB & AB \\ 0 & I \end{pmatrix}$$
+ гомотопны.
+\end{lemma}
+Доказательство осуществляется гомотопией
+$$F_{5t}(A, B)=\begin{pmatrix}tAB & AB \\ -I+tI & I \end{pmatrix}, t \in [0, 1].$$
+
+\begin{lemma}
+ Отображения
+ $$h_5(A, B)=\begin{pmatrix}AB & AB \\ 0 & I \end{pmatrix}, g(A, B)=\begin{pmatrix}AB & 0 \\ 0 & I \end{pmatrix}$$
+ гомотопны.
+\end{lemma}
+Доказательство осуществляется гомотопией
+$$F_{6t}(A, B)=\begin{pmatrix}AB & AB -tAB \\ 0 & I \end{pmatrix}, t \in [0, 1].$$
+Эти леммы в совокупности дают доказательство.
+ \item Неинтересно.
+ \item Неинтересно.
+ \item Неинтересно.
+ \item Неинтересно.
+ \item Линейная связность пространств матриц. Это интересно, будем решать.
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
+
+
+
