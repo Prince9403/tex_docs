@@ -1,0 +1,185 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+
+%opening
+\title{Вероятность --- задачи}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+
+\section{Kallenberg 2002 --- Глава 4}
+\begin{enumerate}
+ \item
+ \item
+ \item
+\end{enumerate}
+
+\section{Kallenberg 2002 --- Глава 5}
+\begin{enumerate}
+ \item
+ \item
+ \item
+\end{enumerate}
+
+\section{Kallenberg 2002 --- Глава 6. Условное матожидание}
+
+Как доказать предложение 6.6 из Калленберга?
+В первую сторону:
+дано, что
+$$P(H\mid \mathcal{F}, \mathcal{G})=P(H\mid \mathcal{G}), H \in \mathcal{H}$$
+Покажем, что $$\mathcal{F}\amalg_{\mathcal{G}}\mathcal{H}.$$
+Для этого надо показать, что при $F\in \mathcal{F}, H \in \mathcal{H}$
+$$P^{\mathcal{G}}(F\cap H)=P^{\mathcal{G}}F \times P^{\mathcal{G}}H.$$
+Иными словами,
+$$\mathbb{E}(\mathrm{1}_{F\cap H}\mid \mathcal{G})=\mathbb{E}(\mathrm{1}_F\mid \mathcal{G}) \times \mathbb{E}(\mathrm{1}_H\mid \mathcal{G}).$$
+Имеем
+\begin{multline*}
+ \mathbb{E}(\mathrm{1}_{F\cap H}\mid \mathcal{G})=\mathbb{E}(\mathrm{1}_F \mathrm{1}_H\mid \mathcal{G})=
+ \mathbb{E}(\mathbb{E}(\mathrm{1}_F \mathrm{1}_H\mid \mathcal{F}, \mathcal{G})\mid \mathcal{G})=\\=
+ \mathbb{E}(\mathrm{1}_F \mathbb{E}(\mathrm{1}_H\mid \mathcal{F}, \mathcal{G})\mid \mathcal{G})=
+ \mathbb{E}(\mathrm{1}_F \mathbb{E}(\mathrm{1}_H\mid \mathcal{G})\mid \mathcal{G})=
+ \mathbb{E}(\mathrm{1}_H \mid \mathcal{G})\times \mathbb{E}(\mathrm{1}_F \mid \mathcal{G}).
+\end{multline*}
+
+А в другую сторону?
+
+\begin{enumerate}
+ \item
+ \item
+ \item
+\end{enumerate}
+
+\section{Kallenberg 2002 --- Глава 7}
+\begin{enumerate}
+ \item
+ \item
+ \item
+\end{enumerate}
+
+
+\section{Kallenberg 2002 --- Глава 12}
+\begin{enumerate}
+ \item $\{\sigma=\tau\} \in F_{\sigma}\cap F_{\tau}.$ Достаточно показать, что
+ $$\{\sigma < \tau\} \in F_{\sigma} \cap F_{\tau}.$$
+ Отсюда с учётом аналогичного влючения для $\{\tau < \sigma\}$ будет следовать, что
+ $$\{\sigma \ne \tau\} \in F_{\sigma} \cap F_{\tau}.$$
+ Итак, имеем
+ $$\{\sigma < \tau\} \cap \{\tau \le t\}=\mathop{\cup}\limits_{0<q<t, q \in \mathbb{Q}}\left(\{\sigma< q\}\cap\{q<\tau \le t\}\right)\in F_t.$$
+ Это верно для любого $t$, и по определению $F_{\tau}$ получаем
+ $$\{\sigma < \tau\} \in F_{\tau}.$$
+ Далее,
+ $$\{\sigma < \tau\} \cap \{\sigma \le t\}=\{\sigma < \tau, \tau \le t\} \cup \{\sigma \le t, \tau > t\}.$$
+ Но оба последних события лежат в $F_t$. Дейтвительно,
+ $$\{\sigma < \tau, \tau \le t\}\in F_t$$
+ мы доказали выше, а
+ $$\{\sigma \le t, \tau > t\}=\{\sigma \le t\} \cap \{\tau > t\} \in F_t.$$
+ Итак,
+ $$\{\sigma < \tau\} \cap \{\sigma \le t\} \in F_t$$
+ для любого $t$, и по определению $F_{\sigma}$ получаем $\{\sigma < \tau\}\in F_{\sigma}.$
+
+ Далее, почему $F_{\sigma}= F_{\tau}$ на $\{\sigma=\tau\}$? Пусть $A\subseteq \{\sigma=\tau\}, A \in F_{\sigma}.$
+ Покажем, что $A\in F_{\tau}.$ Из $A \in F_{\sigma}$ следует, что для любого $t$
+ $$A\cap \{\sigma \le t\} \in F_t.$$
+ Поскольку на множестве $A$ $\sigma=\tau$, то для любого $t$
+  $$A\cap \{\tau \le t\} = A\cap \{\sigma \le t\}\in F_t.$$
+По определению $F_\tau$, $A \in F_\tau$. Вот и доказали всё.
+
+Осталось объяснить, почему $F_\tau$ может отличаться от $F_\infty$ на $\{\tau=\infty\}$. Это ясно. Если $\tau=\infty$ всегда, то по определению
+$F_\tau$, в $F_{\tau}$ входят все множества из сигма-алгебры $A$, а не только из $F_\infty$.
+ \item Стандртная задача.
+ \item Пример слабо опционального, но не опционального момента. Возьмём, как предлагает Калленберг.
+ Берём бернуллиевскую случайную величину $\xi, P(\xi=1)=P(\xi=-1)=\frac12$, и положим
+ $$F_0=\{\emptyset, \Omega\}, F_t=\sigma(\xi), t >0.$$
+ Пусть
+ $$\tau=\begin{cases}
+        0, \xi =-1, \\
+        1, \xi = 1.
+       \end{cases}
+        $$
+Тогда для $t>0$ имеем
+$$\{\tau<t\}=\begin{cases}
+              \{\xi = -1\}, t \le 1, \\
+              \Omega, t > 1.
+             \end{cases}
+$$
+В любом случае, $\{\tau<t\} \in F_t=\sigma(\xi), t>0$. Поэтому $\tau$ слабо опциональный.
+Но $\{\tau \le 0\}=\{\tau=0\}=\{\xi = -1\}\notin F_0.$ Поэтому $\tau$ не опциональный.
+
+
+\item Скучно решать это.
+
+\item Задача про прогрессивные процессы. Прогрессивность --- это измеримость относительно соответствующей сигма-алгебры.
+Итак, сначала покажем, что класс множеств $A\in \Omega \times \mathbb{R}_+$, таких, что процесс $1_A$ прогрессивен, образует сигма-алгебру.
+Да это вроде очевидно! Прогрессивность $1_A$ означает, что для любого $t$
+$$A \cap \left(\Omega \times [0, t]\right) \in F_t \otimes \mathcal{B} [0, t].$$
+Ясно, что это свойство сохраняется счётным объединением. И для перехода к дополнению всё тоже очевидно. Итак, да, сигма-алгебра.
+
+Почему прогрессивность процесса равносильна его измеримости относительно  этой сигма-алгебры? Допустим, процесс $X$ прогрессивен. Покажем,
+что он измерим относительно этой сигма-алгебры. Нужно проверить, что для любого $a$ множество $\{X>a\}$ лежит в прогрессивной сигма-алгебре.
+А оно там лежит, если для любого $t$
+$$\{X > a\}\cap \left(\Omega \times [0, t]\right) \in F_t \otimes \mathcal{B} [0, t].$$
+А это так, если $X$ прогрессивен. И в другую сторону аналогично. Короче, пусть Калленберг сам решает такие задачи! Одни проверки.
+
+\item
+
+\end{enumerate}
+
+\section{Protter --- Глава 2}
+\begin{enumerate}
+ \item $f\colon \mathbb{R}\to \mathbb{R}$ непрерывна за исключением одной точки, в которой у неё скачок. Показать, что $X_t=f(B_t)$ не семимартингал.
+
+ Решение задачи опирается на то, что в окрестности момента достижения любого уровня броуновское движение бесконечно много раз проходит через этот уровень.
+
+ Фиксируем $t>0$ и покажем, что $X^t$ --- не тотальный семимартингал.
+ Пусть $a$ --- точка скачка $f$.
+ Пусть
+ $$\tau_a=\inf\{t>0 \colon B_t=a\}.$$
+ Для $\epsilon>0$ определим последовательность моментов остановки $\tau^{\epsilon}_n$ следующим образом:
+ $$\tau^{\epsilon}_0=\inf\{t>0 \colon B_t=a-\epsilon\},$$
+ $$\tau^{\epsilon}_{2n+1}=\inf\{t>\tau^{\epsilon}_{2n} \colon B_t=a+\epsilon\},$$
+ $$\tau^{\epsilon}_{2n}=\inf\{t>\tau^{\epsilon}_{2n-1} \colon B_t=a-\epsilon\}.$$
+Из свойств броуновского движения
+$$\max\{n > 0 \colon \tau^{1/m}_n<t\} \xrightarrow[m \to \infty]{a.s.} \infty$$
+на множестве $\{\tau_a<t\}$.
+Пусть $h_m\to\infty$ такая детерминированная последовательность, что
+$$0<h_m < \sqrt{m}$$
+и
+$$P(\max\{n > 0 \colon \tau^{1/m}_n<t\}>h_m)\ge \frac12 P\{\tau_a<t\}.$$
+
+ Определим случайные процессы $H_m$ таким образом:
+ $$H_m(t)=\begin{cases}
+                      0, t \le \tau^{1/\sqrt[3]{h_m}}_0, \\
+                      \frac{(-1)^n}{\sqrt{h_m}}, t \in (\tau^{1/\sqrt[3]{h_m}}_n, \tau^{1/\sqrt[3]{h_m}}_{n+1}], n < m, \\
+                      0, t > \tau^{1/\sqrt[3]{h_m}}_{m}
+                     \end{cases}
+.$$
+Тогда
+$$|I_{X^t}(H_m)| \ge \frac{1}{h_m^{5/6}} \left(m \wedge \max\{n > 0 \colon \tau^{1/m}_n<t\}\right)-
+\frac{1}{\sqrt{h_m}}|\sup\limits_{s\in [0,t]}f(B_s)-\inf\limits_{s\in [0,t]}f(B_s)|.$$
+С вероятностью не меньше, чем $\frac12 P\{\tau_a<t\}=const>0$ имеем
+$$\max\{n > 0 \colon \tau^{1/m}_n<t\}>h_m,$$
+$$|I_{X^t}(H_m)|>h_m^{1/6}-\frac{1}{\sqrt{h_m}}|\sup\limits_{s\in [0,t]}f(B_s)-\inf\limits_{s\in [0,t]}f(B_s)| \xrightarrow[m \to\infty]{a.s.} \infty.$$
+Это противоречит сходимости по вероятности $$I_{X^t}(H_m)\xrightarrow[m\to\infty]{P}0.$$
+Значит, $X^t$ --- не тотальный семимартингал, а $X$ --- не семимартингал.
+
+ \item
+ \item
+\end{enumerate}
+
+\end{document}
