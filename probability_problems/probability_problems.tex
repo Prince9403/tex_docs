@@ -137,8 +137,38 @@ $$\forall n \enskip  \mathbb{E}(X(t)\mid F_s) \ge \mathbb{E}(X_n(t) \mid F_s) \g
 а поскольку это для любого $n$, то
 $$\mathbb{E}(X(t)\mid F_s) \ge \sup_n X_n(s)=X(s).$$
 Вот и доказали.
-Дальше сложнее. Покажем, что если $\sup_n |X_n|$ интегрируем, то и $\lim \sup_n X_n$ --- субмартингал.
-
+Дальше сложнее. Покажем, что если $\sup_n |X_n|$ интегрируем, то и $\lim \sup_n X_n$ --- субмартингал. Фиксируем $s<t$. Пусть
+$$\xi_n=\sup(X_n(t),  X_{n+1}(t), X_{n+2}(t), \ldots),$$
+$$\eta_n=\sup(X_n(s),  X_{n+1}(s), X_{n+2}(s), \ldots).$$
+Пусть также $\xi=\sup_n|X_n(t)|, \eta=\lim\sup_n X_n(s)$. Имеем
+$$\lim_{n\to\infty}\xi_n=\lim \sup_n X_n(t)\enskip a.s., |\xi_n| \le \xi \enskip a.s..$$
+По условию, $\xi$ интегрируема. Значит, по теореме Лебега об ограниченной сходимости,
+$$\xi_n\xrightarrow[n\to\infty]{L_1}\lim \sup_n X_n(t).$$
+Условное матожидание при условии $F_s$ --- ограниченный оператор на $L_1(F_t)$, см. начало предыдущей главы. Поэтому
+$$\zeta_n=\mathbb{E}(\xi_n \mid F_s) \xrightarrow[n\to\infty]{L_1} \mathbb{E}(\lim \sup_n X_n(t) \mid F_s)=\zeta.$$
+Из условия субмаритингальности,
+$$\eta_n \le \mathbb{E}(\xi_n \mid F_s)=\zeta_n.$$
+Но аналогичные рассуждения для момента $s$
+$$\eta_n\xrightarrow[n\to\infty]{L_1}\lim \sup_n X_n(s)=\eta.$$
+Итак, имеем две последовательности случайных величин $\zeta_n \ge \eta_n$, и обе сходятся в $L_1$:
+$$\zeta_n\xrightarrow[n\to\infty]{L_1}\zeta, \eta_n\xrightarrow[n\to\infty]{L_1}\eta.$$
+Покажем, что
+$$\zeta \ge \eta \enskip a.s.$$
+Действительно,
+$$\zeta_n-\eta_n \ge 0, \zeta_n-\eta_n\xrightarrow[n\to\infty]{L_1}\zeta-\eta.$$
+Но $L_1$-предел неотрицательных случайных величин неотрицателен почти наверное. Действительно, если $\lambda_n$ --- неотрицательные случайные величины
+и
+$$\lambda_n\xrightarrow[n\to\infty]{L_1}\lambda,$$
+$$A=\{\omega\in \Omega \mid \lambda(\omega)<0\},$$
+то при $P(A)>0$ имеем $\mathbb{E}\lambda_n\mathbbm{1}_A\to \mathbb{E}\lambda\mathbbm{1}_A < 0$, противоречие.
+Кстати, откуда следует сходимость
+$\mathbb{E}\lambda_n\mathbbm{1}_A\to \mathbb{E}\lambda\mathbbm{1}_A, n\to\infty$? \\
+Эта сходимость следует из
+$$|\mathbb{E}\lambda_n\mathbbm{1}_A-\mathbb{E}\lambda\mathbbm{1}_A|\le \mathbbm{E}|(\lambda_n-\lambda)\mathbbm{1}_A| \le
+\mathbbm{E}|\lambda_n-\lambda|\to 0, n \to\infty.$$
+Вот всё и доказали. Неравенство $\zeta \ge \eta \enskip a.s.$ и есть нужное нам неравенство
+$$\mathbb{E}(\lim \sup_n X_n(t) \mid F_s) \ge \lim \sup_n X_n(s),$$
+показывающее субмартингальность процесса $\lim \sup_n X_n$.
 \end{enumerate}
 
 
