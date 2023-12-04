@@ -169,6 +169,38 @@ $$|\mathbb{E}\lambda_n\mathbbm{1}_A-\mathbb{E}\lambda\mathbbm{1}_A|\le \mathbbm{
 Вот всё и доказали. Неравенство $\zeta \ge \eta \enskip a.s.$ и есть нужное нам неравенство
 $$\mathbb{E}(\lim \sup_n X_n(t) \mid F_s) \ge \lim \sup_n X_n(s),$$
 показывающее субмартингальность процесса $\lim \sup_n X_n$.
+\item
+\item
+\item
+\item
+\item Доказательство леммы 4.15 дословно переносится на случай, когда $\xi_n$ --- мартингал-разность для $L_2$-интегрируемого мартингала $M$.
+Итак, для $L_2$-ограниченного мартингала имеет место неравенство Колмогорова
+$$P(\sup_n |M_n| > r)\le r^{-2} \sup_n\mathbb{E} M_n^2.$$
+Но можно такое вывести и из леммы 7.15. Эта лемма даёт для субмартингала $X$
+$$rP(\sup_t |X_t| \ge r) \le 3 \sup_t \mathbb{E} |X_t|.$$
+Мы можем взять в качестве $X$ субмартингал $M^2$ (квадрат мартингала --- субмартингал). Имеем тогда из этого неравенства
+$$r^2P(\sup_n |M_n| \ge r)=r^2 P(\sup_n X_n \ge r^2) \le 3 \sup_n \mathbb{E} |X_n|=3 \sup_n \mathbb{E} M_n^2.$$
+
+А теперь мы можем имитировать доказательство леммы 4.16. Пусть $n$ фиксировано, построим случайный процесс $X^{(n)}$ на $\mathbb{Z}_+$,
+$$X^{(n)}_k = (M_{n+k}-M_n)^2, k \ge 0.$$
+Тогда $X^{(n)}$ --- субмартингал. Имеем для него из 7.15
+\begin{multline*}
+ P(\sup_{k\ge 0}X^{(n)}_k \ge \epsilon^2)\le 3 \epsilon^{-2}\sup_{k\ge 0}\mathbb{E}|X^{(n)}_k| = 3 \epsilon^{-2}\mathbb{E}(M_{n+k}-M_n)^2 \le \\ \le
+3 \epsilon^{-2}\sum\limits_{k \ge 0} \mathbb{E}(M_{n+k+1}-M_{n+k})^2\to 0, n \to \infty.
+\end{multline*}
+
+Отсюда
+$$P(\sup_{k\ge 0}(M_{n+k}-M_n)^2 > \epsilon^2)\to 0, n \to \infty$$
+для любого $\epsilon>0.$ Итак,
+$$\sup_{k\ge n} |M_k-M_n|\xrightarrow[n\to\infty]{P}0.$$
+Значит, для некоторой подпоследовательности $n_s$
+$$\sup_{k\ge n_s} |M_k-M_{n_s}|\xrightarrow[s\to\infty]{a.s.}0.$$
+Но если $\sup_{k\ge n_s} |M_k-M_{n_s}| \le \epsilon$, то
+$$\sup_{k_1, k_2\ge n_s} |M_{k_1}-M_{k_2}| \le 2\epsilon.$$
+Отсюда следует, что последовательность $\{M_n\}$ фундаментальна почти наверное. Значит, сходится почти наверное. Ну а сходимость в $L_2$
+по сравнению с этим тривиальна и следует из фундаментальности в $L_2$ последовательности $M_n$:
+$$\sup_{k\ge 0}\mathbb{E}(M_{n+k}-M_n)^2 \le \sum\limits_{k \ge 0} \mathbb{E}(M_{n+k+1}-M_{n+k})^2\to 0, n \to \infty.$$
+
 \end{enumerate}
 
 
