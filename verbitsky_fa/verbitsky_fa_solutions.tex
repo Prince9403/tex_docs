@@ -71,7 +71,32 @@
  \item
  \item
  \item
- \item
+ \item Из $\nu \ll \mu$ и $\nu(S)<\infty$ следует, что для любого $\delta>0$ найдётся $\varepsilon>0$, такое, что из $\mu(V)<\varepsilon$
+ вытекает $\nu(V)<\delta$. Допустим, это не так. Тогла для некоторого $\delta>0$, каким бы ни выбрать $\varepsilon$, найдётся множество $V$ такое, что $\mu(V)<\varepsilon, \nu(V)\ge \delta$. Выберем такие $V_n$, что
+ $$\mu(V_n)<\frac{1}{2^n}, \nu(V_n)\ge \delta.$$
+ Пусть $A_n$ --- множество тех $\omega\in S$, которые принадлежат не менее чем $n$ множествам $V_i$. Ясно, что
+ $$A_1\supseteq A_2\supseteq A_3 \supseteq \ldots$$
+ Покажем, что $\nu(A_n)\ge \delta$ для всех $n$. Допустим, это не так. Найдём $N$ такое, что $\nu(A_N) < \delta$. Пусть
+ $$\delta'=\delta-\mu(A_N)>0.$$
+ Рассмотрим множества
+ $$W_n=V_n\setminus A_N.$$
+ Ясно, что
+ $$\forall n \enskip \nu(W_n)\ge \nu(V_n)-\nu(A_N) \ge \delta - \mu(A_N) = \delta'>0.$$
+ Но каждая точка множества $S$ теперь принадлежит не более чем $N$ множествам $W_i$. Пусть $B_n$ --- множество тех точек из $S$, которые принадлежат
+ не менее чем $n$ множествам $W_i$. Имеем
+ $$\sum_{n=1}^\infty\nu(W_n)=\nu(B_1)+\nu(B_2)+\ldots+\nu(B_N).$$
+ Левая часть равенства бесконечна, правая конечна. Противоречие. Итак,
+ $$\forall n \enskip \nu(A_n)\ge \delta.$$
+ Поэтому $\nu(\bigcap_{n=1}^\infty A_n) \ge \delta>0$. Но ясно, что $\mu (\bigcap_{n=1}^\infty A_n)=0$, поскольку
+ $\sum\limits_{n=1}^\infty \mu(V_n)<\infty$, и
+ $$\sum\limits_{n=1}^\infty \mu(V_n)=\sum\limits_{n=1}^\infty \mu(A_n),$$
+ откуда следует, что
+ $$\sum\limits_{n=1}^\infty \mu(A_n)<\infty,$$
+ и
+ $$\mu(A_n)\to 0, n\to\infty.$$
+ Но
+ $$\nu\left(\bigcap_{n=1}^\infty A_n\right)>0, \mu \left(\bigcap_{n=1}^\infty A_n\right)=0$$
+ противоречит абсолютной непрерывностью $\nu \ll \mu$. Всё доказано.
  \item
 \end{enumerate}
 
