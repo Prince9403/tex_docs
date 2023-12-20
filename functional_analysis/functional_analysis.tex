@@ -388,6 +388,111 @@ $$A(x_1, \ldots, x_m, 0, 0, \ldots)=(x_1, x_2/2, x_3/3, \ldots, x_m/m, 0, 0, \ld
 
 \section{Кириллов-Гвишиани}
 \begin{enumerate}
+\setcounter{enumi}{118}
+\item Утверждение очевидно для открытых множеств. Достаточно доказать для замкнутых, потому что каждое измеримое можно приблизить
+изнутри замкнутыми (регулярность меры), и отсюда легко получить нужное утверждение. Дальше считаем, что $X$ замкнуто.
+
+Сначала покажу неправильное решение. Оно с помощью леммы, но лемма не доказывается.
+
+\begin{lemma}
+ Для любого $N>0$ существуют $C=C(N)>0, \varepsilon_0>0$ такие, что при любом $\varepsilon \le \varepsilon_0$
+ $$\mu\{x\in X \mid \mu\{y\notin X\colon |y-x|<\varepsilon\}>\varepsilon/N\}<C\varepsilon.$$
+\end{lemma}
+ \begin{proof}
+  Рассмотрим функции
+  $$h_{\varepsilon}(x)=\frac{\mu\{y\notin X \colon |y-x|<\varepsilon\}}{2\varepsilon}$$.
+  Ясно, что
+  \begin{multline*}
+   \int\limits_0^1 h_{\varepsilon}(x)dx=
+   \frac{1}{2\varepsilon}\int\limits_0^1 dx \int\limits_0^1\mathbbm{1}_{y\notin X}\mathbbm{1}_{|y-x|<\varepsilon}dy=\\
+   =\frac{1}{2\varepsilon}\int\limits_0^1 \mathbbm{1}_{y\notin X} dy \int\limits_0^1\mathbbm{1}_{|y-x|<\varepsilon}dx \le
+   \int\limits_0^1 \mathbbm{1}_{y\notin X} dy=\mu([0,1]\setminus X).
+  \end{multline*}
+  Также ясно, что
+  $$\lim\limits_{\varepsilon\to 0}h_{\varepsilon}(x)=1, x\in [0,1]\setminus X$$
+  (здесь мы воспользовались открытостью $[0,1]\setminus X$).
+  Поэтому
+  $$\int\limits_{[0,1]\setminus X}h_{\varepsilon}(x)dx \to \mu([0,1]\setminus X), \varepsilon \to 0.$$
+  Вычитая полученные равенства, получаем
+  $$\int\limits_{X}h_{\varepsilon}(x)dx \to 0, \varepsilon \to 0.$$
+  Это, в частности, означает
+  $$\mu\{x \in X \colon h_{\varepsilon}(x)>1/(2N)\} \le 2N \int\limits_{X}h_{\varepsilon}(x)dx = No(1), \varepsilon\to 0.$$
+  Но нам этой оценки не хватает, нам нужна скорость сходимости.
+ \end{proof}
+
+
+ Как из леммы вывести задачу? Пусть дано некоторое $\alpha, 0 < \alpha<1$. Выберем $N$ так, что
+ $$1/N<\alpha/2.$$
+ Фиксируем $q, q_0<q<1$, где
+ $$2(1/q_0-1)=\alpha/2.$$
+ Тогда
+ $$2(1/q-1) \le \alpha/2.$$
+Выберем $\varepsilon_1>0$ так, чтобы при $\varepsilon \le \varepsilon_1$ было
+$$\mu\{x\in X \mid \mu\{y\notin X\colon |y-x|<\varepsilon\}>\varepsilon/N\}<C\varepsilon,$$
+где $C=C(N)$ из леммы не зависит от $\varepsilon_1$ (мы можем уменьшать $\varepsilon_1$, не меняя $C$).
+
+Выберем последовательность $\varepsilon_2=q\varepsilon_1,\varepsilon_3=q^2\varepsilon_1,\ldots$. Для каждого $\varepsilon_n$ имеем
+$$\mu\{x\in X \mid \mu\{y\notin X\colon |y-x|<\varepsilon_n\}>\varepsilon_n/N\}<C\varepsilon_n.$$
+Отсюда, суммируя геометрическую прогресию,
+$$\mu\{x\in X \mid \exists n \in \mathbb{N} \colon \mu\{y\notin X\colon |y-x|<\varepsilon_n\}>\varepsilon_n/N\}<\frac{C\varepsilon_1}{1-q}.$$
+Пусть
+$$A=\{x\in X \mid \exists n \in \mathbb{N} \colon \mu\{y\notin X\colon |y-x|<\varepsilon_n\}>\varepsilon_n/N\}.$$
+Тогда по доказанному
+$$\mu(A)\le \frac{C\varepsilon_1}{1-q}.$$
+Пусть $x\in X\setminus A$. Рассмотрим произвольное $\varepsilon< \varepsilon_1$. Найдём $n$ такое, что
+$$\varepsilon_{n+1}\le \varepsilon<\varepsilon_n.$$
+Имеем
+\begin{multline*}
+ \mu\{y\notin X\colon |y-x|<\varepsilon\}\le \mu\{y\notin X\colon |y-x|<\varepsilon_{n+1}\} + 2(\varepsilon-\varepsilon_{n+1})\le \\
+ \le \varepsilon_{n+1}/N+2(\varepsilon_n-\varepsilon_{n+1})=(1/N+2(1/q-1))\varepsilon_{n+1} \le \\
+ \le (1/N+2(1/q-1))\varepsilon \le \alpha \varepsilon.
+\end{multline*}
+Итак, мы доказали:
+$$\mu\{x \in X \mid \exists \varepsilon<\varepsilon_1\colon \enskip \mu\{y\notin X \colon |y-x|<\varepsilon\}>\alpha\varepsilon\}\le \frac{C\varepsilon_1}{1-q}.$$
+При этом $\varepsilon_1$ можно выбрать сколь угодно малым.
+Это значит, что
+$$\mu\{x \in X \mid \exists \varepsilon<\varepsilon_1\colon \enskip \mu\{y\notin X \colon |y-x|<\varepsilon\}>\alpha\varepsilon\}=0.$$
+Значит,
+$$\mu\left\{x\in X\mid \varlimsup_{\varepsilon \to 0}\frac{\mu\{y\notin X \colon |y-x|<\varepsilon\}}{2\varepsilon}>\frac{\alpha}{2}\right\}=0.$$
+В силу произвольности $\alpha$, это означает, что
+$$\mu\left\{x\in X\mid \varlimsup_{\varepsilon \to 0}\frac{\mu\{y\notin X \colon |y-x|<\varepsilon\}}{2\varepsilon}>0\right\}=0.$$
+А это уже есть то, что нам нужно. Только опирается оно на неправильную лемму. Что же делать?
+
+Я пробовал также рассуждения с множеством $X_\varepsilon$ --- $\varepsilon$-окрестностью $X$. Но эти рассуждения упираются в доказательство
+сходимости ряда
+$$\sum\limits_{k=1}^{\infty}\mu(X_{q^k}\setminus X)$$
+для $0<q<1$, а эту сходимость доказать не удаётся.
+
+Кажется, можно доказать проще. Пусть $0<\alpha<1$. Оценим меру подмножества $X$, на котором
+$$\varlimsup_{\varepsilon \to 0}\frac{\mu\{y\notin X \colon |y-x|<\varepsilon\}}{2\varepsilon}>\alpha.$$
+Пусть
+$$A=\left\{x\in X\mid \varlimsup_{\varepsilon \to 0}\frac{\mu\{y\notin X \colon |y-x|<\varepsilon\}}{2\varepsilon}>\alpha\right\}.$$
+Выберем некоторое $\varepsilon>0$.
+Пусть
+$$X_\varepsilon=\bigcup_{x\in X}(x-\varepsilon, x+\varepsilon).$$
+Построим покрытие $A$ интервалами следующим образом. У каждой точки $x\in A$ выберем окрестность $(x-\delta, x+\delta)$ меры меньше $\varepsilon$, т.е. $2\delta<\varepsilon$, такую, что
+$$\frac{\mu\{y\notin X \colon |y-x|<\delta\}}{2\delta}>\alpha.$$
+Заметим, что $A$ не обязано быть замкнутым, поэтому выбрать конечное подпокрытие мы не можем. Надо рассуждать тоньше.
+Мы зато можем выбрать счётное подпокрытие (за счёт существования счётной базы топологии), что и сделаем.
+Итак, пусть наше покрытие есть
+$$\bigcup_{i=1}^\infty (x-\delta_i, x+\delta_i).$$
+Фиксируем $s>0$. Выберем $N$ так, чтобы
+$$\bigcup_{i=1}^N (x_i-\delta_i, x_i+\delta_i)$$
+покрывало всё множество $A$, за исключением, быть может, множества меры $s$.
+Из этих $N$ интервалов $(a_i, b_i), 1\le i\le N$ выкинем некоторые так, чтобы каждая точка была покрыта не более чем двумя интервалами, а
+покрываемое множество осталось без изменений (это
+можно сделать, т.к. как только некоторая точка покрыта тремя интервалами, один из этих интервалов содержится в объединении двух других, и его можно выкинуть, не меняя покрываемого множества). Новое полученное множество интервалов будем обозначать
+$$\{(x'_i-\delta'_i,x'_i+\delta'_i), 1\le i \le N'\}, N'\le N.$$
+Имеем
+$$\mu(A)-s \le \sum\limits_{i=1}^{N'} 2\delta'_i,$$
+$$\alpha (\mu(A)-s) \le \alpha \sum\limits_{i=1}^{N'} 2\delta'_i \le \sum\limits_{i=1}^{N'} \mu\{y\notin X \colon |y-x'_i|<\delta'_i \} \le 2\mu(X_\varepsilon \setminus X).$$
+В силу произвольности $s$, для замкнутого $X$ в силу $\bigcap_{\varepsilon>0}X_{\varepsilon}=X$ получаем
+$$\alpha \mu(A) \le 2\mu(X_\varepsilon \setminus X).$$
+В силу произвольности выбора $\varepsilon$
+$$\mu(A)=0.$$
+А это и есть то, что нам нужно. Для замкнутых $X$ доказали, а для всех остальных применяем регулярность меры.
+
+
 \setcounter{enumi}{133}
  \item Предположим, что
  $$\sup_{A\in \mathfrak{A}}\mu A=+\infty.$$
@@ -405,6 +510,7 @@ $$A(x_1, \ldots, x_m, 0, 0, \ldots)=(x_1, x_2/2, x_3/3, \ldots, x_m/m, 0, 0, \ld
  сколь угодно большого заряда, но $\nu(B\cap A_i)$ ограничены, то $\nu(B\setminus(A_1\cup \ldots A_n))$ может быть сколь угодно большим. А значит, может быть больше $C$.
  Для такого $B$ мы берём $A_{n+1}=B\setminus(A_1\cup\ldots A_n).$ Вот и доказали: если такая последовательность $A_1, A_2, A_3, \ldots$ есть,
  то $\nu(\cup_{i=1}^\infty A_i)$ может быть только бесконечным. Снова противоречие с определением заряда.
+
  \item Задача пахнет леммой Бореля-Кантелли!
  Зададим на сигма-алгебре $\mathfrak{A}$ функции
  $$\nu_+(A)=\sup_{B\subseteq A}\nu(A), \nu_-(A)=-\inf_{B\subseteq A}\nu(A).$$
