@@ -894,6 +894,51 @@ $$(x-b_1)(x-b_2)(x-b_3)=x^3+x^2-4x+1.$$
 тождественное преобразование).
 Ясно, что это разные подгруппы.
 Только вот подгруппа размера 2 у группы $\mathbb{Z}/4 \mathbb{Z}$ всего одна. Противоречие.
+\item
+\item Найти норму $N_{K/\mathbb{Q}}(1-\zeta_n)$, где $K=\mathbb{Q}(\zeta_n)$. По материалу из лекций, норма элемента равна произведению
+всех сопряжённых с ним элементов поля. С нашим элементом $1-\zeta_n$ сопряжены
+$$1-\zeta_n^a, GCD(a,n)=1.$$
+Значит, имеет место
+$$N_{K/\mathbb{Q}}(1-\zeta_n)=\prod\limits_{a \colon GCD(a,n)=1}(1-\zeta_n^a).$$
+Но
+$$\prod\limits_{a \colon GCD(a,n)=1}(1-\zeta_n^a)=\Phi_n(1),$$
+где $\Phi_n$ --- круговой многочлен. Итак, наша задача свелась к нахождению суммы коэффициентов кругового многочлена $\Phi_n(1)$.
+В учебнике Кострикина написана формула
+$$\Phi_n(x)=\prod\limits_{d|n}(x^d-1)^{\mu(\frac{n}{d})}.$$
+Воспользуемся этой формулой. Считаем $n>1$. За счёт
+$$\sum\limits_{d|n}\mu(d)=0$$
+можно убрать множители $x-1$ из формулы, и
+$$\Phi_n(x)=\prod\limits_{d|n}(1+x+\ldots+x^{d-1})^{\mu(\frac{n}{d})}.$$
+В эту формулу уже можно подставить $x=1$, и тогда
+$$\Phi_n(1)=\prod\limits_{d|n}d^{\mu(\frac{n}{d})}.$$
+Пусть
+$$n=p_1^{\alpha_1}\ldots p_s^{\alpha_s}, \alpha_i \ge 1$$
+разложение $n$ на простые множители.
+Пусть
+$$n_1=p_1\ldots p_s.$$
+Имеем
+\begin{multline*}
+\prod\limits_{d|n}d^{\mu(\frac{n}{d})}=
+\prod\limits_{d|n}\left(\frac{n}{d}\right)^{\mu(d)}=
+\prod\limits_{d|n_1}\left(\frac{n}{d}\right)^{\mu(d)}=
+\prod\limits_{d|n_1}\left(\frac{n_1}{d}\right)^{\mu(d)}\left(\frac{n}{n_1}\right)^{\mu(d)}=\\=
+\left(\frac{n}{n_1}\right)^{\sum_{d|n_1}\mu(d)}\prod\limits_{d|n_1}\left(\frac{n_1}{d}\right)^{\mu(d)}=
+\prod\limits_{d|n_1}\left(\frac{n_1}{d}\right)^{\mu(d)}=
+\prod\limits_{d|n_1}d^{\mu(\frac{n_1}{d})}.
+\end{multline*}
+Итак,
+$$\prod\limits_{d|n}d^{\mu(\frac{n}{d})}=\prod\limits_{d|n_1}d^{\mu(\frac{n_1}{d})}.$$
+Поэтому можно считать, что $n$ не делится на квадраты. Итак, считаем, что
+$$n=p_1\ldots p_s.$$
+Посчитаем, в какой степени $p_i$ входит в
+$$\prod\limits_{d|n}d^{\mu(\frac{n}{d})}.$$
+Оно входит в степени
+$$\sum\limits_{d\colon p_i|d|n}\mu\left(\frac{n}{d}\right).$$
+А такая сумма посчитана у Кострикина, это есть $1$ при $n=p_i$ и $0$ иначе.
+Итак, если в разложение $n$ на простые множители входит больше одного простого множителя, то в ответе будет $1$. Если же $n=p^\alpha$,
+то в ответе будет $p$.
+
+Ответ: $p$, если $n=p^\alpha$, $1$ иначе.
 \end{enumerate}
 
 

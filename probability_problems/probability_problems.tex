@@ -60,7 +60,25 @@ $$\mathbb{E}(\mathrm{1}_{F\cap H}\mid \mathcal{G})=\mathbb{E}(\mathrm{1}_F\mid \
 А в другую сторону?
 
 \begin{enumerate}
- \item
+ \item Пусть дано $(\xi, \eta)=^d(\xi', \eta)$. Покажем, что
+ $$P(\xi\in B\mid \eta)=P(\xi' \in B \mid \eta).$$
+ Из равенства по распределению следует, что для любых измеримых $A, B$
+ $$P(\xi \in B, \eta \in A)=P(\xi' \in B, \eta \in A).$$
+ Пусть
+ $$\eta_1=\mathbb{E}(\mathbbm{1}_{\xi\in B}\mid \eta), \eta_2=\mathbb{E}(\mathbbm{1}_{\xi'\in B}\mid \eta).$$
+ Тогда имеем
+ \begin{multline*}
+  \mathbbm{E}(\eta_1 \mathbbm{1}_{\eta\in A})=\mathbbm{E}(\mathbbm{1}_{\xi\in B}\mathbbm{1}_{\eta\in A})=P(\xi \in B, \eta \in A)=\\=
+  P(\xi' \in B, \eta \in A)=\mathbbm{E}(\mathbbm{1}_{\xi'\in B}\mathbbm{1}_{\eta\in A})=\mathbbm{E}(\eta_2 \mathbbm{1}_{\eta\in A}).
+ \end{multline*}
+ Итак, $\eta_1$ и $\eta_2$ --- $F_\eta$-измеримые, причём интегралы от них по любому множеству из $F_\eta$ совпадают.
+ Значит, они совпадают почти наверное. Получаем
+ $$P(\xi\in B\mid \eta)=\eta_1=\eta_2=P(\xi' \in B \mid \eta) \enskip a.s.$$
+ В другую сторону --- примерно так же. Сначала переписываем
+ $$P(\xi\in B\mid \eta)=P(\xi' \in B \mid \eta)$$
+ как $\eta_1=\eta_2 \enskip a.s.$ Интегрируя по множеству $\mathbbm{1}_{\eta\in A}$ из $F_\eta$, получаем
+ $$P(\xi \in B, \eta \in A)=P(\xi' \in B, \eta \in A).$$
+ А из этого равенства уже монотонным классом получаем равенство по распределению $(\xi, \eta)=^d(\xi', \eta)$.
  \item
  \item
 \end{enumerate}
