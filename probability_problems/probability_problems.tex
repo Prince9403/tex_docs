@@ -240,7 +240,15 @@ $$X_t\xrightarrow[t\to\infty]{a.s.}0.$$
 Если бы $X_t$ был равномерно интегрируем, то сходимость к 0 была бы и в $L^1$, а её нет, потому что
 $$\mathbb{E}X_t=1 \ne 0.$$
 
-
+\item Это просто. Фиксируем $G\in \mathcal{G}, H\in \mathcal{H}$. Имеем
+$$P(G\cap H \mid \mathcal{F}_n)=P(G \mid \mathcal{F}_n)P(H \mid \mathcal{F}_n) \enskip a.s.$$
+Оказывается, обе части этого равенства сходятся почти наверное при $n\to\infty.$
+Действительно, из теоремы 7.23 имеем сходимость
+$$P(G\mid \mathcal{F}_n)\to P(G\mid \mathcal{F}_\infty) \enskip a.s.,$$
+$$P(H\mid \mathcal{F}_n)\to P(H\mid \mathcal{F}_\infty) \enskip a.s.,$$
+$$P(G\cap H \mid \mathcal{F}_n)\to P(G\cap H\mid \mathcal{F}_\infty) \enskip a.s.$$
+Отсюда всё получается, просто переходим к пределу в обеих частях равенства
+$$P(G\cap H \mid \mathcal{F}_n)=P(G \mid \mathcal{F}_n)P(H \mid \mathcal{F}_n) \enskip a.s.$$
 \end{enumerate}
 
 
