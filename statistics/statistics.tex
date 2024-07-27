@@ -1,0 +1,84 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
+
+%opening
+\title{Статистика}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+
+\section{Оценка гауссовского среднего}
+Пусть $Y_1, \ldots, Y_n$ --- независимые $N(\mu, 1)$ случайные величины.
+Исследуем вопрос нахождения оценки снизу на дисперсию оценки $\mu$ по $Y_1, \ldots, Y_n$, то есть
+$$\sup\limits_{\mu} \mathbb{E}\left(f(Y_1, \ldots, Y_n)-\mu\right)^2,$$
+где $f\colon \mathbb{R}^n\to \mathbb{R}$ --- некоторая измеримая функция (нижняя оценка не должна зависеть от $f$).
+Иными словами, для независимых гауссовских $X_1, \ldots, X_n \sim N(0, 1)$
+нужно оценить снизу
+$$\sup\limits_{\mu} \mathbb{E}\left(f(X_1+\mu, \ldots, X_n+\mu)-\mu\right)^2.$$
+В случае несмещённой оценки это делается с помощью неравенства Рао-Крамера. Но нам нужно сделать
+это без предположения несмещённости, и кроме того, я не помню доказательства Рао-Крамера.
+Как оценивать супремум, сразу не ясно, но возникает идея проинтегрировать наше выражение
+$$\sup\limits_{\mu} \mathbb{E}\left(f(X_1+\mu, \ldots, X_n+\mu)-\mu\right)^2$$
+по некоторой плотности $p(\mu)$. Однако, проще, чем вычислять интегралы, сделать через вероятность.
+Пусть $U \sim N(0, 1)$ не зависит от вектора $X_1, \ldots, X_n$. Имеем
+$$\sup\limits_{\mu} \mathbb{E}\left(f(X_1+\mu, \ldots, X_n+\mu)-\mu\right)^2 \ge
+\mathbb{E}\left(f(X_1+U, \ldots, X_n+U)-U\right)^2.$$
+Найдём
+$$\mathbb{E}\left(U\mid X_1 + U, \ldots, X_n + U\right).$$
+Для этого найдём такое $\alpha$, что
+$$U-\alpha(X_1+\ldots+X_n+nU)$$
+не зависит от $X_1+U, \ldots, X_n+U$.
+Имеем
+$$\mathbb{E}(U-\alpha(X_1+\ldots+X_n+nU))(X_1+U)=0,$$
+$$1-\alpha n-\alpha=0,$$
+$$\alpha=\frac{1}{n+1}.$$
+Итак,
+$$H=\mathbb{E}\left(U\mid X_1 + U, \ldots, X_n + U\right)=\frac{1}{n+1}(X_1+\ldots+X_n+nU).$$
+Пусть
+$$Z=U-H=U-\frac{1}{n+1}(X_1+\ldots+X_n+nU)=\frac{1}{n+1}(U-X_1-\ldots-X_n).$$
+$Z$ не зависит от вектора
+$$(X_1+U, \ldots, X_n+U, H).$$
+Имеем
+\begin{multline*}\mathbb{E}\left(f(X_1+U, \ldots, X_n+U)-U\right)^2=
+\mathbb{E}\left(f(X_1+U, \ldots, X_n+U)-(Z+H)\right)^2=\\=
+\mathbb{E}\left(\left(f(X_1+U, \ldots, X_n+U)-H\right)-Z)\right)^2\ge
+\mathbb{E}Z^2=\frac{1}{n+1}.
+\end{multline*}
+Итак,
+$$\sup\limits_{\mu} \mathbb{E}\left(f(X_1+\mu, \ldots, X_n+\mu)-\mu\right)^2 \ge \frac{!}{n+1}.$$
+Нельзя ли эту оценку улучшить?
+А мы возьмём $U\sim N(0, \sigma^2)$ не зависящую от $X_1, \ldots, X_n$. Тогда всё то же, только
+$$\mathbb{E}(U-\alpha(X_1+\ldots+X_n+nU))(X_1+U)=0$$
+перепишется как
+$$\sigma^2-\alpha n\sigma^2-\alpha=0,$$
+$$\alpha=\frac{\sigma^2}{n\sigma^2+1}.$$
+$$Z=\frac{1}{n\sigma^2+1}U-\frac{\sigma^2}{n\sigma^2+1}(X_1+\ldots+X_n).$$
+$$\mathbb{E}Z^2=\frac{\sigma^2+n\sigma^4}{(1+n\sigma^2)^2}\to \frac{1}{n}, \sigma \to \infty.$$
+Значит,
+$$\sup\limits_{\mu} \mathbb{E}\left(f(X_1+\mu, \ldots, X_n+\mu)-\mu\right)^2 \ge \frac{!}{n}.$$
+А вот это уже улучшить нельзя - такое достигается для
+$$f(x_1, \ldots, x_n)=\frac{1}{n}(x_1+\ldots+x_n).$$
+Нельзя ли из этого доказательства получить Рао-Крамера? Видимо, нельзя, так как там нет
+супремума по $\mu$.
+
+\end{document}
+
+
+
