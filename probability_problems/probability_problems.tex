@@ -79,9 +79,76 @@ $$\mathbb{E}(\mathrm{1}_{F\cap H}\mid \mathcal{G})=\mathbb{E}(\mathrm{1}_F\mid \
  как $\eta_1=\eta_2 \enskip a.s.$ Интегрируя по множеству $\mathbbm{1}_{\eta\in A}$ из $F_\eta$, получаем
  $$P(\xi \in B, \eta \in A)=P(\xi' \in B, \eta \in A).$$
  А из этого равенства уже монотонным классом получаем равенство по распределению $(\xi, \eta)=^d(\xi', \eta)$.
+ \item Если $\mathbb{E}^F\xi=\mathbb{E}^G\xi$ для любой $\xi\in L_1$, то покажем, что
+ $\overline{F}=\overline{G}$. В эту сторону это несложно. Мы дляданного $A\in F$ воспользуемся
+ тем, что
+  $$\mathbb{E}^F\mathbbm{1}_A=1_A \enskip a.s.$$
+  Значит,
+  $$\mathbbm{E}^G1_A=1_A\enskip a.s.$$
+  Но это значит, что множество $B\in G$ тех $\omega$, где $\mathbbm{E}^G1_A$ принимает значение 1,
+  отличается от $A$ на множество меры 0:
+  $$B=\{\omega\mid\mathbbm{E}^G1_A(\omega)=1\},$$
+  $$P(A\triangle B)=0.$$
+  Это значит, что любое $A\in F$ можно приблизить множеством из $G$ с точностью до множества меры 0.
+  Но тогда любое $A\in \overline{F}$ тоже можно так приблизить множеством из $G$, и оно лежит в
+  $\overline{G}$. Доказали.
+
+  Теперь в другую сторону. Известно, что
+  $$\overline{F}=\overline{G}.$$
+  Достаточно доказать, что для любой $\xi\in L_1$
+  $$\mathbb{E}^{\overline{F}}\xi=\mathbb{E}^F\xi \enskip a.s.$$
+  Как это доказать? Пусть
+  $$\eta=\mathbb{E}^F\xi.$$
+  Надо показать, что $\eta$ может служить
+  в роли $\mathbb{E}^{\overline{F}}\xi$. Для этого достаточно показать, что для любого множества
+  $A\in \overline{F}$ выполнено
+  $$\mathbb{E}(1_A\eta)=\mathbb{E}(1_A \xi).$$
+  Но $A$ отличается от некоторого $B\in F$ на множество нулевой меры:
+  $$P(A\triangle B)=0.$$
+  Имеем, поскольку $B\in F$,
+  $$\mathbb{E}(1_B \eta)=\mathbb{E}(1_B \xi).$$
+  Но ясно, что
+  $$\mathbb{E}(1_A \eta)=\mathbb{E}(1_B \eta),$$
+  $$\mathbb{E}(1_A \xi)=\mathbb{E}(1_B \xi).$$
+  Из этих равенств получаем
+  $$\mathbb{E}(1_A \eta)=\mathbb{E}(1_A \xi),$$
+  что и требовалось.
+ \item Не хочу такое решать.
+ \item Имеем
+ $$\xi_n\wedge \eta\to \xi \wedge \eta \in L_1.$$
+ Из свойства монотонной сходимости
+ $$\sup_n\mathbb{E}^F\xi_n\ge\sup_n\mathbb{E}^F(\xi_n\wedge\eta)\ge
+ \lim_{n}\mathbb{E}^F (\xi_n\wedge \eta) = \mathbb{E}^F(\xi\wedge \eta) = \mathbb{E}^F\eta.$$
+
  \item
- \item
-\end{enumerate}
+ Пусть $\xi_n\uparrow \xi.$ Покажем, что для нового определения условного матожидания
+ $$\mathbb{E}^F \xi_n \to \mathbb{E}^F\xi.$$
+ Во-первых, заметим, что новое матожидание монотонно: если
+ $$\xi \le \eta \enskip a.s.$$
+ то
+ $$\mathbb{E}^F \xi \le \mathbb{E}^F \eta \enskip a.s.$$
+ Далее, пусть
+ $$\xi_n \uparrow\xi \enskip a.s.$$
+ Тогда
+ $$\mathbb{E}^F\xi \ge \mathbb{E}^F \xi_n \enskip a.s.$$
+ для любого $n$, а потому
+ $$\mathbb{E}^F\xi \ge \lim_n \mathbb{E}^F \xi_n \enskip a.s.$$
+ Осталось показать в обратную сторону:
+ $$\mathbb{E}^F\xi \le \lim_n \mathbb{E}^F \xi_n \enskip a.s.$$
+ Но это не так и сложно!
+ Имеем
+ $$\xi_m \wedge m \uparrow \xi,$$
+ $$\eta=\xi\wedge n \le \xi,$$
+ и мы находимся в условиях предыдущей задачи. Получаем из этой задачи
+ $$\mathbb{E}^F (\xi\wedge n) \le \sup_m \mathbb{E}^F (\xi_m\wedge m)=
+ \lim_m \mathbb{E}^F (\xi_m \wedge m) \enskip a.s.$$
+ Однако
+ $$\mathbb{E}^F \xi = \sup_n \mathbb{E}^F (\xi\wedge n).$$
+ Значит,
+ $$\mathbb{E}^F \xi \le \lim_m \mathbb{E}^F (\xi_m\wedge m) \le
+ \lim_m \mathbb{E}^F \xi_m \enskip a.s.$$
+ Это и требовалось.
+ \end{enumerate}
 
 
 \section{Kallenberg 2002 --- Глава 7. Мартингалы}
@@ -301,4 +368,18 @@ $$|I_{X^t}(H_m)|>h_m^{1/6}-\frac{1}{\sqrt{h_m}}|\sup\limits_{s\in [0,t]}f(B_s)-\
  \item
 \end{enumerate}
 
+\section{Revuz-Yor --- Глава 2. Мартингалы}
+1.20.
+$$P\left(\limsup_{h\to 0} \frac{|B_{s+h}-B_s|}{\sqrt{2h\log_2{1/h}}}=1\enskip \mbox{for}\enskip \mu-a.e. \enskip s \right)=1.$$
+Рассмотрим случайную величину $\tau\ge 0$, не зависящую от $B$, с распределением $\mu$:
+$$P(\tau\le a)=\mu([0, a]), a\ge 0.$$
+Тогда, как легко видеть,
+$$\xi(h)=B(\tau+h)-B(\tau), h \ge 0$$
+есть винеровский процесс.
+Как это увидеть? Если не напрямую, то можно воспользоваться строго марковским свойством
+винеровского процесса. Для этого надо фильтрации $F_t$ расширить с помощью сигма-алгебры,
+порождённой моментом $\tau$. Винеровский процесс $B$ останется винеровским и относительно расширенной
+фильтрации. А $\tau$ станет моментом остановки относительно новой фильтрации. Останется применить
+строго марковское свойство.
+Теперь осталось применить к процессу $\xi$ теорему 1.9 (закон повторного логарифма).
 \end{document}
