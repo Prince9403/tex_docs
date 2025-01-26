@@ -148,6 +148,89 @@ $$\mathbb{E}(\mathrm{1}_{F\cap H}\mid \mathcal{G})=\mathbb{E}(\mathrm{1}_F\mid \
  $$\mathbb{E}^F \xi \le \lim_m \mathbb{E}^F (\xi_m\wedge m) \le
  \lim_m \mathbb{E}^F \xi_m \enskip a.s.$$
  Это и требовалось.
+ 
+ \item Потом. 
+ \item Доказать: 
+  $$\liminf_n \mathbb{E}^F \xi_n \ge \mathbb{E}^F \liminf_n \xi_n.$$
+  Просто повторим доказательство леммы Фату. 
+  Пусть 
+  $$\eta_n=\inf_{m\ge n}\xi_m.$$
+  Тогда 
+  $$\eta_n \uparrow \liminf_n \xi_n.$$ 
+  Но $\xi_n\ge \eta_n$, отсюда
+  $$\liminf_n \mathbb{E}^F \xi_n \ge \liminf_n \mathbb{E}^F \eta_n = \lim_n \mathbb{E}^F \eta_n = 
+  \mathbb{E}^F \lim_n \eta_n = \mathbb{E}^F \liminf_n \xi_n.
+  $$
+  Мы воспользовались свойством монотонной сходимости для
+  таких условных матожиданий (задача 5). 
+  \item Аналог теоремы Лебега об ограниченной сходимости --- 
+  доказывается аналогично. 
+  Пусть 
+  $$\eta=\sup_n|\xi_n|.$$
+  Имеем по предыдущей задаче
+  $$\mathbb{E}^F\liminf_n(\eta-\xi_n)
+  \le \liminf_n \mathbb{E}^F (\eta-\xi_n),$$
+  $$\mathbb{E}^F \eta - \mathbb{E}^F \limsup_n \xi_n \le
+  \mathbb{E}^F \eta - \limsup_n \mathbb{E}^F \xi_n,$$
+  $$\limsup_n \mathbb{E}^F \xi_n \le 
+  \mathbb{E}^F \limsup_n \xi_n.$$
+  Аналогично, получаем
+    $$\mathbb{E}^F\liminf_n(\eta+\xi_n)
+  \le \liminf_n \mathbb{E}^F (\eta+\xi_n),$$
+  $$\mathbb{E}^F \eta + \mathbb{E}^F \liminf_n \xi_n \le
+  \mathbb{E}^F \eta + \liminf_n \mathbb{E}^F \xi_n,$$
+  $$\liminf_n \mathbb{E}^F \xi_n \ge 
+  \mathbb{E}^F \liminf_n \xi_n.$$
+  Комбинируя, получаем
+  $$\mathbb{E}^F \liminf_n \xi_n \le
+  \liminf_n \mathbb{E}^F \xi_n \le
+  \limsup_n \mathbb{E}^F \xi_n \le 
+  \mathbb{E}^F \limsup_n \xi_n.$$
+  Но 
+  $$\mathbb{E}^F \liminf_n \xi_n =
+  \mathbb{E}^F \lim_n \xi_n =
+  \mathbb{E}^F \limsup_n \xi_n \enskip a.s.$$
+  Отсюда получаем нужное соотношение. 
+  \item Не будем решать, слишком известная задача. 
+  \item Показать
+  $$\mathbb{E}(\xi\mid F, 1_A)=\frac{\mathbb{E}(\xi;A\mid F)}{P(A\mid F)}$$
+  почти наверное на $A$. 
+  В этой задаче мне самым сложным было понять, что такое $\mathbb{E}(\xi;A\mid F)$. 
+  Оказывается, это $\mathbb{E}(\xi 1_A\mid F).$ После того, как это понято, доказательство получается
+  автоматически. 
+   Итак, наш кандидат на роль условного матожидания
+   $$
+   \eta=\frac{\mathbbm{E}(\xi 1_A\mid F)}{P(A\mid F)}1_A+\frac{\mathbbm{E}(\xi 1_{A^c}\mid F)}{P(A^c\mid F)}1_{A^c}
+   $$
+   Ясно, что $\eta$ измерима относительно сигма-алгебры,
+   порожденной $F$ и $A$. Остается только проверить, что
+   для любого множества $B$ из этой сигма-алгебры
+   $$\mathbbm{E}(\eta 1_B) = \mathbbm{E}(\xi 1_B).$$
+   Достаточно проверить для множеств вида 
+   $$U\cap A, U\cap A^c, U\in F.$$
+   Проверим для множеств
+   $$B=U\cap A, U\in F.$$
+   Имеем
+   \begin{multline*}
+   	\mathbbm{E}\eta 1_B=
+   	\mathbbm{E}\left(\frac{\mathbbm{E}(\xi 1_A\mid F)}{P(A\mid F)}1_A 1_U\right)=
+   	\mathbbm{E} \mathbbm{E}\left(\frac{\mathbbm{E}(\xi 1_A\mid F)}{P(A\mid F)}1_A 1_U\mid F\right)=\\
+   	= \mathbbm{E}\left(\frac{\mathbbm{E}(\xi 1_A\mid F)}{P(A\mid F)}1_U \mathbbm{E}(1_A\mid F)\right)=
+   	\mathbbm{E}\left(\frac{\mathbbm{E}(\xi 1_A\mid F)}{P(A\mid F)}1_U P(A\mid F)\right)=\\=
+   	\mathbbm{E}\left(\mathbbm{E}(\xi 1_A\mid F)1_U \right)=
+   	\mathbb{E}\xi 1_A 1_U=\mathbb{E}\xi 1_B.
+   \end{multline*}
+   Здесь мы пользовались $F$-измеримостью множества $U$. 
+   В общем, всё доказано. 
+  \item Пусть $\eta_n=\mathbbm{E}(\xi_n \wedge 1 \mid F_n).$ 
+  Тогда 
+  $$\eta_n\xrightarrow[]{P}0.$$
+  Отсюда и из $0 \le \eta_n \le 1$ следует
+  $$\mathbbm{E}\eta_n \to 0, n \to \infty.$$
+  Но $\mathbbm{E}\eta_n=\mathbbm{E}(\xi_n \wedge 1).$ Поэтому
+  $$\mathbbm{E}(\xi_n \wedge 1)\to 0, n \to \infty.$$
+  Но последнее соотношение и означает
+  $$\xi_n \xrightarrow[]{P}0, n \to \infty.$$
  \end{enumerate}
 
 
