@@ -208,6 +208,45 @@
  \item
 \end{enumerate}
 
+\section{Рудин --- Глава 3. Выпуклость}
+\begin{enumerate}
+	\item 
+	\item 
+	\item 
+	\item 
+	\item c) Каждая слабо сходящаяся последовательность в $l^1$ сильно сходится.
+	Достаточно показать, что каждая слабо сходящаяся к нулю последовательность сильно сходится к нулю. 
+	От противного. Пусть $x_n$ --- слабо сходящаяся к нулю последовательность, норма каждого элемента которой не меньше $1$. 
+	Покажем, что такого не может быть. Сначала заметим, что из слабой сходимости следует, что для любого натурального  $i$
+	$$x_n(i)\to 0, n\to\infty.$$
+	Выберем по индукции подпоследовательность $x_{n_k}$ и натуральные числа $q_k$ так, что выполняются следующие условия
+	\begin{itemize}
+		\item $q_1<q_2<q_3<\ldots$
+		\item $\sum\limits_{j<q_k}|x_{n_k}(j)|<\frac{1}{2^k}$
+		\item $\sum\limits_{j \ge q_{k+1}}|x_{n_k}(j)|<\frac{1}{2^k}$
+    \end{itemize}
+    Построим элемент $h \in l^{\infty}$ таким образом: 
+    $$h(j)=\frac{x_{n_k}(j)^*}{|x_{n_k}(j)|}, q_k\le j < q_{k+1}$$
+    где $*$ означает сопряжение. 
+    (Если для какого-то такого $j$ окажется $x_{n_k}(j)=0$, то положим
+    $h(j)=0$). 	
+    Имеем тогда для любого $k>2$
+    \begin{multline*}
+    	|hx_{n_k}|=\left|\sum\limits_{j=0}^\infty h(j)x_{n_k}(j)\right|=\\=
+    	\left|\sum\limits_{j=0}^{q_k - 1} h(j)x_{n_k}(j)+
+    	\sum\limits_{j=q_k}^{q_{k+1}-1} h(j)x_{n_k}(j)+
+    	\sum\limits_{j=q_{k+1}}^\infty h(j)x_{n_k}(j)\right| \ge \\ \ge
+    	\left|\sum\limits_{j=q_k}^{q_{k+1}-1} h(j)x_{n_k}(j)\right| - 
+    	\left|\sum\limits_{j=0}^{q_k-1} h(j)x_{n_k}(j)\right|-
+    	\left|\sum\limits_{j=q_{k+1}}^\infty h(j)x_{n_k}(j)\right| \ge \\ \ge
+    	\sum\limits_{j=q_k}^{q_{k+1}-1}|x_{n_k}(j)|-
+    	\sum\limits_{j=0}^{q_k-1} |x_{n_k}(j)|-
+    	\sum\limits_{j=q_{k+1}}^\infty |x_{n_k}(j)|| \ge \\ \ge
+    	1-\frac{2}{2^k}-\frac{2}{2^k}=1 - \frac{1}{2^{k-2}}.     	
+    \end{multline*}
+    Это противоречит $hx_n\to 0, n\to\infty$, что следует из слабой сходимости
+    $x_n$. Противоречие. Всё доказано. 
+\end{enumerate}
 
  \section{Халмош}
  \begin{enumerate}
