@@ -12,6 +12,7 @@
 \newtheorem{proposition}[theorem]{Предложение}
 \newtheorem{claim}[theorem]{Утверждение}
 \newtheorem{corollary}[theorem]{Следствие}
+\def\ci{\perp\!\!\!\perp}
 
 %opening
 \title{Вероятность --- задачи}
@@ -231,6 +232,88 @@ $$\mathbb{E}(\mathrm{1}_{F\cap H}\mid \mathcal{G})=\mathbb{E}(\mathrm{1}_F\mid \
   $$\mathbbm{E}(\xi_n \wedge 1)\to 0, n \to \infty.$$
   Но последнее соотношение и означает
   $$\xi_n \xrightarrow[]{P}0, n \to \infty.$$
+  \item
+  \item По условию, $(\xi, \eta)$ имеет плотность распределения $f(x,y)$,
+  $$F(y)=\int f(x,y)dx, g(x,y)=f(x,y)/F(y).$$
+  Покажем, что для фиксированного борелевского множества $B$ случайная величина
+  $$H(\eta)=\int\limits_B g(x, \eta)dx$$
+  годится на роль условного матожидания $P(\xi \in B \mid \eta).$ \
+  Для этого надо проверить, что для любого борелевского множества $A$
+  $$\mathbb{E} 1_{\eta \in A}  H(\eta)=P(\xi \in B, \eta \in A).$$
+  Пусть
+  $$G(y)=1_{y\in A}H(y),$$
+  $$G(\eta)=1_{\eta\in A}H(\eta)=1_{\eta \in A} \int\limits_B g(x, \eta) dx.$$
+  Нужно проверить: $$\mathbb{E} G(\eta)=P(\xi\in B, \eta\in A).$$
+  Пусть $p_{\eta}$ --- плотность распределения $\eta$. Ясно, что $p_\eta=F$ (где по условию $F(y)=\int f(x,y)dx$).
+  Имеем
+  \begin{multline*}
+   \mathbb{E} G(\eta)=\int\limits_{\mathbb{R}} G(y)p_{\eta}(y) dy =\int\limits_{\mathbb{R}}G(y)F(y)dy=\\=
+   \int\limits_{\mathbb{R}}1_{y \in A} \left(\int\limits_B g(x,y)dx\right)F(y)dy=\\=
+   \int\limits_A \left(\int\limits_B g(x,y)F(y)dx\right)dy=\int\limits_{A\times B}g(x,y)F(y)dxdy=\\=
+   \int\limits_{A\times B}f(x,y)dxdy=P(\xi\in B, \eta \in A).
+  \end{multline*}
+
+  \item Теоремы о монотонной и ограниченной сходимости для условных матожиданий из соответствующих безусловных
+  результатов с помощью условных распределений.
+  Это хорошая задача! Дает прочувствовать условные матожидания.
+  Пусть
+  $$\xi_n\uparrow \xi_0, \xi_n \ge 0.$$
+  В произведении пространств $\mathbb{R}^\infty$ множество последовательностей
+  $$S=\{(x_0, x_1, x_2, x_3,\ldots)\mid x_{n}\le x_{n+1}, n \ge 1, \lim\limits_{n\to\infty}x_n=x_0\}$$
+  является борелевским множеством.
+  Рассмотрим бесконечномерный случайный вектор
+  $$\zeta=(\xi_0, \xi_1, \xi_2, \ldots).$$
+  Он принимает значения в борелевском пространстве $\mathbb{R}^\infty$. Поэтому существует регулярное условное распределение
+  $$\nu(\omega, \cdot)=P(\zeta \in \cdot\mid \mathcal{F}).$$
+  Из того, что $\zeta(\omega)$ лежит в $S$ с вероятностью 1, следует, что с вероятностью 1 мера $\nu(\omega)$ сосредоточена на $S$.
+  И теперь можно применить теорему о монотонной сходимости к функциям \\ $y_1, \ldots, y_n, \ldots$ как координатным функциям от $y\in S$:
+  \begin{multline*}
+   \mathbb{E}(\xi_n \mid \mathcal{F})=\int\limits_{\mathbb{R}^\infty}y_n(y)\nu(\omega, dy)=\\=
+   \int\limits_S y_n(y)\nu(\omega, dy)\to \int\limits_S y_0(y)\nu(\omega, dy)=\mathbb{E}(\xi_0 \mid \mathcal{F}).
+  \end{multline*}
+  Теорема об ограниченной сходимости получается аналогично, надо только заметить, что из интегрируемости мажоранты следует, что она интегрируема
+  по мере $\nu(\omega)$ для почти всех $\omega$.
+  \item $\mathbb{E}^{\mathcal{F}}\xi=^d \xi, \xi \in L_1$. Тогда $\xi$ почти наверное $\mathcal{F}$-измерима.
+  Так и сделаем, как предлагает подсказка. Выберем строго выпуклую $f$, такую, что
+  $$0 \le f(x)\le |x|, x\in \mathbb{R}.$$ Как это сделать? Выберем непрерывную функцию $h(x), x\ge 0$, которая монотонно строго возрастает на
+  $\mathbb{R}_{+}$ и находится в пределах от $0$ до $1$ (например, сигмоида).
+  Положим
+  $$f(x)=\begin{cases}
+   \int\limits_0^x h(y)dy, x > 0, \\
+   0, x=0, \\
+   f(-x), x < 0
+  \end{cases}
+  $$
+  Ясно, что $f$ выпукла.
+
+
+  Имеем по условию
+  $$\mathbb{E}f(\xi)=\mathbb{E}f\left(\mathbb{E}^{\mathcal{F}}\xi\right).$$
+  Но
+  \begin{multline*}
+   \mathbb{E}f(\xi)=\mathbb{E}\mathbb{E}\left(f(\xi)\mid \mathcal{F}\right)=\mathbb{E}\int\limits_{\mathbb{R}}f(x)\nu(\omega, dx)\ge \\ \ge
+   \mathbb{E}f\left(\int\limits_{\mathbb{R}}x\nu(\omega, dx)\right)=\mathbb{E}f\left(\mathbb{E}^{\mathcal{F}}\xi \right).
+  \end{multline*}
+  Здесь неравенство написано по Иенсену, и раз оно обращается в равенство, то мера $\nu(\omega)$ почти наверное сосредоточена в одной (случайной)
+  точке, причём эта точка есть $\int\limits_{\mathbb{R}}x\nu(\omega, dx)$.
+  Отсюда получаем
+  \begin{multline*}
+   P\left(\xi=\mathbb{E}^{\mathcal{F}}\xi\right)=\mathbb{E}\mathbbm{1}_{\xi=\mathbb{E}^{\mathcal{F}}\xi}=
+   \mathbb{E}\mathbb{E}\left(\mathbbm{1}_{\xi=\mathbb{E}^{\mathcal{F}}\xi}\mid \mathcal{F}\right)=\\=
+   \mathbb{E}\int\limits_{\mathbb{R}}\mathbbm{1}_{x=\mathbb{E}^{\mathcal{F}}\xi}\nu(\omega, dx)=
+   \mathbb{E}\int\limits_{\mathbb{R}}\mathbbm{1}_{x=\int\limits_{\mathbb{R}}x\nu(\omega, dx)}\nu(\omega, dx)=\\=
+   \mathbb{E}\nu\left(\omega, \left\{\int\limits_{\mathbb{R}}x\nu(\omega, dx)\right\}\right)=1.
+  \end{multline*}
+ Здесь мы применили теорему 6.4, взяв в роли функции $f(x,y)$ $\mathbbm{1}_{x=y}$. в роли $\xi$ саму $\xi$, в роли $\eta$
+ $\mathcal{F}$-измеримую случайную величину $\mathbb{E}^{\mathcal{F}}\xi$.
+
+\item По задаче 12, имеем
+$$P(\xi \in B \mid \eta) =^d P(\xi \in B \mid \zeta).$$
+По задаче 15,
+$$P(\xi \in B \mid \eta) = P(\xi \in B \mid \zeta) \enskip a.s.$$
+По предложению 6.6, из выполняения для всех $B$ равенства
+$$P(\xi \in B \mid \eta, \zeta) = P(\xi \in B \mid \eta) \enskip a.s.$$
+следует, что $\xi \ci_{\eta} \zeta$.
  \end{enumerate}
 
 
