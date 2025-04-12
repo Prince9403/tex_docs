@@ -314,7 +314,65 @@ $$P(\xi \in B \mid \eta) = P(\xi \in B \mid \zeta) \enskip a.s.$$
 По предложению 6.6, из выполняения для всех $B$ равенства
 $$P(\xi \in B \mid \eta, \zeta) = P(\xi \in B \mid \eta) \enskip a.s.$$
 следует, что $\xi \ci_{\eta} \zeta$.
- \end{enumerate}
+\item
+\item Дано: $\xi \ci_{\eta} \zeta$, $\gamma \ci (\xi, \eta, \zeta)$. Показать:
+$$\xi \ci_{\eta, \gamma} \zeta, \xi \ci_{\eta} (\zeta, \gamma).$$
+По предложению 6.6,
+$$P(\xi \in A \mid \eta, \zeta)=P(\xi \in A \mid \eta).$$
+Используя это и независимость $\gamma$ от $(\xi, \eta, \zeta)$, получаем
+\begin{multline*}
+ P(\xi \in A, \gamma \in B \mid \eta, \zeta)=\mathbb{E}(\mathbbm{1}_{\xi\in A, \gamma \in B} \mid \eta, \zeta)=\\=
+ \mathbb{E}(\mathbb{E}(\mathbbm{1}_{\xi \in A}\mathbbm{1}_{\gamma\in B} \mid \eta, \xi, \zeta) \mid \eta, \zeta)=
+ \mathbb{E}(\mathbbm{1}_{\xi \in A}\mathbb{E}(\mathbbm{1}_{\gamma \in B}\mid \eta, \xi, \zeta) \mid \eta, \zeta)=\\=
+ \mathbb{E}(\mathbbm{1}_{\xi \in A} P(\gamma \in B)\mid \eta, \zeta)=P(\gamma \in B)P(\xi \in A\mid \eta, \zeta)=\\=
+ P(\gamma \in B)P(\xi \in A \mid \eta).
+\end{multline*}
+Анадогично (вместо $\zeta$ --- единица) показываем, что
+$$P(\xi \in A, \gamma \in B \mid \eta)=P(\gamma \in B)P(\xi \in A \mid \eta).$$
+Из этих двух равенств получаем
+$$P(\xi \in A, \gamma \in B \mid \eta, \zeta)=P(\xi \in A, \gamma \in B \mid \eta).$$
+С помощью леммы о монотонном классе показываем, что для любого борелевского $H$
+$$P((\xi, \gamma) \in H \mid \eta, \zeta)=P((\xi, \gamma)\in H \mid \eta).$$
+По предложению 6.6, это означает, что
+$$\xi, \gamma \ci_{\eta} \zeta.$$
+По предложению 6.8, отсюда следует
+$$\xi \ci_{\eta, \gamma}\zeta.$$
+
+Но есть более короткий способ!
+Имеем
+$$P(\gamma\in A \mid \eta, \xi, \zeta)=P(\gamma \in A)=P(\gamma \in A \mid \eta, \zeta).$$
+Отсюда по предложению 6.6 получаем
+$$\gamma \ci_{\eta, \zeta} \xi.$$
+С учётом $\xi \ci_{\eta} \zeta$ получаем отсюда по предожению 6.8
+$$\xi \ci_{\eta} \zeta, \gamma.$$
+А отюда по предложению 6.8 получаем и
+$$\xi \ci_{\eta, \gamma} \zeta.$$
+Всё доказано.
+Кстати,
+$$\gamma \ci_{\eta, \zeta} \xi$$
+можно получить проще с помощью предложения 6.8.
+Имеем
+$$\gamma \ci \xi, \eta, \zeta,$$
+$$\gamma \ci_{1} \xi, \eta, \zeta,$$
+$$\gamma \ci_{1, \eta, \zeta} \xi,$$
+$$\gamma \ci_{\eta, \zeta} \xi.$$
+Ведь условная независимость --- частный случай обычной!
+
+\item
+\item $\eta=P(\xi \in \cdot \mid F).$ Я понимаю это так, что $\eta$ --- это совокупность случайных элементов
+$$P(\xi \in B \mid F)$$
+для всевозможных борелевских $B$. Надо показать, что $\xi \ci_{\eta} F$.
+Это проще, чем кажется! По предложению 6.6, достаточно показать, что
+$$P(H \mid F, \sigma(\eta))=P(H\mid \sigma(\eta))$$
+для всех $H\in \sigma(\xi))$. Но все такие $H$ имеют вид $\mathbbm{1}_{\xi \in A}$ для борелевскиих $A$.
+Итак, достаточно показать, что
+$$P(\xi \in A \mid F, \sigma(\eta))=P(\xi \in A \mid \sigma(\eta)).$$
+Но $\sigma(\eta)\subseteq F$.  Поэтому надо показать, что
+$$P(\xi \in A \mid F)=P(\xi \in A \mid \sigma(\eta)).$$
+Но матожидание можно брать сначала по более широкой, потом по более узкой сигма-алгебре, и
+$$P(\xi \in A \mid \sigma(\eta))=\mathbb{E}(P(\xi\in A\mid F)\mid \sigma(\eta))=P(\xi \in A \mid F),$$
+ибо $P(\xi \in A \mid F)$ измерима относительно $\sigma(\eta)$. Всё доказано.
+\end{enumerate}
 
 
 \section{Kallenberg 2002 --- Глава 7. Мартингалы}
