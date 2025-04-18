@@ -348,7 +348,134 @@
 
  Но это рассуждение неполное. Мы не показали, что $B_n$ являются ограниченными операторами. На самом деле, это непонятно как показывать.
 
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item Предположим, что
+ $$\begin{pmatrix}
+  A & B \\
+  C & D
+ \end{pmatrix}$$
+ обратимо, а $AD-BC$ необратим. Тогда есть два варианта.
+  \begin{itemize}
+   \item $ker(AD-BC)$ ненулевое. Тогда есть элемент
+   $$x \in ker(AD-BC).$$ Рассмотрим вектор
+   $$\begin{pmatrix}
+      (\mu D - \lambda B)x\\
+      (\lambda A-\mu C)x
+     \end{pmatrix}
+   $$
+   Имеем
+   $$
+   \begin{pmatrix}
+      A & B \\
+      C & D
+   \end{pmatrix}
+   \begin{pmatrix}
+      (\mu D - \lambda B)x\\
+      (\lambda A-\mu C)x
+     \end{pmatrix}
+     =
+   \begin{pmatrix}
+      \mu(AD-BC)x\\
+      \lambda(AD-BC)x
+     \end{pmatrix}=
+        \begin{pmatrix}
+      0\\
+      0
+     \end{pmatrix}.
+   $$
+   В силу обратимости
+    $$\begin{pmatrix}
+  A & B \\
+  C & D
+ \end{pmatrix}$$
+  отсюда следует, что $(\mu D - \lambda B)x=0, (\lambda A - \mu C)x = 0.$
+  В частности, $Ax=Bx=Cx=Dx=0.$ А тогда
+  $$
+  \begin{pmatrix}
+   x \\ x
+  \end{pmatrix} \in
+  ker  \begin{pmatrix}
+  A & B \\
+  C & D
+ \end{pmatrix}
+  $$
+  Это противоречит обратимости
+  $$
+  \begin{pmatrix}
+  A & B \\
+  C & D
+ \end{pmatrix}ю
+ $$
+ Всё.
 
+ \item $Im(AD-BC)\ne H.$
+ Имеем
+ $$
+ \begin{pmatrix}
+  D & -B \\
+  -C & A
+ \end{pmatrix}
+ \begin{pmatrix}
+  A & B \\
+  C & D
+ \end{pmatrix}=
+ \begin{pmatrix}
+  AD-BC & 0 \\
+  0 & AD-BC
+ \end{pmatrix}.
+ $$
+ Поскольку
+ $$
+ Im
+  \begin{pmatrix}
+  A & B \\
+  C & D
+ \end{pmatrix}=H\oplus H,
+ $$
+ то для любых $u, v\in H$
+ $$Du-Bv\in Im(AD-BC), -Cu+Av\in Im(AD-BC).$$
+ В частности,
+ $$ImA\subseteq Im(AD-BC), Im B \subseteq Im(AD-BC),$$
+ $$Im C \subseteq Im(AD-BC), Im D \subseteq Im(AD-BC).$$
+ А тогда
+ $$
+ Im
+  \begin{pmatrix}
+  A & B \\
+  C & D
+ \end{pmatrix}\subseteq Im(AD-BC)\oplus Im(AD-BC).
+ $$
+ Всё.
+  \end{itemize}
+
+А в другую сторону --- легко следует из
+ $$
+ \begin{pmatrix}
+  D & -B \\
+  -C & A
+ \end{pmatrix}
+ \begin{pmatrix}
+  A & B \\
+  C & D
+ \end{pmatrix}=
+ \begin{pmatrix}
+  AD-BC & 0 \\
+  0 & AD-BC
+ \end{pmatrix}.
+ $$
 \end{enumerate}
 
 \section{Пирковский}
