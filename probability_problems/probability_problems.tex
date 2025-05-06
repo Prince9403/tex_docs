@@ -577,6 +577,70 @@ $$P(G\cap H \mid \mathcal{F}_n)=P(G \mid \mathcal{F}_n)P(H \mid \mathcal{F}_n) \
  \item
 \end{enumerate}
 
+
+\section{Kallenberg 2002 --- Глава 17. стохастический интеграл}
+\begin{enumerate}
+ \item Воспользуемся леммой 17.1. Пусть
+ $$\tau_n=\begin{cases}
+           +\infty, |\xi| \le n, \\
+           0, |\xi| > n
+          \end{cases}
+$$
+Ясно, что $\tau_n \uparrow \infty$. Также ясно, что
+$$N^{\tau_n}(t)=(\xi M)^{\tau_n}(t)=\mathbbm{1}_{|\xi|\le n} \xi M(t) + M_0\mathbbm{1}_{|\xi| > n}=M_0+\mathbbm{1}_{|\xi|\le n} \xi (M(t)-M_0),$$
+и $N^{\tau_n}$ является локальным мартингалом (с той же локализирующей последовательностью моментов остановки, что и $M$).
+По лемме 17.1, $N$ --- тоже локальный мартингал.
+\item
+ Пусть $\tau_m\uparrow \infty$ --- такая последовательность моментов остановки, что $M_{t\wedge \tau_m}-M_0$ --- мартингалы.
+ Тогда, поскольку $M_0$ интегрируема, $M_{t \wedge \tau_m}$--- также мартингалы. Отсюда для любого $t>0$
+ $$\mathbb{E}M_{t \wedge \tau_m}=\mathbb{E}M_0.$$
+ В силу леммы Фату,
+ $$\mathbb{E}M_t=\mathbb{E}\lim_{m\to\infty} M_{t \wedge \tau_m}\le \varliminf_{m \to\infty} \mathbb{E}M_{t \wedge \tau_m}= \mathbb{E} M_0.$$
+ Итак, $M$ --- интегрируемый процесс. Фиксируем $s<t$. Имеем
+ $$\mathbb{E}^{F_s}M_{t\wedge \tau_m} = M_{s\wedge \tau_m}.$$
+ По лемме Фату для условных матожиданий (задача 7 главы 6),
+ $$\mathbb{E}^{F_s}M_t=\mathbb{E}^{F_s}\varliminf_{m\to\infty} M_{t \wedge \tau_m}\le \varliminf_{m\to\infty}\mathbb{E}^{F_s}M_{t\wedge \tau_m}=
+ \varliminf_{m\to\infty}M_{s \wedge \tau_m}=M_s.$$
+ Это и показывает, что $M$ --- супермартингал.
+ \item
+ \item Просто применяем предложение 17.6 к последовательности локальных мартингалов $M_n^{\tau_n}$. Для стохастически интегралов
+аналог получается из леммы 17.12.
+\item
+\item Воспользуемся указанием. Применяя лемму 7.29 к $B$ и $-B$ с ограниченным моментом остановки $\sigma=n\in \mathbb{N}$, получаем
+$$\mathbb{E}(B_n\mid F_{\tau})=B_{\tau\wedge n}.$$
+Отсюда следует
+$$\mathbb{E}B_{\tau\wedge n}=0$$
+при всех $n$. Хочется перейти к пределу. Для применения теоремы Лебега об ограниченной сходимости нужна мажоранта. В качестве мажоранты возьмём
+$$\sup_{0\le s \le \tau}|B_s|=(B^{\tau})^*.$$ Надо показать, что у этого выражения конечное матожидание. Воспользуемся теоремой 17.7.
+Применим её к локальному мартингалу $B_{t\wedge \tau}$, $p=1$. Получим
+$$\mathbb{E}\sup_{0\le s \le \tau}|B_s|\le c_1\mathbb{E}\left<B\right>_{\tau}^{\frac12}=c_1\mathbb{E}\tau^{\frac12}<+\infty.$$
+После этого по теореме Лебега об ограниченной сходимости получаем
+$$\mathbb{E}B_\tau=\lim_{n\to\infty}\mathbb{E}B_{\tau\wedge n}=0.$$
+Равенство
+$$\mathbb{E}B_{\tau}^2=\mathbb{E}\tau$$
+доказывается аналогично, только надо рассмотреть мартингал $B_t^2-t$, применить к нему лемму 7.29 и получить
+$$\mathbb{E}(B_n^2-n\mid F_{\tau})=(B(t)^2-t)_{t=\tau\wedge n}.$$
+Отсюда
+$$\mathbb{E}(B(t)^2-t)_{t=\tau\wedge n}=0$$
+при всех $n$. Итак,
+$$\mathbb{E}B^2(\tau\wedge n)=\mathbb{E}\tau\wedge n.$$
+Ясно, что $\mathbb{E}\tau\wedge n \to \mathbb{E}\tau, n\to\infty.$
+Осталось показать, что
+$$\mathbb{E}B^2(\tau\wedge n)\to \mathbb{E}B^2(\tau), n\to\infty.$$
+Для этого опять нужна мажоранта, и в её качестве мы возьмём
+$$\sup_{0\le s \le \tau}B_s^2.$$
+По теореме 17.7 для локального мартингала $B_{t\wedge\tau}$, $p=2$
+$$\mathbb{E}\sup_{0\le s \le \tau}B_s^2\le c_2 \mathbb{E}\left<B\right>_\tau=c_2\mathbb{E}\tau<+\infty.$$
+Итак, есть интегрируемая мажоранта, можно применять теорему Лебега об ограниченной сходимости. Всё доказано.
+\item
+\item Достаточно показать для непрерывных локальных мартингалов. Имеем по предложению 17.9
+$$[X, Y]\le [X]^{\frac12}[Y]^{\frac12},$$
+$$[X+Y]=[X]+[Y]+2[X,Y]\le [X]+[Y]+2[X]^{\frac12}[Y]^{\frac12}=([X]^{\frac12}+[Y]^{\frac12})^2.$$
+Отсюда всё получается (надо только извлечь квадратный корень).
+
+\end{enumerate}
+
+
 \section{Protter --- Глава 2}
 \begin{enumerate}
  \item $f\colon \mathbb{R}\to \mathbb{R}$ непрерывна за исключением одной точки, в которой у неё скачок. Показать, что $X_t=f(B_t)$ не семимартингал.
