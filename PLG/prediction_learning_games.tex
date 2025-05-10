@@ -1,0 +1,58 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage{enumitem}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+
+%opening
+\title{Prediction, learning and games}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+
+\section{Глава 2}
+\begin{enumerate}
+ \item Для iid последовательности $Y_1, Y   _2, \ldots$ c $P(Y_i=1)=p$.
+ Будем ставить по большинству. $\hat{Y}_{n+1}$ положим равным тому значению из 0 и 1, которое принимается большим числом
+ $Y_1, Y_2, \ldots Y_n$. Если поровну, то ставим $0$. Проведём оценки для случая $p<\frac12$. Случай $p>\frac12$
+ рассматривается симметрично, а случай $p=\frac12$ рассмотрим отдельно.
+ \begin{multline*}
+ P(\hat{Y}_{n+1}\ne Y_{n+1})=\sum\limits_{k}P\left(\sum\limits_{i=1}^n Y_i=k, \hat{Y}_{n+1}\ne Y_{n+1}\right)=\\=
+ P(Y_1+\ldots+Y_n>n/2, Y_{n+1}=0)+P(Y_1+\ldots+Y_n \le n/2, Y_{n+1}=1)=\\=
+ (1-p)P(Y_1+\ldots+Y_n>n/2)+pP(Y_1+Y_2+\ldots+Y_n \le n/2)=\\=
+ (1-p)P(Y_1+\ldots+Y_n>n/2)+p(1-P(Y_1+Y_2+\ldots>n/2))=\\=
+ p+(1-2p)P(Y_1+\ldots+Y_n>n/2).
+ \end{multline*}
+Имеем
+ $$P(Y_1+\ldots+Y_n > n/2)\le \frac{\mathbb{E}e^{\alpha(Y_1+\ldots+Y_n)}}{e^{\alpha n/2}}=
+ \left(\frac{pe^\alpha+1-p}{e^{\alpha/2}}\right)^n.$$
+ При $\alpha=\ln\frac{1-p}{p}$ правая часть принимает значение $2\sqrt{p(1-p)}^n$.
+ Матожидание регрета не превосходит
+ $$\sum\limits_{k=0}^n (2\sqrt{p(1-p)})^n \le \frac{1}{1-2\sqrt{p(1-p)}}.$$
+ Итак, регрет имеет константное матожидание.
+ В случае $p=\frac12$ матожидание лосса есть $pn$, и такое же матожидание лосса каждого из экспертов.
+ Самые сложные распределения при $p\approx \frac12$.
+ \item
+ \item
+ \item
+
+\end{enumerate}
+
+
+
+
+\end{document}
