@@ -1,0 +1,90 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage{enumitem}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+
+%opening
+\title{Матлогика}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+
+\section{Шень - Языки и исчисления}
+\begin{enumerate}
+\setcounter{enumi}{23}
+ \item Вывести формулу $$(A\to(B\to C))\to ((A\wedge B) \to C).$$
+ Имеем $$A\to(B\to C), A \wedge B \vdash A, B, A\to(B\to C)\vdash C.$$
+ Значит, по лемме о дедукции
+ $$A\to(B\to C) \vdash (A \wedge B)\to C.$$
+ Ну и дальше второе применение леммы о дедукции заканчивает рассуждение.
+ Теперь докажем выводимость формулы
+ $$((A\wedge B) \to C) \to (A\to(B\to C)).$$
+ Имеем: по аксиоме 5, выводимо $A\to (B\to (A\wedge B)).$ Поэтому
+ $$(A\wedge B) \to C, A \vdash B \to (A\wedge B), (A \wedge B) \to C \vdash B \to C.$$
+ Отсюда двойным применением леммы о дедукции всё получается.
+ Мы воспользовались задачей 21 о цепочке выводов.
+ Докажем теперь выводимость формулы
+ $$(A \wedge B)\to (B \wedge A).$$
+ По аксиомам 3 и 4, из $A\wedge B$ выводятся $A$ и $B$, а из них по аксиоме 5 выводится $B \wedge A$. Вот и всё.
+ \item Имеем $A, (A \vee B) \to C \vdash C$, поскольку есть аксиома $A\to (A\vee B)$, и $A \vdash (A \vee B)$. Значит,
+ $$(A \vee B) \to C \vdash A \to C.$$ Аналогично
+ $$(A \vee B) \to C \vdash B \to C.$$
+ А отсюда уже по предыдущему (см. теорию в книге)
+ $$(A \vee B) \to C \vdash (A \to C) \wedge (B \to C).$$
+ В другую сторону. sЗдесь нужно применить аксиому
+ $$((A \to C) \to ((B \to C) \to ((A\vee B) \to C)).$$
+ Из этой аксиомы получаем
+ $$A\to C, B \to C \vdash (A\vee B) \to C.$$
+ Но
+ $$(A \to C) \wedge (B \to C) \vdash A\to C, B \to C \vdash (A \vee B) \to C,$$ и по лемме о дедукции
+ $$((A \to C) \wedge (B \to C)) \to ((A \vee B) \to C).$$
+ Далее,
+ $$A \wedge C \vdash A, C \vdash (A \vee B), C \vdash (A \vee B) \wedge C.$$
+ Аналогично,
+ $$B \wedge C \vdash B, C \vdash (A \vee B), C \vdash (A \vee B) \wedge C.$$
+ Отсюда
+ $$(A \wedge C) \vee (B \wedge C) \vdash (A \vee B) \wedge C.$$
+ А отсюда уже (лемма о дедукции!) следует формула
+ $$((A \wedge C) \vee (B \wedge C)) \to ((A \vee B) \wedge C).$$
+ В другую сторону.
+ Имеем
+ $$A, C \vdash A \wedge C \vdash (A \wedge C) \vee (B \wedge C).$$
+ Аналогично,
+ $$B, C \vdash (A \wedge C) \vee (B \wedge C).$$
+ Итак, взяв $\Gamma=\{C\}$, имеем
+ $$A \vee B, C \vdash (A \wedge C) \vee (B \wedge C).$$
+ Отсюда
+ $$(A \vee B)\wedge C \vdash (A \wedge C) \vee (B \wedge C).$$
+ Последние равенства не буду доказывать.
+ \item По аксиоме 9, $$\neg A \to (A \to B).$$
+ Поэтому для любой формулы $B$
+ $$A, \neg A \vdash B.$$
+ Отсюда следует
+ $$A, \neg A \vdash B, \neg B.$$
+ Отсюда, взяв $\Gamma=\{A\}$, получаем
+ $$A \vdash \neg \neg A.$$
+ Итак, доказали, что
+ $$A\to \neg \neg A.$$
+ Дальше, по только что доказанному
+ $$\neg \neg \neg A, A \vdash \neg\neg A, \neg\neg\neg A.$$
+ Для $B=\neg\neg A$ это даёт противоречие. Значит,
+ $$\neg \neg \neg A \vdash \neg A.$$
+ \item
+ \item
+\end{enumerate}
+\end{document}
