@@ -1,0 +1,58 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage{enumitem}
+
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{claim}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+
+%opening
+\title{Оптимизация}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+
+\chapter{Optimization for data analysis}
+\section{Глава 2}
+\begin{enumerate}
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item
+ \item a)  Из 2.9 мы получаем
+    $$f(y)\le f(x)+\nabla f(x)^T(y-x) + \frac{L}{2}\|y-x\|^2.$$
+    Отсюда
+    $$f^* \le \inf_y(f(x)+\nabla f(x)^T(y-x) + \frac{L}{2}\|y-x\|^2)=\inf_a(f(x)+\nabla f(x)^Ta + \frac{L}{2}\|a\|^2).$$
+    Ну, здесь можно минимизировать по каждой компоненте вектора $a$ отдельно.
+    $$\nabla f(x)_i a_i + \frac{L}{2}a_i^2\to min,$$
+    $$a_i^2 + \frac{2}{L}\nabla f(x)_ia_i\to min,$$
+    $$a_i=-\frac{1}{L}\nabla f(x)_i.$$
+    Итак, минимум достигается в точке $a=-\frac{1}{L}\nabla f(x)$, и
+    $$f^* \le \inf_a(f(x)+\nabla f(x)^T a + \frac{L}{2}\|a\|^2) =f(x)-\frac{1}{2L}\|\nabla f(x)\|^2.$$
+    Это мы и хотели доказать.
+
+ \item
+ \item
+ \item
+ \item
+
+\end{enumerate}
+
+
+
+
+\end{document}
